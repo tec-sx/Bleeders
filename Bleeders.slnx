@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/Source/">
+    <Project Path="Source/Gameplay/Bleeders.Gameplay.csproj" />
+    <Project Path="Source/Interface/Bleeders.Interface.csproj" />
+    <Project Path="Source/Launcher/Bleeders.Launcher.csproj" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Tests/Gameplay/Bleeders.Gameplay.Tests.csproj" />
+    <Project Path="Tests/Interface/Bleeders.Interface.Tests.csproj" />
+  </Folder>
+</Solution>

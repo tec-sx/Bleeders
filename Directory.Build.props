@@ -1,0 +1,15 @@
+<Project InitialTargets="CheckFlickerVoidEngine">
+  <!-- The engine this game builds against: the engine repository the FLICKERVOID_ENGINE environment variable names, shared by every
+       project. Engine modules are referenced as $(FlickerVoidEngine)Source/Engine/<Module>/... -->
+  <PropertyGroup>
+    <FlickerVoidEngine>$(FLICKERVOID_ENGINE)</FlickerVoidEngine>
+    <FlickerVoidEngine>$([MSBuild]::EnsureTrailingSlash('$(FlickerVoidEngine)'))</FlickerVoidEngine>
+    <!-- The engine's projects aren't in the game's solution, which would build them as Debug; they build in the game's configuration. -->
+    <ShouldUnsetParentConfigurationAndPlatform>false</ShouldUnsetParentConfigurationAndPlatform>
+  </PropertyGroup>
+  <!-- The engine's build settings: target framework, warnings as errors, and the test libraries for *.Tests projects. -->
+  <Import Project="$(FlickerVoidEngine)Directory.Build.props" Condition="Exists('$(FlickerVoidEngine)Directory.Build.props')" />
+  <Target Name="CheckFlickerVoidEngine">
+    <Error Condition="!Exists('$(FlickerVoidEngine)Directory.Build.props')" Text="No FlickerVoid engine at $(FlickerVoidEngine). Set the FLICKERVOID_ENGINE environment variable to the engine repository's folder." />
+  </Target>
+</Project>
