@@ -15,14 +15,25 @@ jobs:
     env:
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
       DOTNET_NOLOGO: 1
+      # The engine branch to build against: main, or an engine pull request's branch while the game waits on it.
+      ENGINE_REF: feature/camera-director
+      FLICKERVOID_ENGINE: ${{ github.workspace }}/FlickerVoidNGN
     steps:
+      # The game and the engine side by side; FLICKERVOID_ENGINE names the engine, as on a developer's machine.
       - uses: actions/checkout@v6
         with:
-          submodules: true
+          path: Bleeders
+      - uses: actions/checkout@v6
+        with:
+          repository: tec-sx/FlickerVoidNGN
+          ref: ${{ env.ENGINE_REF }}
+          path: FlickerVoidNGN
       - uses: actions/setup-dotnet@v5
         with:
-          global-json-file: global.json
+          global-json-file: Bleeders/global.json
       - name: Build
+        working-directory: Bleeders
         run: dotnet build Bleeders.slnx -c Release
       - name: Test
+        working-directory: Bleeders
         run: dotnet test --solution Bleeders.slnx -c Release --no-build

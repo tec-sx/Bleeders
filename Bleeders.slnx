@@ -1,33 +1,4 @@
 <Solution>
-  <Folder Name="/Engine/">
-    <Project Path="Engine/Source/Tools/Builder/FlickerVoid.Tools.Builder.csproj" />
-    <Project Path="Engine/Source/Engine/Abilities/FlickerVoid.Engine.Abilities.csproj" />
-    <Project Path="Engine/Source/Engine/Ai/FlickerVoid.Engine.Ai.csproj" />
-    <Project Path="Engine/Source/Engine/Attributes/FlickerVoid.Engine.Attributes.csproj" />
-    <Project Path="Engine/Source/Engine/Cameras/FlickerVoid.Engine.Cameras.csproj" />
-    <Project Path="Engine/Source/Engine/Characters/FlickerVoid.Engine.Characters.csproj" />
-    <Project Path="Engine/Source/Engine/Interaction/FlickerVoid.Engine.Interaction.csproj" />
-    <Project Path="Engine/Source/Engine/Inventory/FlickerVoid.Engine.Inventory.csproj" />
-    <Project Path="Engine/Source/Engine/Maps/FlickerVoid.Engine.Maps.csproj" />
-    <Project Path="Engine/Source/Engine/Debug/FlickerVoid.Engine.Debug.csproj" />
-    <Project Path="Engine/Source/Engine/Dialogue/FlickerVoid.Engine.Dialogue.csproj" />
-    <Project Path="Engine/Source/Editor/Assets/FlickerVoid.Editor.Assets.csproj" />
-    <Project Path="Engine/Source/Editor/Core/FlickerVoid.Editor.Core.csproj" />
-    <Project Path="Engine/Source/Editor/Persistence/FlickerVoid.Editor.Persistence.csproj" />
-    <Project Path="Engine/Source/Editor/Shell/FlickerVoid.Editor.csproj" />
-    <Project Path="Engine/Source/Engine/Flow/FlickerVoid.Engine.Flow.csproj" />
-    <Project Path="Engine/Source/Engine/Gameplay/FlickerVoid.Engine.Gameplay.csproj" />
-    <Project Path="Engine/Source/Engine/Graphics/FlickerVoid.Engine.Graphics.csproj" />
-    <Project Path="Engine/Source/Engine/Graphics.Vulkan/FlickerVoid.Engine.Graphics.Vulkan.csproj" />
-    <Project Path="Engine/Source/Engine/Hosting/FlickerVoid.Engine.Hosting.csproj" />
-    <Project Path="Engine/Source/Engine/Physics/FlickerVoid.Engine.Physics.csproj" />
-    <Project Path="Engine/Source/Engine/Platform/FlickerVoid.Engine.Platform.csproj" />
-    <Project Path="Engine/Source/Engine/Rendering/FlickerVoid.Engine.Rendering.csproj" />
-    <Project Path="Engine/Source/Engine/Runtime/FlickerVoid.Engine.Runtime.csproj" />
-    <Project Path="Engine/Source/Engine/Story/FlickerVoid.Engine.Story.csproj" />
-    <Project Path="Engine/Source/Engine/Ui/FlickerVoid.Engine.Ui.csproj" />
-    <Project Path="Engine/Source/Tools/ShaderCompiler/FlickerVoid.Tools.ShaderCompiler.csproj" />
-  </Folder>
   <Folder Name="/Source/">
     <Project Path="Source/Gameplay/Bleeders.Gameplay.csproj" />
     <Project Path="Source/Interface/Bleeders.Interface.csproj" />

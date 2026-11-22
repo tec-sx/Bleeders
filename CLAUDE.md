@@ -2,12 +2,13 @@
 
 The game: a third-person narrative RPG/adventure with an orthographic 2.5D look (3D scenes with hand-drawn textures and a 2D feel), point and click, player-paced (no decay timers or forced timings). Lighting is the most important part of the look.
 
-It is built on the FlickerVoid engine (FlickerVoidNGN), which this repository holds as a git submodule at `Engine/`. The engine's `Engine/CLAUDE.md` describes the stack, the engine modules, the editor and the conventions; read it before working here, as its rules (Arch-first entities, data-driven content, the ontology tree and the rule of three, porting from Unreal, code style, TDD, test builders) apply to this repository too. The plan and roadmap are the engine's `Engine/Docs/Plan.md` and `Engine/Docs/Port.md`.
+It is built on the FlickerVoid engine (FlickerVoidNGN), one clone of which every project shares, named by the `FLICKERVOID_ENGINE` environment variable. The engine's `CLAUDE.md` describes the stack, the engine modules, the editor and the conventions; read it before working here, as its rules (Arch-first entities, data-driven content, the ontology tree and the rule of three, porting from Unreal, code style, TDD, test builders) apply to this repository too. The plan and roadmap are the engine's `Docs/Plan.md` and `Docs/Port.md`.
 
 ## Engine
 
-- `Directory.Build.props` sets `$(FlickerVoidEngine)` to the `FLICKERVOID_ENGINE` environment variable when it is set (an engine checkout of your own), otherwise to `Engine/`, and imports the engine's `Directory.Build.props` and `Directory.Packages.props`. Projects reference the engine's projects (`$(FlickerVoidEngine)Source/Engine/<Module>/...`), not its packages, so every build compiles the engine, and `Bleeders.slnx` has an Engine folder listing its modules so engine classes can be edited from here.
-- Clone with `git clone --recurse-submodules`, or run `git submodule update --init` after cloning. The submodule is pinned to an engine commit; engine changes are made and merged in FlickerVoidNGN, then picked up here by moving the pin (`git -C Engine fetch && git -C Engine checkout <commit>`, then commit `Engine`) in the pull request that needs them. A change that spans both lands in the engine first.
+- `Directory.Build.props` sets `$(FlickerVoidEngine)` to the `FLICKERVOID_ENGINE` environment variable (the build stops when it names no engine) and imports the engine's `Directory.Build.props` and `Directory.Packages.props`. There is never a copy of the engine per project. Projects reference the engine's projects (`$(FlickerVoidEngine)Source/Engine/<Module>/...`), not its packages, so every build compiles the engine. `Bleeders.slnx` lists only the game's projects, as a solution can't read the variable; engine code is edited in the engine's own solution.
+- The game builds against whatever the engine clone holds; nothing pins a commit. Engine changes are made and merged in FlickerVoidNGN; a change that spans both lands in the engine first. CI checks the game and the engine out side by side, the engine at `ENGINE_REF` (`.github/workflows/ci.yml`): main, or an engine pull request's branch while a game change waits on it.
+- Projects can sit anywhere: the editor's project picker remembers every project it opened (Browse to `Bleeders.fvproject` once).
 
 ## Layout
 
@@ -29,9 +30,9 @@ It is built on the FlickerVoid engine (FlickerVoidNGN), which this repository ho
 ## Build and test
 
 - `dotnet build Bleeders.slnx` and `dotnet test --solution Bleeders.slnx` (Microsoft Testing Platform, xUnit v3), from the repository's root, which has its own `global.json`.
-- CI (`.github/workflows/ci.yml`) checks out the submodule and builds and tests on Windows and Linux for every pull request and push to main.
+- CI (`.github/workflows/ci.yml`) checks out the engine and builds and tests on Windows and Linux for every pull request and push to main.
 
 ## Git
 
-- Branches: `feature/<title>`, `improvement/<title>` or `fix/<title>`.
+- Branches: `feature/<title>`, `improvement/<title>` or `bug/<title>`, the title saying what the work does.
 - PRs open ready for review; the owner reviews and may push to the branch.

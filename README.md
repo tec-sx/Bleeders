@@ -4,16 +4,12 @@ A narrative RPG/adventure with an orthographic 2.5D look, built on the FlickerVo
 
 ## Build
 
-Requires the .NET 10 SDK. The engine is a git submodule at `Engine/`:
+Requires the .NET 10 SDK and one clone of the engine, [FlickerVoidNGN](https://github.com/tec-sx/FlickerVoidNGN), anywhere on disk, which every project shares. Set `FLICKERVOID_ENGINE` to its folder (on Windows, `setx FLICKERVOID_ENGINE C:\path\to\FlickerVoidNGN`, then open a new terminal or IDE); builds find the engine there. Clone this repository wherever you keep projects.
 
 ```
-git clone --recurse-submodules https://github.com/tec-sx/Bleeders
-cd Bleeders
 dotnet build Bleeders.slnx
 dotnet test --solution Bleeders.slnx
 dotnet run --project Source/Launcher
 ```
 
-In an existing clone, `git submodule update --init` fetches the engine. To build against an engine checkout of your own instead, set the `FLICKERVOID_ENGINE` environment variable to its folder.
-
-Open `Bleeders.fvproject` in the FlickerVoid editor to edit the game's content.
+Open `Bleeders.fvproject` in the FlickerVoid editor to edit the game's content: Browse to it in the project picker once, and the picker lists it from then on wherever it is.
