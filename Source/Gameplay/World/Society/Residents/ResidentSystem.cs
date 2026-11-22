@@ -11,7 +11,7 @@ using FlickerVoid.Engine.Runtime.Components;
 using FlickerVoid.Engine.Runtime.Events;
 using FlickerVoid.Engine.Runtime.Loop;
 
-namespace FlickerVoid.Gameplay.World.Society.Residents;
+namespace Bleeders.Gameplay.World.Society.Residents;
 
 using World = Arch.Core.World;
 

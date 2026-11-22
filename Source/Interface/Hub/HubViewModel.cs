@@ -4,11 +4,11 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 using FlickerVoid.Engine.Runtime.Loop;
-using FlickerVoid.Interface.Hub.Character;
-using FlickerVoid.Interface.Hub.Inventory;
-using FlickerVoid.Interface.Hub.Journal;
+using Bleeders.Interface.Hub.Character;
+using Bleeders.Interface.Hub.Inventory;
+using Bleeders.Interface.Hub.Journal;
 
-namespace FlickerVoid.Interface.Hub;
+namespace Bleeders.Interface.Hub;
 
 /// <summary>
 /// The hub menu over the game: three pages (Inventory, Character, Journal) of the protagonist, one shown at a time, switched in a

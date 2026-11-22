@@ -1,4 +1,4 @@
-namespace FlickerVoid.Gameplay.Protagonist.Identity.Social.Fame;
+namespace Bleeders.Gameplay.Protagonist.Identity.Social.Fame;
 
 /// <summary>The player's titles: earned ones are kept for good, and the one that leads is current.</summary>
 public interface ITitles

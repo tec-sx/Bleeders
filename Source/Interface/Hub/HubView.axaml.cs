@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace FlickerVoid.Interface.Hub;
+namespace Bleeders.Interface.Hub;
 
 public sealed partial class HubView : UserControl
 {

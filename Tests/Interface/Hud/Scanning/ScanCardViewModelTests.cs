@@ -1,6 +1,6 @@
-using FlickerVoid.Interface.Hud.Scanning;
+using Bleeders.Interface.Hud.Scanning;
 
-namespace FlickerVoid.Interface.Tests.Hud.Scanning;
+namespace Bleeders.Interface.Tests.Hud.Scanning;
 
 public sealed class ScanCardViewModelTests : IDisposable
 {

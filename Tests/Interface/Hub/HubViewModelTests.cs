@@ -1,9 +1,9 @@
-using FlickerVoid.Interface.Hub;
-using FlickerVoid.Interface.Hub.Character;
-using FlickerVoid.Interface.Hub.Inventory;
-using FlickerVoid.Interface.Hub.Journal;
+using Bleeders.Interface.Hub;
+using Bleeders.Interface.Hub.Character;
+using Bleeders.Interface.Hub.Inventory;
+using Bleeders.Interface.Hub.Journal;
 
-namespace FlickerVoid.Interface.Tests.Hub;
+namespace Bleeders.Interface.Tests.Hub;
 
 public sealed class HubViewModelTests : IDisposable
 {

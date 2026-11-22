@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="../../Source/Interface/Bleeders.Interface.csproj" />
+  </ItemGroup>
+</Project>

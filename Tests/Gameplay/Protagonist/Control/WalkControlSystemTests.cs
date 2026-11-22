@@ -3,11 +3,11 @@ using System.Numerics;
 using Arch.Core;
 
 using FlickerVoid.Engine.Runtime.Components;
-using FlickerVoid.Gameplay.Protagonist.Control;
+using Bleeders.Gameplay.Protagonist.Control;
 
 using Silk.NET.Input;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Control;
+namespace Bleeders.Gameplay.Tests.Protagonist.Control;
 
 public sealed class WalkControlSystemTests : IDisposable
 {

@@ -1,6 +1,6 @@
 using FlickerVoid.Engine.Gameplay.Conditions;
 
-namespace FlickerVoid.Gameplay.Protagonist.Resources.Knowledge.Scanning;
+namespace Bleeders.Gameplay.Protagonist.Resources.Knowledge.Scanning;
 
 /// <summary>One line a scan reveals, shown only while its conditions pass (a Perception check, a clue known).</summary>
 public sealed class ScanEntry

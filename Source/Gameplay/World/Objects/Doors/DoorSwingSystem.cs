@@ -9,9 +9,9 @@ using FlickerVoid.Engine.Interaction.Toggles;
 using FlickerVoid.Engine.Runtime.Components;
 using FlickerVoid.Engine.Runtime.Events;
 using FlickerVoid.Engine.Runtime.Loop;
-using FlickerVoid.Gameplay.Serialization;
+using Bleeders.Gameplay.Serialization;
 
-namespace FlickerVoid.Gameplay.World.Objects.Doors;
+namespace Bleeders.Gameplay.World.Objects.Doors;
 
 using World = Arch.Core.World;
 
@@ -40,7 +40,7 @@ public sealed class DoorSwingSystem : BaseSystem<World, GameTime>
         game.Lifecycle.OnDeactivate((Entity entity, ref DoorSwing _) => Deactivate(entity));
         game.Events.Handle((in ToggledEvent toggled) => Swing(toggled.Target, toggled.Open));
         game.Events.Handle((in ToggleBlockedEvent blocked) => Rattle(blocked.Target, blocked.Instigator));
-        game.SaveStates.AddComponent("doorHinge", FlickerVoidJsonContext.Default.DoorHinge);
+        game.SaveStates.AddComponent("doorHinge", BleedersJsonContext.Default.DoorHinge);
     }
 
     public override void Update(in GameTime t)

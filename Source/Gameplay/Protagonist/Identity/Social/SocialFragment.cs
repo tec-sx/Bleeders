@@ -1,8 +1,8 @@
 using FlickerVoid.Engine.Gameplay.Definitions;
 using FlickerVoid.Engine.Gameplay.Scales;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social.Affiliation;
+using Bleeders.Gameplay.Protagonist.Identity.Social.Affiliation;
 
-namespace FlickerVoid.Gameplay.Protagonist.Identity.Social;
+namespace Bleeders.Gameplay.Protagonist.Identity.Social;
 
 /// <summary>Social data of a character: the faction they belong to and the scale holding the player's relationship with them.</summary>
 public sealed class SocialFragment : CharacterFragment

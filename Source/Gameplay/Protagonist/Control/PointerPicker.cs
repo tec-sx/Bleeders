@@ -9,7 +9,7 @@ using FlickerVoid.Engine.Runtime.Geometry;
 
 using Silk.NET.Maths;
 
-namespace FlickerVoid.Gameplay.Protagonist.Control;
+namespace Bleeders.Gameplay.Protagonist.Control;
 
 using World = Arch.Core.World;
 

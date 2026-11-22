@@ -3,10 +3,10 @@ using FlickerVoid.Engine.Gameplay.Entities;
 using FlickerVoid.Engine.Gameplay.Facts;
 using FlickerVoid.Engine.Gameplay.Scales;
 using FlickerVoid.Engine.Gameplay.Tags;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social.Affiliation;
+using Bleeders.Gameplay.Protagonist.Identity.Social.Affiliation;
 using EntityIdentity = FlickerVoid.Engine.Gameplay.Entities.Identity;
 
-namespace FlickerVoid.Gameplay.Protagonist.Identity.Social;
+namespace Bleeders.Gameplay.Protagonist.Identity.Social;
 
 /// <summary>Social rules read from the settings, the facts and the entity's identity and owned tags.</summary>
 public sealed class SocialRules(SocialSettings settings, IFactDatabase facts) : ISocialRules

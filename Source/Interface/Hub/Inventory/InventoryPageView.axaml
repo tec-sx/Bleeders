@@ -2,10 +2,10 @@
      protagonist in the middle, and the outfit slots in two columns at the right. -->
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:inventory="using:FlickerVoid.Interface.Hub.Inventory"
-             xmlns:controls="using:FlickerVoid.Interface.Controls"
+             xmlns:inventory="using:Bleeders.Interface.Hub.Inventory"
+             xmlns:controls="using:Bleeders.Interface.Controls"
              xmlns:stages="using:FlickerVoid.Engine.Ui.Stages"
-             x:Class="FlickerVoid.Interface.Hub.Inventory.InventoryPageView"
+             x:Class="Bleeders.Interface.Hub.Inventory.InventoryPageView"
              x:DataType="inventory:InventoryPageViewModel">
   <Grid ColumnDefinitions="340,*,180">
     <StackPanel Grid.Column="0" Spacing="18">

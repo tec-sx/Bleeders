@@ -1,6 +1,6 @@
 using Arch.Core;
 
-namespace FlickerVoid.Gameplay.Protagonist.Resources.Knowledge.Scanning;
+namespace Bleeders.Gameplay.Protagonist.Resources.Knowledge.Scanning;
 
 /// <summary>A scanner while the game plays: scan mode, the scannables it reveals, its focus and the progress of scanning it.</summary>
 public struct ScannerState

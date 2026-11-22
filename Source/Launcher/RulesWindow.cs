@@ -11,11 +11,11 @@ using FlickerVoid.Engine.Gameplay.Tags;
 using FlickerVoid.Engine.Runtime.Entities;
 using FlickerVoid.Engine.Runtime.Events;
 using FlickerVoid.Engine.Story.Quests;
-using FlickerVoid.Gameplay.World.Objects.Doors;
+using Bleeders.Gameplay.World.Objects.Doors;
 
 using Hexa.NET.ImGui;
 
-namespace FlickerVoid.Launcher;
+namespace Bleeders.Launcher;
 
 /// <summary>The protagonist's rules while the game interface is still to come: attributes with their modifiers, abilities, and the last lockpick check.</summary>
 public sealed class RulesWindow : DebugWindow

@@ -2,10 +2,10 @@ using FlickerVoid.Engine.Gameplay.Definitions;
 using FlickerVoid.Engine.Gameplay.Facts;
 using FlickerVoid.Engine.Gameplay.Scales;
 using FlickerVoid.Engine.Gameplay.Tags;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social.Affiliation;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social.Fame;
+using Bleeders.Gameplay.Protagonist.Identity.Social.Affiliation;
+using Bleeders.Gameplay.Protagonist.Identity.Social.Fame;
 
-namespace FlickerVoid.Gameplay.Protagonist.Identity.Social;
+namespace Bleeders.Gameplay.Protagonist.Identity.Social;
 
 /// <summary>Game-wide social setup: the fame and notoriety scales, the titles, factions and characters the game tracks, and disguises.</summary>
 public sealed class SocialSettings

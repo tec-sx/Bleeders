@@ -6,14 +6,14 @@ using Avalonia.VisualTree;
 
 using FlickerVoid.Engine.Platform.Input;
 using FlickerVoid.Engine.Ui.Surfaces;
-using FlickerVoid.Interface.Hud;
+using Bleeders.Interface.Hud;
 
-using FlickerVoid.Interface.Hud.Conversations;
+using Bleeders.Interface.Hud.Conversations;
 
 using Button = Avalonia.Controls.Button;
 using MouseButton = Silk.NET.Input.MouseButton;
 
-namespace FlickerVoid.Interface.Tests.Hud;
+namespace Bleeders.Interface.Tests.Hud;
 
 public sealed class HudViewTests : IDisposable
 {

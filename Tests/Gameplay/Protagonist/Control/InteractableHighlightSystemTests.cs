@@ -6,7 +6,7 @@ using FlickerVoid.Engine.Interaction.Interactables;
 using FlickerVoid.Engine.Rendering.Outlines;
 using FlickerVoid.Engine.Runtime.Components;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Control;
+namespace Bleeders.Gameplay.Tests.Protagonist.Control;
 
 public sealed class InteractableHighlightSystemTests : IDisposable
 {

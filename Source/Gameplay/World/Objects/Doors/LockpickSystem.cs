@@ -12,7 +12,7 @@ using FlickerVoid.Engine.Runtime.Entities;
 using FlickerVoid.Engine.Runtime.Events;
 using FlickerVoid.Engine.Runtime.Services;
 
-namespace FlickerVoid.Gameplay.World.Objects.Doors;
+namespace Bleeders.Gameplay.World.Objects.Doors;
 
 using World = Arch.Core.World;
 

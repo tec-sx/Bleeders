@@ -9,7 +9,7 @@ using FlickerVoid.Engine.Rendering.Outlines;
 using FlickerVoid.Engine.Runtime.Components;
 using FlickerVoid.Engine.Runtime.Loop;
 
-namespace FlickerVoid.Gameplay.Protagonist.Control;
+namespace Bleeders.Gameplay.Protagonist.Control;
 
 using World = Arch.Core.World;
 

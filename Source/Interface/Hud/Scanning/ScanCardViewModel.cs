@@ -5,9 +5,9 @@ using Arch.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 using FlickerVoid.Engine.Runtime.Components;
-using FlickerVoid.Gameplay.Protagonist.Resources.Knowledge.Scanning;
+using Bleeders.Gameplay.Protagonist.Resources.Knowledge.Scanning;
 
-namespace FlickerVoid.Interface.Hud.Scanning;
+namespace Bleeders.Interface.Hud.Scanning;
 
 /// <summary>
 /// The HUD's scan card while the protagonist is in scan mode: the focused scannable's title and how far its scan has come, then, once

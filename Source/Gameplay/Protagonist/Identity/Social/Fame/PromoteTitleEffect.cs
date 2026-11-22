@@ -1,6 +1,6 @@
 using FlickerVoid.Engine.Gameplay.Conditions;
 
-namespace FlickerVoid.Gameplay.Protagonist.Identity.Social.Fame;
+namespace Bleeders.Gameplay.Protagonist.Identity.Social.Fame;
 
 /// <summary>Makes a title the player's current one, earning it first if needed. It stays current until another title takes the lead.</summary>
 public sealed class PromoteTitleEffect : Effect

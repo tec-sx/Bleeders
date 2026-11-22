@@ -2,7 +2,7 @@ using FlickerVoid.Engine.Gameplay.Conditions;
 using FlickerVoid.Engine.Gameplay.Definitions;
 using FlickerVoid.Engine.Gameplay.Facts;
 
-namespace FlickerVoid.Gameplay.Protagonist.Identity.Social.Fame;
+namespace Bleeders.Gameplay.Protagonist.Identity.Social.Fame;
 
 /// <summary>A name the world gives the player once its conditions hold; earned titles are kept for good, and Id is the fact holding the title's rank (0 = not earned).</summary>
 public sealed class TitleDefinition : Definition

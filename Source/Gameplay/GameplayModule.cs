@@ -24,17 +24,17 @@ using FlickerVoid.Engine.Runtime.Loop;
 using FlickerVoid.Engine.Story;
 using FlickerVoid.Engine.Story.Knowledge;
 using FlickerVoid.Engine.Story.Quests;
-using FlickerVoid.Gameplay.Protagonist.Control;
-using FlickerVoid.Gameplay.Protagonist.Resources.Knowledge.Scanning;
-using FlickerVoid.Gameplay.Protagonist.Resources.Possessions;
-using FlickerVoid.Gameplay.Serialization;
-using FlickerVoid.Gameplay.World.Objects.Doors;
-using FlickerVoid.Gameplay.World.Society.Residents;
+using Bleeders.Gameplay.Protagonist.Control;
+using Bleeders.Gameplay.Protagonist.Resources.Knowledge.Scanning;
+using Bleeders.Gameplay.Protagonist.Resources.Possessions;
+using Bleeders.Gameplay.Serialization;
+using Bleeders.Gameplay.World.Objects.Doors;
+using Bleeders.Gameplay.World.Society.Residents;
 
-namespace FlickerVoid.Gameplay;
+namespace Bleeders.Gameplay;
 
 /// <summary>
-/// FlickerVoid's gameplay: physics, point and click characters, interaction, attributes and abilities, possessions, quests and knowledge for the protagonist,
+/// Bleeders' gameplay: physics, point and click characters, interaction, attributes and abilities, possessions, quests and knowledge for the protagonist,
 /// conversations, doors that keys open and lockpicks pick, residents who wander, watch and listen, maps with their markers, and outlines on what the
 /// protagonist can use nearby; the click control and the scanner only where there is a window to click in.
 /// </summary>
@@ -52,15 +52,15 @@ public sealed class GameplayModule : IGameModule
         InventorySystem inventories = game.AddInventory(possessions);
         game.AddStory();
         DialogueSystem dialogue = game.AddDialogue();
-        game.Spawner.Register("protagonist", FlickerVoidJsonContext.Default.Protagonist);
+        game.Spawner.Register("protagonist", BleedersJsonContext.Default.Protagonist);
         AddPlayer(game);
-        game.Spawner.Register("doorSwing", FlickerVoidJsonContext.Default.DoorSwing);
-        game.Data.AddResolver(FlickerVoidJsonContext.Default);
+        game.Spawner.Register("doorSwing", BleedersJsonContext.Default.DoorSwing);
+        game.Data.AddResolver(BleedersJsonContext.Default);
         FlowNodeTypes.Register(game.Data);
         game.Data.Register<ScanDefinition>("scan");
-        game.Spawner.Register("scanner", FlickerVoidJsonContext.Default.Scanner);
-        game.Spawner.Register("scannable", FlickerVoidJsonContext.Default.Scannable);
-        game.Spawner.Register("interactableHighlight", FlickerVoidJsonContext.Default.InteractableHighlight);
+        game.Spawner.Register("scanner", BleedersJsonContext.Default.Scanner);
+        game.Spawner.Register("scannable", BleedersJsonContext.Default.Scannable);
+        game.Spawner.Register("interactableHighlight", BleedersJsonContext.Default.InteractableHighlight);
 
         // Keys hear a blocked door before lockpicks, and both before the door rattles.
         _ = new KeySystem(game.World, game.Events, inventories);
@@ -73,7 +73,7 @@ public sealed class GameplayModule : IGameModule
 
         game.AddMaps(new MapSettings { WaypointMarker = "Markers/Waypoint.fvdata" });
 
-        game.Spawner.Register("resident", FlickerVoidJsonContext.Default.Resident);
+        game.Spawner.Register("resident", BleedersJsonContext.Default.Resident);
         PerceptionSystem perception = game.Services.GetService<PerceptionSystem>()!;
         ResidentSystem residents = new(game, paths, perception, dialogue, Random.Shared);
         game.FixedSystems.Add(residents);

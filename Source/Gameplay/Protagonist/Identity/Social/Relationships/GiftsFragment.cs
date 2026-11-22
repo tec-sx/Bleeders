@@ -1,7 +1,7 @@
 using FlickerVoid.Engine.Gameplay.Definitions;
 using FlickerVoid.Engine.Gameplay.Tags;
 
-namespace FlickerVoid.Gameplay.Protagonist.Identity.Social.Relationships;
+namespace Bleeders.Gameplay.Protagonist.Identity.Social.Relationships;
 
 /// <summary>How a character takes gifts: matching preferences add up, a gift matching none gets the default change.</summary>
 public sealed class GiftsFragment : CharacterFragment

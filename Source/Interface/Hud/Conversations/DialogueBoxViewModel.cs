@@ -8,7 +8,7 @@ using CommunityToolkit.Mvvm.Input;
 using FlickerVoid.Engine.Dialogue.Conversations;
 using FlickerVoid.Engine.Runtime.Events;
 
-namespace FlickerVoid.Interface.Hud.Conversations;
+namespace Bleeders.Interface.Hud.Conversations;
 
 /// <summary>The HUD's dialogue box: who speaks, the line, Next while the line waits, up to three choices, and Leave.</summary>
 public sealed partial class DialogueBoxViewModel : ObservableObject

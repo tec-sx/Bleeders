@@ -1,9 +1,9 @@
 using FlickerVoid.Engine.Gameplay.Definitions;
 using FlickerVoid.Engine.Gameplay.Entities;
 using FlickerVoid.Engine.Gameplay.Scales;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social.Affiliation;
+using Bleeders.Gameplay.Protagonist.Identity.Social.Affiliation;
 
-namespace FlickerVoid.Gameplay.Protagonist.Identity.Social;
+namespace Bleeders.Gameplay.Protagonist.Identity.Social;
 
 /// <summary>Reads who an entity is socially: its faction, disguise, the fame and notoriety others recognize, and how factions treat it.</summary>
 public interface ISocialRules

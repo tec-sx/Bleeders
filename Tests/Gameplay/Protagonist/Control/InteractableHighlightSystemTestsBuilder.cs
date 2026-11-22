@@ -14,9 +14,9 @@ using FlickerVoid.Engine.Runtime.Serialization;
 
 using Microsoft.Extensions.Logging.Abstractions;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Control;
+namespace Bleeders.Gameplay.Tests.Protagonist.Control;
 
-/// <summary>Builds a playing game with FlickerVoid's gameplay and spawns levers to use, each with its own definition.</summary>
+/// <summary>Builds a playing game with Bleeders' gameplay and spawns levers to use, each with its own definition.</summary>
 internal sealed class InteractableHighlightSystemTestsBuilder : IDisposable
 {
     private readonly string _folder;

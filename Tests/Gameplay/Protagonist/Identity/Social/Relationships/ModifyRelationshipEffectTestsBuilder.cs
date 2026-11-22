@@ -1,10 +1,10 @@
 using FlickerVoid.Engine.Gameplay.Conditions;
 using FlickerVoid.Engine.Gameplay.Definitions;
 using FlickerVoid.Engine.Gameplay.Facts;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social.Relationships;
+using Bleeders.Gameplay.Protagonist.Identity.Social;
+using Bleeders.Gameplay.Protagonist.Identity.Social.Relationships;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Identity.Social.Relationships;
+namespace Bleeders.Gameplay.Tests.Protagonist.Identity.Social.Relationships;
 
 /// <summary>Builds the modify-relationship effect under test and a context with real facts and substitute social rules.</summary>
 internal sealed class ModifyRelationshipEffectTestsBuilder

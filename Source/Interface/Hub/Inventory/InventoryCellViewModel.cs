@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 
 using FlickerVoid.Engine.Inventory.Inventories;
 
-namespace FlickerVoid.Interface.Hub.Inventory;
+namespace Bleeders.Interface.Hub.Inventory;
 
 /// <summary>A cell of the inventory grid: a carried stack, or an empty cell when <see cref="Stack"/> is null.</summary>
 public sealed partial class InventoryCellViewModel(ItemStack? stack, bool isWorn, Action<InventoryCellViewModel> select) : ObservableObject

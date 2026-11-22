@@ -15,16 +15,16 @@ using FlickerVoid.Engine.Runtime.Data;
 using FlickerVoid.Engine.Runtime.Loop;
 using FlickerVoid.Engine.Runtime.Scenes;
 using FlickerVoid.Engine.Runtime.Serialization;
-using FlickerVoid.Gameplay.Protagonist.Resources.Knowledge.Scanning;
+using Bleeders.Gameplay.Protagonist.Resources.Knowledge.Scanning;
 
 using Microsoft.Extensions.Logging.Abstractions;
 
 using Silk.NET.Maths;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Resources.Knowledge.Scanning;
+namespace Bleeders.Gameplay.Tests.Protagonist.Resources.Knowledge.Scanning;
 
 /// <summary>
-/// Builds a playing game with FlickerVoid's gameplay in a 100 by 100 pixel window, a floor, a camera looking straight down with the mouse in
+/// Builds a playing game with Bleeders' gameplay in a 100 by 100 pixel window, a floor, a camera looking straight down with the mouse in
 /// the window's centre, and a scanning protagonist at the origin; scan files go in a temporary content folder.
 /// </summary>
 internal sealed class ScannerSystemTestsBuilder : IDisposable

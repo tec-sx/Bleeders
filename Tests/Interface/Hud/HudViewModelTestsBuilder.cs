@@ -13,15 +13,15 @@ using FlickerVoid.Engine.Runtime.Loop;
 using FlickerVoid.Engine.Runtime.Scenes;
 using FlickerVoid.Engine.Runtime.Serialization;
 using FlickerVoid.Engine.Story.Quests;
-using FlickerVoid.Gameplay;
-using FlickerVoid.Interface.Hud;
+using Bleeders.Gameplay;
+using Bleeders.Interface.Hud;
 
 using Microsoft.Extensions.Logging.Abstractions;
 
-namespace FlickerVoid.Interface.Tests.Hud;
+namespace Bleeders.Interface.Tests.Hud;
 
 /// <summary>
-/// Builds the HUD over a playing game with FlickerVoid's gameplay and no window: the cellar quest, an innkeeper with a Talk offer
+/// Builds the HUD over a playing game with Bleeders' gameplay and no window: the cellar quest, an innkeeper with a Talk offer
 /// and a short dialogue (a greeting that waits, a choice of two, an answer), and the protagonist.
 /// </summary>
 internal sealed class HudViewModelTestsBuilder : IDisposable

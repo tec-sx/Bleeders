@@ -1,7 +1,7 @@
 using FlickerVoid.Engine.Gameplay.Tags;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social.Relationships;
+using Bleeders.Gameplay.Protagonist.Identity.Social.Relationships;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Identity.Social.Relationships;
+namespace Bleeders.Gameplay.Tests.Protagonist.Identity.Social.Relationships;
 
 /// <summary>Builds the gift preferences under test.</summary>
 internal sealed class GiftsFragmentTestsBuilder

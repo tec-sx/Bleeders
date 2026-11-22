@@ -17,16 +17,16 @@ using FlickerVoid.Engine.Runtime.Loop;
 using FlickerVoid.Engine.Runtime.Saves;
 using FlickerVoid.Engine.Runtime.Scenes;
 using FlickerVoid.Engine.Story.Quests;
-using FlickerVoid.Gameplay.Protagonist.Control;
+using Bleeders.Gameplay.Protagonist.Control;
 
 using Microsoft.Extensions.Logging.Abstractions;
 
 using Silk.NET.Maths;
 
-namespace FlickerVoid.Gameplay.Tests.Story;
+namespace Bleeders.Gameplay.Tests.Story;
 
 /// <summary>
-/// Plays FlickerVoid's main scene from the project's own content, as the launcher does without drawing: a 100 by 100 pixel window
+/// Plays Bleeders' main scene from the project's own content, as the launcher does without drawing: a 100 by 100 pixel window
 /// with the mouse in its centre, clicks made by moving the camera straight over what is clicked, and saves in a temporary folder.
 /// It can start the game again over the same saves, as a player restarting it.
 /// </summary>

@@ -2,7 +2,7 @@ using FlickerVoid.Engine.Gameplay.Conditions;
 using FlickerVoid.Engine.Gameplay.Facts;
 using FlickerVoid.Engine.Gameplay.Tags;
 
-namespace FlickerVoid.Gameplay.Protagonist.Identity.Social.Fame;
+namespace Bleeders.Gameplay.Protagonist.Identity.Social.Fame;
 
 /// <summary>
 /// Keeps the player's titles: earned ones are never lost, and the hardest one to earn whose conditions hold leads (highest threshold, then furthest past it);

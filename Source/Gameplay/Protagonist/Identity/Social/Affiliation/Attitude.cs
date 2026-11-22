@@ -1,4 +1,4 @@
-namespace FlickerVoid.Gameplay.Protagonist.Identity.Social.Affiliation;
+namespace Bleeders.Gameplay.Protagonist.Identity.Social.Affiliation;
 
 /// <summary>How members of a faction treat someone, from worst to best.</summary>
 public enum Attitude : byte

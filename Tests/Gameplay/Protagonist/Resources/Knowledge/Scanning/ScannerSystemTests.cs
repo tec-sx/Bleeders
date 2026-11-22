@@ -3,9 +3,9 @@ using System.Numerics;
 using Arch.Core;
 
 using FlickerVoid.Engine.Gameplay.Tags;
-using FlickerVoid.Gameplay.Protagonist.Resources.Knowledge.Scanning;
+using Bleeders.Gameplay.Protagonist.Resources.Knowledge.Scanning;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Resources.Knowledge.Scanning;
+namespace Bleeders.Gameplay.Tests.Protagonist.Resources.Knowledge.Scanning;
 
 public sealed class ScannerSystemTests : IDisposable
 {

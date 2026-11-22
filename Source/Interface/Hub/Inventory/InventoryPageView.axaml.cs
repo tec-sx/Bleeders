@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace FlickerVoid.Interface.Hub.Inventory;
+namespace Bleeders.Interface.Hub.Inventory;
 
 public sealed partial class InventoryPageView : UserControl
 {

@@ -1,12 +1,12 @@
 using System.Text.Json.Serialization;
 
 using FlickerVoid.Engine.Runtime.Serialization;
-using FlickerVoid.Gameplay.Protagonist.Control;
-using FlickerVoid.Gameplay.Protagonist.Resources.Knowledge.Scanning;
-using FlickerVoid.Gameplay.World.Objects.Doors;
-using FlickerVoid.Gameplay.World.Society.Residents;
+using Bleeders.Gameplay.Protagonist.Control;
+using Bleeders.Gameplay.Protagonist.Resources.Knowledge.Scanning;
+using Bleeders.Gameplay.World.Objects.Doors;
+using Bleeders.Gameplay.World.Society.Residents;
 
-namespace FlickerVoid.Gameplay.Serialization;
+namespace Bleeders.Gameplay.Serialization;
 
 /// <summary>Source-generated JSON for the game's scene components, data assets and what saves keep.</summary>
 [JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase, Converters = [typeof(TagJsonConverter), typeof(QuaternionJsonConverter), typeof(Vector3JsonConverter)])]
@@ -19,4 +19,4 @@ namespace FlickerVoid.Gameplay.Serialization;
 [JsonSerializable(typeof(ScanDefinition))]
 [JsonSerializable(typeof(SavedScannable))]
 [JsonSerializable(typeof(InteractableHighlight))]
-public sealed partial class FlickerVoidJsonContext : JsonSerializerContext;
+public sealed partial class BleedersJsonContext : JsonSerializerContext;

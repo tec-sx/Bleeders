@@ -6,7 +6,7 @@ using FlickerVoid.Engine.Ai.Senses;
 using FlickerVoid.Engine.Characters.Movement;
 using FlickerVoid.Engine.Dialogue.Conversations;
 
-namespace FlickerVoid.Gameplay.Tests.World.Society.Residents;
+namespace Bleeders.Gameplay.Tests.World.Society.Residents;
 
 public sealed class ResidentSystemTests : IDisposable
 {
@@ -72,7 +72,7 @@ public sealed class ResidentSystemTests : IDisposable
     public void FacesWhoItTalksTo()
     {
         _builder.Build(wanderRadius: 2, rest: 0.2f);
-        Entity fox = _builder.Game.World.Create(new Engine.Runtime.Components.Transform { Position = new Vector3(-3, 0, -3) });
+        Entity fox = _builder.Game.World.Create(new FlickerVoid.Engine.Runtime.Components.Transform { Position = new Vector3(-3, 0, -3) });
         DialogueSystem dialogue = _builder.Game.Services.GetService<DialogueSystem>()!;
 
         dialogue.Start(fox, _builder.Resident).Should().BeTrue();

@@ -4,7 +4,7 @@ using FlickerVoid.Engine.Story.Knowledge;
 using FlickerVoid.Engine.Story.Quests;
 using FlickerVoid.Engine.Runtime.Loop;
 
-namespace FlickerVoid.Interface.Hub.Journal;
+namespace Bleeders.Interface.Hub.Journal;
 
 /// <summary>The hub's journal in three sections: active quests with their visible objectives, finished quests, and knowledge.</summary>
 public sealed class JournalPageViewModel : HubPageViewModel

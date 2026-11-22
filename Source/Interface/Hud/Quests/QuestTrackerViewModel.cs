@@ -4,7 +4,7 @@ using FlickerVoid.Engine.Gameplay.Tags;
 using FlickerVoid.Engine.Runtime.Events;
 using FlickerVoid.Engine.Story.Quests;
 
-namespace FlickerVoid.Interface.Hud.Quests;
+namespace Bleeders.Interface.Hud.Quests;
 
 /// <summary>The HUD's quest tracker: up to three active quests, the most recently changed first, each with its current objective.</summary>
 public sealed class QuestTrackerViewModel

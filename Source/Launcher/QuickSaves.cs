@@ -3,7 +3,7 @@ using FlickerVoid.Engine.Platform.Input;
 using FlickerVoid.Engine.Runtime.Events;
 using FlickerVoid.Engine.Runtime.Saves;
 
-namespace FlickerVoid.Launcher;
+namespace Bleeders.Launcher;
 
 /// <summary>Saves the game to the quick slot on <see cref="QuickSave"/> (F5) and loads it back on <see cref="QuickLoad"/> (F9).</summary>
 public sealed class QuickSaves

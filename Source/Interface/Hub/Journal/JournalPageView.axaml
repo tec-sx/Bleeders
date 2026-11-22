@@ -1,9 +1,9 @@
 <!-- The journal: active quests with their objectives, finished quests, and what the protagonist knows, side by side. -->
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:journal="using:FlickerVoid.Interface.Hub.Journal"
-             xmlns:controls="using:FlickerVoid.Interface.Controls"
-             x:Class="FlickerVoid.Interface.Hub.Journal.JournalPageView"
+             xmlns:journal="using:Bleeders.Interface.Hub.Journal"
+             xmlns:controls="using:Bleeders.Interface.Controls"
+             x:Class="Bleeders.Interface.Hub.Journal.JournalPageView"
              x:DataType="journal:JournalPageViewModel">
   <UserControl.DataTemplates>
     <DataTemplate DataType="journal:JournalEntryViewModel">

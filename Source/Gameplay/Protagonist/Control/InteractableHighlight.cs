@@ -2,7 +2,7 @@ using System.Numerics;
 
 using FlickerVoid.Engine.Runtime.Components;
 
-namespace FlickerVoid.Gameplay.Protagonist.Control;
+namespace Bleeders.Gameplay.Protagonist.Control;
 
 /// <summary>Has the interactables its interactor can use within range outlined, so the player sees what can be clicked nearby.</summary>
 public struct InteractableHighlight

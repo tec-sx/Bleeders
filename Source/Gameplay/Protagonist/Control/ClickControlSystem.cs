@@ -12,7 +12,7 @@ using FlickerVoid.Engine.Platform.Input;
 using FlickerVoid.Engine.Runtime.Components;
 using FlickerVoid.Engine.Runtime.Events;
 
-namespace FlickerVoid.Gameplay.Protagonist.Control;
+namespace Bleeders.Gameplay.Protagonist.Control;
 
 using World = Arch.Core.World;
 

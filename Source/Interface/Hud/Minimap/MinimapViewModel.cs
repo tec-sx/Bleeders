@@ -12,7 +12,7 @@ using FlickerVoid.Engine.Runtime.Components;
 using MinimapData = FlickerVoid.Engine.Maps.Navigation.MinimapView;
 using World = Arch.Core.World;
 
-namespace FlickerVoid.Interface.Hud.Minimap;
+namespace Bleeders.Interface.Hud.Minimap;
 
 /// <summary>
 /// The HUD's minimap: a compass ring and a map grid turned so the camera's view points up, scrolled under the protagonist, with

@@ -13,10 +13,10 @@ using FlickerVoid.Engine.Runtime.Serialization;
 
 using Microsoft.Extensions.Logging.Abstractions;
 
-namespace FlickerVoid.Gameplay.Tests.World.Objects.Doors;
+namespace Bleeders.Gameplay.Tests.World.Objects.Doors;
 
 /// <summary>
-/// Builds a playing game with FlickerVoid's gameplay, no window, and the lockpick's data as the game's content holds it: the
+/// Builds a playing game with Bleeders' gameplay, no window, and the lockpick's data as the game's content holds it: the
 /// Perception attribute, the lockpick item, ability and check, and the protagonist's ability set; with a hero and a locked door.
 /// </summary>
 internal sealed class LockpickSystemTestsBuilder : IDisposable

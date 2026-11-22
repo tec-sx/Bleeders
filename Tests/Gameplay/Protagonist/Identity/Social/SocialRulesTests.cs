@@ -1,10 +1,10 @@
 using FlickerVoid.Engine.Gameplay.Definitions;
 using FlickerVoid.Engine.Gameplay.Entities;
 using FlickerVoid.Engine.Gameplay.Tags;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social.Affiliation;
+using Bleeders.Gameplay.Protagonist.Identity.Social;
+using Bleeders.Gameplay.Protagonist.Identity.Social.Affiliation;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Identity.Social;
+namespace Bleeders.Gameplay.Tests.Protagonist.Identity.Social;
 
 public class SocialRulesTests
 {
@@ -40,12 +40,12 @@ public class SocialRulesTests
     [Fact]
     public void ReadsTheRelationshipScaleFromTheSocialFragment()
     {
-        Engine.Gameplay.Scales.ScaleDefinition relationship = new() { Id = new Tag("Fact.Relationship.Mara") };
+        FlickerVoid.Engine.Gameplay.Scales.ScaleDefinition relationship = new() { Id = new Tag("Fact.Relationship.Mara") };
         SocialFragment social = new() { Relationship = relationship };
         CharacterDefinition mara = new() { Fragments = [social] };
         SocialRules rules = _builder.Build();
 
-        Engine.Gameplay.Scales.ScaleDefinition? found = rules.GetRelationshipScale(mara);
+        FlickerVoid.Engine.Gameplay.Scales.ScaleDefinition? found = rules.GetRelationshipScale(mara);
 
         found.Should().BeSameAs(relationship);
     }

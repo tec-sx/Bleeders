@@ -10,9 +10,9 @@ using FlickerVoid.Engine.Interaction.Toggles;
 using FlickerVoid.Engine.Inventory.Inventories;
 using FlickerVoid.Engine.Runtime.Components;
 using FlickerVoid.Engine.Story.Quests;
-using FlickerVoid.Gameplay.World.Objects.Doors;
+using Bleeders.Gameplay.World.Objects.Doors;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Control;
+namespace Bleeders.Gameplay.Tests.Protagonist.Control;
 
 public sealed class ClickControlSystemTests : IDisposable
 {

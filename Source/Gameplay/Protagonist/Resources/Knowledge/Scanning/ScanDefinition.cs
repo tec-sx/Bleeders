@@ -2,7 +2,7 @@ using FlickerVoid.Engine.Gameplay.Conditions;
 using FlickerVoid.Engine.Gameplay.Definitions;
 using FlickerVoid.Engine.Gameplay.Tags;
 
-namespace FlickerVoid.Gameplay.Protagonist.Resources.Knowledge.Scanning;
+namespace Bleeders.Gameplay.Protagonist.Resources.Knowledge.Scanning;
 
 /// <summary>What a scannable reveals: its display is the scan's title, and its effects apply once, on the first completed scan.</summary>
 public sealed class ScanDefinition : Definition

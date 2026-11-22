@@ -1,6 +1,6 @@
 using FlickerVoid.Engine.Runtime.Components;
 
-namespace FlickerVoid.Gameplay.Protagonist.Resources.Knowledge.Scanning;
+namespace Bleeders.Gameplay.Protagonist.Resources.Knowledge.Scanning;
 
 /// <summary>Shows the entity in scan mode and reveals its scan definition when scanned.</summary>
 public struct Scannable()

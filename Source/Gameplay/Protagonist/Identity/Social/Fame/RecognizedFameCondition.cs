@@ -1,6 +1,6 @@
 using FlickerVoid.Engine.Gameplay.Conditions;
 
-namespace FlickerVoid.Gameplay.Protagonist.Identity.Social.Fame;
+namespace Bleeders.Gameplay.Protagonist.Identity.Social.Fame;
 
 /// <summary>Fame as onlookers read it on the Instigator: a disguise hides most of it. For the real fame use a scale condition on the fame scale. At-least comparisons are scored.</summary>
 public sealed class RecognizedFameCondition : Condition

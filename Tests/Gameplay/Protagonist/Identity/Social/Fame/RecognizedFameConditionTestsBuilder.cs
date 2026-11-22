@@ -1,9 +1,9 @@
 using FlickerVoid.Engine.Gameplay.Conditions;
 using FlickerVoid.Engine.Gameplay.Facts;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social.Fame;
+using Bleeders.Gameplay.Protagonist.Identity.Social;
+using Bleeders.Gameplay.Protagonist.Identity.Social.Fame;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Identity.Social.Fame;
+namespace Bleeders.Gameplay.Tests.Protagonist.Identity.Social.Fame;
 
 /// <summary>Builds the recognized-fame condition under test and a context whose services hold substitute social rules.</summary>
 internal sealed class RecognizedFameConditionTestsBuilder

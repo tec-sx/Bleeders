@@ -1,7 +1,7 @@
 using FlickerVoid.Engine.Gameplay.Conditions;
 using FlickerVoid.Engine.Gameplay.Entities;
 
-namespace FlickerVoid.Gameplay.Protagonist.Identity.Social.Affiliation;
+namespace Bleeders.Gameplay.Protagonist.Identity.Social.Affiliation;
 
 /// <summary>How an observer's faction treats the other context entity, at least. In dialogue the observer is the Target (the character spoken to); in a character's own logic it is the Instigator.</summary>
 public sealed class AttitudeCondition : Condition

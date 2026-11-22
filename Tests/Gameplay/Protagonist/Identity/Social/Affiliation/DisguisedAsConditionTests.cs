@@ -2,9 +2,9 @@ using FlickerVoid.Engine.Gameplay.Conditions;
 using FlickerVoid.Engine.Gameplay.Facts;
 using FlickerVoid.Engine.Gameplay.Scales;
 using FlickerVoid.Engine.Gameplay.Tags;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social.Affiliation;
+using Bleeders.Gameplay.Protagonist.Identity.Social.Affiliation;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Identity.Social.Affiliation;
+namespace Bleeders.Gameplay.Tests.Protagonist.Identity.Social.Affiliation;
 
 public class DisguisedAsConditionTests
 {

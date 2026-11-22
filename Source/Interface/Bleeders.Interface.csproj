@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <!-- FlickerVoid's interface: the HUD and the hub as Avalonia views over view models of the game's systems, drawn over the scene. -->
+  <!-- Bleeders' interface: the HUD and the hub as Avalonia views over view models of the game's systems, drawn over the scene. -->
   <PropertyGroup>
     <IsAotCompatible>true</IsAotCompatible>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
@@ -14,6 +14,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(FlickerVoidEngine)Source/Engine/Ui/FlickerVoid.Engine.Ui.csproj" />
-    <ProjectReference Include="../Gameplay/FlickerVoid.Gameplay.csproj" />
+    <ProjectReference Include="../Gameplay/Bleeders.Gameplay.csproj" />
   </ItemGroup>
 </Project>

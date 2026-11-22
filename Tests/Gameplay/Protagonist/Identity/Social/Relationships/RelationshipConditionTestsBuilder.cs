@@ -1,10 +1,10 @@
 using FlickerVoid.Engine.Gameplay.Conditions;
 using FlickerVoid.Engine.Gameplay.Definitions;
 using FlickerVoid.Engine.Gameplay.Facts;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social.Relationships;
+using Bleeders.Gameplay.Protagonist.Identity.Social;
+using Bleeders.Gameplay.Protagonist.Identity.Social.Relationships;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Identity.Social.Relationships;
+namespace Bleeders.Gameplay.Tests.Protagonist.Identity.Social.Relationships;
 
 /// <summary>Builds the relationship condition under test and a context with substitute facts and social rules.</summary>
 internal sealed class RelationshipConditionTestsBuilder

@@ -14,16 +14,16 @@ using FlickerVoid.Engine.Runtime.Data;
 using FlickerVoid.Engine.Runtime.Loop;
 using FlickerVoid.Engine.Runtime.Scenes;
 using FlickerVoid.Engine.Runtime.Serialization;
-using FlickerVoid.Gameplay.Protagonist.Control;
+using Bleeders.Gameplay.Protagonist.Control;
 
 using Microsoft.Extensions.Logging.Abstractions;
 
 using Silk.NET.Maths;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Control;
+namespace Bleeders.Gameplay.Tests.Protagonist.Control;
 
 /// <summary>
-/// Builds a playing game with FlickerVoid's gameplay in a 100 by 100 pixel window, data files in a temporary content folder, and a
+/// Builds a playing game with Bleeders' gameplay in a 100 by 100 pixel window, data files in a temporary content folder, and a
 /// camera looking straight down that clicks land under; the mouse stays in the window's centre.
 /// </summary>
 internal sealed class ClickControlSystemTestsBuilder : IDisposable

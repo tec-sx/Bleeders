@@ -7,7 +7,7 @@ using FlickerVoid.Engine.Attributes.Values;
 using FlickerVoid.Engine.Gameplay.Tags;
 using FlickerVoid.Engine.Runtime.Loop;
 
-namespace FlickerVoid.Interface.Hub.Character;
+namespace Bleeders.Interface.Hub.Character;
 
 /// <summary>The hub's character page in three sections: the protagonist's attributes, what changes them now, and its abilities.</summary>
 public sealed class CharacterPageViewModel : HubPageViewModel

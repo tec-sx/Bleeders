@@ -2,7 +2,7 @@ using FlickerVoid.Engine.Gameplay.Conditions;
 using FlickerVoid.Engine.Gameplay.Entities;
 using FlickerVoid.Engine.Gameplay.Facts;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Identity.Social;
+namespace Bleeders.Gameplay.Tests.Protagonist.Identity.Social;
 
 /// <summary>Condition contexts for the social conditions and effects: substitute entities, and services holding the given substitutes.</summary>
 internal static class SocialContext

@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace FlickerVoid.Gameplay.World.Objects.Doors;
+namespace Bleeders.Gameplay.World.Objects.Doors;
 
 /// <summary>A swinging door while the game plays: its closed rotation, how far open it is and wants to be, and the rattle left.</summary>
 public struct DoorHinge

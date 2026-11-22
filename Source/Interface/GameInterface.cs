@@ -7,14 +7,14 @@ using FlickerVoid.Engine.Gameplay.Tags;
 using FlickerVoid.Engine.Physics;
 using FlickerVoid.Engine.Platform.Input;
 using FlickerVoid.Engine.Runtime.Loop;
-using FlickerVoid.Gameplay.Protagonist.Control;
-using FlickerVoid.Interface.Hub;
-using FlickerVoid.Interface.Hud;
+using Bleeders.Gameplay.Protagonist.Control;
+using Bleeders.Interface.Hub;
+using Bleeders.Interface.Hud;
 
-namespace FlickerVoid.Interface;
+namespace Bleeders.Interface;
 
 /// <summary>
-/// FlickerVoid's interface over a game: the HUD, and the hub over it while open, with a frame system that opens and closes the hub
+/// Bleeders' interface over a game: the HUD, and the hub over it while open, with a frame system that opens and closes the hub
 /// (Hub toggles it, Next and Previous Page switch pages), shows the prompt for what the pointer is over and turns the
 /// minimap. Draw <see cref="View"/> with the engine's <c>GameUi</c>.
 /// </summary>

@@ -11,9 +11,9 @@ using FlickerVoid.Engine.Story.Quests;
 using FlickerVoid.Engine.Ui;
 using FlickerVoid.Engine.Ui.Stages;
 using FlickerVoid.Engine.Ui.Surfaces;
-using FlickerVoid.Gameplay;
-using FlickerVoid.Interface;
-using FlickerVoid.Launcher;
+using Bleeders.Gameplay;
+using Bleeders.Interface;
+using Bleeders.Launcher;
 
 using Microsoft.Extensions.Logging;
 
@@ -32,7 +32,7 @@ catch (ArgumentException exception)
 }
 
 using ILoggerFactory loggerFactory = LoggerFactory.Create(static logging => logging.AddSimpleConsole());
-using SceneHost host = new(options, loggerFactory, "FlickerVoid");
+using SceneHost host = new(options, loggerFactory, "Bleeders");
 GameplayModule gameplay = new();
 gameplay.Add(host.Game);
 InterfaceModule ui = new();
@@ -59,7 +59,7 @@ FrameOverlays CreateOverlays(PixelFormat format, SceneRenderer renderer)
 
 DebugUi CreateDebugUi(PixelFormat format, SceneRenderer renderer)
 {
-    string settings = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FlickerVoid", "FlickerVoid");
+    string settings = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FlickerVoid", "Bleeders");
     DebugUi ui = new(host.Device, host.Window, format, settings);
     ui.AddEngineWindows(host.Game, host.Device);
     ui.AddRenderingWindows(renderer, host.Game.World);

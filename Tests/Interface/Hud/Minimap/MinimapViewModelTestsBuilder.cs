@@ -10,11 +10,11 @@ using FlickerVoid.Engine.Runtime.Components;
 using FlickerVoid.Engine.Runtime.Content;
 using FlickerVoid.Engine.Runtime.Data;
 using FlickerVoid.Engine.Runtime.Loop;
-using FlickerVoid.Interface.Hud.Minimap;
+using Bleeders.Interface.Hud.Minimap;
 
 using Microsoft.Extensions.Logging.Abstractions;
 
-namespace FlickerVoid.Interface.Tests.Hud.Minimap;
+namespace Bleeders.Interface.Tests.Hud.Minimap;
 
 /// <summary>
 /// Builds a minimap over a playing game with maps, a camera and, optionally, the protagonist as the navigator, each turned about the

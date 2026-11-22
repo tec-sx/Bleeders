@@ -9,7 +9,7 @@ using FlickerVoid.Engine.Interaction.Interactables;
 using FlickerVoid.Engine.Interaction.Interactors;
 using FlickerVoid.Engine.Runtime.Components;
 
-namespace FlickerVoid.Interface.Hud.Prompts;
+namespace Bleeders.Interface.Hud.Prompts;
 
 /// <summary>
 /// The HUD's interaction prompt: the name and offers of the interactable under the pointer, as the protagonist sees them;

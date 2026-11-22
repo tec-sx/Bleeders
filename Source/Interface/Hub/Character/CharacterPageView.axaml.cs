@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace FlickerVoid.Interface.Hub.Character;
+namespace Bleeders.Interface.Hub.Character;
 
 public sealed partial class CharacterPageView : UserControl
 {

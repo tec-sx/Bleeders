@@ -13,7 +13,7 @@ using FlickerVoid.Engine.Inventory.Outfits;
 using FlickerVoid.Engine.Runtime.Loop;
 using FlickerVoid.Engine.Ui.Stages;
 
-namespace FlickerVoid.Interface.Hub.Inventory;
+namespace Bleeders.Interface.Hub.Inventory;
 
 /// <summary>
 /// The hub's inventory page: the carried weight and money, a grid of the carried stacks filled up to the inventory's cells, the

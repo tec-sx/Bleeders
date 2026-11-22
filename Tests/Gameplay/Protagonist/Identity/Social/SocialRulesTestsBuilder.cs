@@ -3,11 +3,11 @@ using FlickerVoid.Engine.Gameplay.Entities;
 using FlickerVoid.Engine.Gameplay.Facts;
 using FlickerVoid.Engine.Gameplay.Scales;
 using FlickerVoid.Engine.Gameplay.Tags;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social.Affiliation;
+using Bleeders.Gameplay.Protagonist.Identity.Social;
+using Bleeders.Gameplay.Protagonist.Identity.Social.Affiliation;
 using EntityIdentity = FlickerVoid.Engine.Gameplay.Entities.Identity;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Identity.Social;
+namespace Bleeders.Gameplay.Tests.Protagonist.Identity.Social;
 
 /// <summary>Builds the social rules under test on real facts, with fame, global notoriety and a police faction, and makes entities for them to read.</summary>
 internal sealed class SocialRulesTestsBuilder

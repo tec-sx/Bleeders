@@ -2,7 +2,7 @@ using FlickerVoid.Engine.Gameplay.Definitions;
 using FlickerVoid.Engine.Gameplay.Scales;
 using FlickerVoid.Engine.Gameplay.Tags;
 
-namespace FlickerVoid.Gameplay.Protagonist.Identity.Social.Affiliation;
+namespace Bleeders.Gameplay.Protagonist.Identity.Social.Affiliation;
 
 /// <summary>A faction: the player's standing and notoriety with it are scales, and the standing scale's links feed fame, global notoriety and related factions.</summary>
 public sealed class FactionDefinition : Definition

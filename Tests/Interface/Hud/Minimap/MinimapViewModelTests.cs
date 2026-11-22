@@ -1,8 +1,8 @@
 using System.Numerics;
 
-using FlickerVoid.Interface.Hud.Minimap;
+using Bleeders.Interface.Hud.Minimap;
 
-namespace FlickerVoid.Interface.Tests.Hud.Minimap;
+namespace Bleeders.Interface.Tests.Hud.Minimap;
 
 public sealed class MinimapViewModelTests : IDisposable
 {

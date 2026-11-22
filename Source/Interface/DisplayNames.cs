@@ -1,7 +1,7 @@
 using FlickerVoid.Engine.Gameplay.Definitions;
 using FlickerVoid.Engine.Gameplay.Tags;
 
-namespace FlickerVoid.Interface;
+namespace Bleeders.Interface;
 
 /// <summary>The names the interface shows for tags and definitions that may have no display name.</summary>
 public static class DisplayNames

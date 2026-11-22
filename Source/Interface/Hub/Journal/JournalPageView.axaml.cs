@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace FlickerVoid.Interface.Hub.Journal;
+namespace Bleeders.Interface.Hub.Journal;
 
 public sealed partial class JournalPageView : UserControl
 {

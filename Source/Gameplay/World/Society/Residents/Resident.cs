@@ -1,4 +1,4 @@
-namespace FlickerVoid.Gameplay.World.Society.Residents;
+namespace Bleeders.Gameplay.World.Society.Residents;
 
 /// <summary>Someone who lives here: wanders about where it started, resting between walks, and watches whoever it sees.</summary>
 public struct Resident

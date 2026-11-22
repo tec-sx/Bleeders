@@ -13,18 +13,18 @@ using FlickerVoid.Engine.Runtime.Data;
 using FlickerVoid.Engine.Runtime.Loop;
 using FlickerVoid.Engine.Runtime.Scenes;
 using FlickerVoid.Engine.Runtime.Serialization;
-using FlickerVoid.Gameplay;
-using FlickerVoid.Gameplay.Protagonist.Resources.Knowledge.Scanning;
-using FlickerVoid.Interface.Hud.Scanning;
+using Bleeders.Gameplay;
+using Bleeders.Gameplay.Protagonist.Resources.Knowledge.Scanning;
+using Bleeders.Interface.Hud.Scanning;
 
 using Microsoft.Extensions.Logging.Abstractions;
 
 using Silk.NET.Maths;
 
-namespace FlickerVoid.Interface.Tests.Hud.Scanning;
+namespace Bleeders.Interface.Tests.Hud.Scanning;
 
 /// <summary>
-/// Builds the scan card over a playing game with FlickerVoid's gameplay in a 100 by 100 pixel window: a camera looking straight down at
+/// Builds the scan card over a playing game with Bleeders' gameplay in a 100 by 100 pixel window: a camera looking straight down at
 /// a crate 3 metres from the scanning protagonist, with the mouse on the crate. The crate's scan takes a second and has four entries.
 /// </summary>
 internal sealed class ScanCardViewModelTestsBuilder : IDisposable

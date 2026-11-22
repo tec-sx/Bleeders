@@ -1,7 +1,7 @@
 using FlickerVoid.Engine.Gameplay.Conditions;
 using FlickerVoid.Engine.Gameplay.Entities;
 
-namespace FlickerVoid.Gameplay.Protagonist.Identity.Social.Affiliation;
+namespace Bleeders.Gameplay.Protagonist.Identity.Social.Affiliation;
 
 /// <summary>The subject passes as a member of the faction: wears its disguise and isn't too notorious for it to work.</summary>
 public sealed class DisguisedAsCondition : Condition

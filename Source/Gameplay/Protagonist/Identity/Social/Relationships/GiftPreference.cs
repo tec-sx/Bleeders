@@ -1,6 +1,6 @@
 using FlickerVoid.Engine.Gameplay.Tags;
 
-namespace FlickerVoid.Gameplay.Protagonist.Identity.Social.Relationships;
+namespace Bleeders.Gameplay.Protagonist.Identity.Social.Relationships;
 
 /// <summary>A kind of gift a character reacts to.</summary>
 public sealed class GiftPreference

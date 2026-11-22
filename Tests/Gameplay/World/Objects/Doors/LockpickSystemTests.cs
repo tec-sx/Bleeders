@@ -1,9 +1,9 @@
 using FlickerVoid.Engine.Abilities.Activation;
 using FlickerVoid.Engine.Interaction.Locks;
 using FlickerVoid.Engine.Interaction.Toggles;
-using FlickerVoid.Gameplay.World.Objects.Doors;
+using Bleeders.Gameplay.World.Objects.Doors;
 
-namespace FlickerVoid.Gameplay.Tests.World.Objects.Doors;
+namespace Bleeders.Gameplay.Tests.World.Objects.Doors;
 
 public sealed class LockpickSystemTests : IDisposable
 {

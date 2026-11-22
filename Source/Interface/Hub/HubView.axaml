@@ -2,11 +2,11 @@
      closing the bottom. Its dark background takes every click, so nothing reaches the world while it is open. -->
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:hub="using:FlickerVoid.Interface.Hub"
-             xmlns:inventory="using:FlickerVoid.Interface.Hub.Inventory"
-             xmlns:character="using:FlickerVoid.Interface.Hub.Character"
-             xmlns:journal="using:FlickerVoid.Interface.Hub.Journal"
-             x:Class="FlickerVoid.Interface.Hub.HubView"
+             xmlns:hub="using:Bleeders.Interface.Hub"
+             xmlns:inventory="using:Bleeders.Interface.Hub.Inventory"
+             xmlns:character="using:Bleeders.Interface.Hub.Character"
+             xmlns:journal="using:Bleeders.Interface.Hub.Journal"
+             x:Class="Bleeders.Interface.Hub.HubView"
              x:DataType="hub:HubViewModel"
              IsVisible="{Binding IsOpen}">
   <Grid RowDefinitions="64,*,28" Background="#EE060608">
@@ -14,7 +14,7 @@
       <Panel Grid.Column="0" Margin="300,0,0,0" ClipToBounds="True">
         <Rectangle Fill="{StaticResource AccentBrush}" Width="333" HorizontalAlignment="Left" RenderTransformOrigin="50%,50%">
           <Rectangle.OpacityMask>
-            <ImageBrush Source="avares://FlickerVoid.Interface/Assets/Images/FadingStrips.png" Stretch="Fill" />
+            <ImageBrush Source="avares://Bleeders.Interface/Assets/Images/FadingStrips.png" Stretch="Fill" />
           </Rectangle.OpacityMask>
           <Rectangle.RenderTransform>
             <TransformGroup>

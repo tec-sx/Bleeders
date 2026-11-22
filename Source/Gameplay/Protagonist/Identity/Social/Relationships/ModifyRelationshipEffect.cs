@@ -2,7 +2,7 @@ using FlickerVoid.Engine.Gameplay.Conditions;
 using FlickerVoid.Engine.Gameplay.Definitions;
 using FlickerVoid.Engine.Gameplay.Scales;
 
-namespace FlickerVoid.Gameplay.Protagonist.Identity.Social.Relationships;
+namespace Bleeders.Gameplay.Protagonist.Identity.Social.Relationships;
 
 /// <summary>Changes the player's relationship with a character; without a Character it is the Target's.</summary>
 public sealed class ModifyRelationshipEffect : Effect

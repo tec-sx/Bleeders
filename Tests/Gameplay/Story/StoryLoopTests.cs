@@ -9,7 +9,7 @@ using FlickerVoid.Engine.Inventory.Inventories;
 using FlickerVoid.Engine.Maps.Markers;
 using FlickerVoid.Engine.Story.Quests;
 
-namespace FlickerVoid.Gameplay.Tests.Story;
+namespace Bleeders.Gameplay.Tests.Story;
 
 /// <summary>
 /// The stage 7 gate: the basic story loop of the Unreal milestone plays in the main scene, with interaction, dialogue, a quest,

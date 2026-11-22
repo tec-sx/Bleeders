@@ -1,9 +1,9 @@
 <!-- The character page: attributes, what changes them now, and abilities, side by side. -->
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:character="using:FlickerVoid.Interface.Hub.Character"
-             xmlns:controls="using:FlickerVoid.Interface.Controls"
-             x:Class="FlickerVoid.Interface.Hub.Character.CharacterPageView"
+             xmlns:character="using:Bleeders.Interface.Hub.Character"
+             xmlns:controls="using:Bleeders.Interface.Controls"
+             x:Class="Bleeders.Interface.Hub.Character.CharacterPageView"
              x:DataType="character:CharacterPageViewModel">
   <Grid ColumnDefinitions="*,24,*,24,*" VerticalAlignment="Top">
     <StackPanel Grid.Column="0" Spacing="6">

@@ -12,15 +12,15 @@ using FlickerVoid.Engine.Runtime.Scenes;
 using FlickerVoid.Engine.Runtime.Serialization;
 using FlickerVoid.Engine.Story.Knowledge;
 using FlickerVoid.Engine.Story.Quests;
-using FlickerVoid.Gameplay;
-using FlickerVoid.Interface.Hub;
+using Bleeders.Gameplay;
+using Bleeders.Interface.Hub;
 
 using Microsoft.Extensions.Logging.Abstractions;
 
-namespace FlickerVoid.Interface.Tests.Hub;
+namespace Bleeders.Interface.Tests.Hub;
 
 /// <summary>
-/// Builds the hub over a playing game with FlickerVoid's gameplay and no window: a protagonist carrying two mugs of ale and a cap,
+/// Builds the hub over a playing game with Bleeders' gameplay and no window: a protagonist carrying two mugs of ale and a cap,
 /// with 12 coins, two attributes, and the cellar quest and a topic to know about.
 /// </summary>
 internal sealed class HubViewModelTestsBuilder : IDisposable

@@ -1,4 +1,4 @@
-namespace FlickerVoid.Gameplay.Protagonist.Resources.Knowledge.Scanning;
+namespace Bleeders.Gameplay.Protagonist.Resources.Knowledge.Scanning;
 
 /// <summary>A scannable while the game plays: its loaded definition, whether scan mode shows it and whether it was scanned.</summary>
 public struct ActiveScannable

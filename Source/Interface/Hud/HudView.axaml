@@ -3,14 +3,14 @@
      to the world. -->
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:hud="using:FlickerVoid.Interface.Hud"
-             xmlns:controls="using:FlickerVoid.Interface.Controls"
-             xmlns:quests="using:FlickerVoid.Interface.Hud.Quests"
-             xmlns:conversations="using:FlickerVoid.Interface.Hud.Conversations"
-             xmlns:prompts="using:FlickerVoid.Interface.Hud.Prompts"
-             xmlns:minimap="using:FlickerVoid.Interface.Hud.Minimap"
-             xmlns:scanning="using:FlickerVoid.Interface.Hud.Scanning"
-             x:Class="FlickerVoid.Interface.Hud.HudView"
+             xmlns:hud="using:Bleeders.Interface.Hud"
+             xmlns:controls="using:Bleeders.Interface.Controls"
+             xmlns:quests="using:Bleeders.Interface.Hud.Quests"
+             xmlns:conversations="using:Bleeders.Interface.Hud.Conversations"
+             xmlns:prompts="using:Bleeders.Interface.Hud.Prompts"
+             xmlns:minimap="using:Bleeders.Interface.Hud.Minimap"
+             xmlns:scanning="using:Bleeders.Interface.Hud.Scanning"
+             x:Class="Bleeders.Interface.Hud.HudView"
              x:DataType="hud:HudViewModel">
   <Grid>
     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="28" Width="320" Spacing="6"

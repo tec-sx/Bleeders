@@ -14,10 +14,10 @@ using FlickerVoid.Engine.Runtime.Serialization;
 
 using Microsoft.Extensions.Logging.Abstractions;
 
-namespace FlickerVoid.Gameplay.Tests.World.Society.Residents;
+namespace Bleeders.Gameplay.Tests.World.Society.Residents;
 
 /// <summary>
-/// Builds a playing game with FlickerVoid's gameplay and no window, a floor 20 metres wide whose top is at 0 and a resident at the
+/// Builds a playing game with Bleeders' gameplay and no window, a floor 20 metres wide whose top is at 0 and a resident at the
 /// origin facing +Z that sees all around it, and records where the resident has been.
 /// </summary>
 internal sealed class ResidentSystemTestsBuilder : IDisposable

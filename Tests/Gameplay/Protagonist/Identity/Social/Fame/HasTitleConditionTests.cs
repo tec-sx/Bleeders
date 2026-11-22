@@ -1,9 +1,9 @@
 using FlickerVoid.Engine.Gameplay.Conditions;
 using FlickerVoid.Engine.Gameplay.Facts;
 using FlickerVoid.Engine.Gameplay.Tags;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social.Fame;
+using Bleeders.Gameplay.Protagonist.Identity.Social.Fame;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Identity.Social.Fame;
+namespace Bleeders.Gameplay.Tests.Protagonist.Identity.Social.Fame;
 
 public class HasTitleConditionTests
 {

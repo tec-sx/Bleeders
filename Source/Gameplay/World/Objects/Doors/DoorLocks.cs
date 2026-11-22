@@ -4,7 +4,7 @@ using FlickerVoid.Engine.Interaction.Locks;
 using FlickerVoid.Engine.Interaction.Toggles;
 using FlickerVoid.Engine.Runtime.Events;
 
-namespace FlickerVoid.Gameplay.World.Objects.Doors;
+namespace Bleeders.Gameplay.World.Objects.Doors;
 
 using World = Arch.Core.World;
 

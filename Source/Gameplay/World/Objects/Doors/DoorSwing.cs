@@ -1,4 +1,4 @@
-namespace FlickerVoid.Gameplay.World.Objects.Doors;
+namespace Bleeders.Gameplay.World.Objects.Doors;
 
 /// <summary>A door that swings about its entity's origin, the hinge, when its toggle opens and closes, and rattles when a lock blocks it.</summary>
 public struct DoorSwing

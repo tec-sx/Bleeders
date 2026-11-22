@@ -10,7 +10,7 @@ using FlickerVoid.Engine.Story.Quests;
 
 using Hexa.NET.ImGui;
 
-namespace FlickerVoid.Launcher;
+namespace Bleeders.Launcher;
 
 /// <summary>
 /// The story while the game interface is still to come: the conversation's line and choices (picked here), the quests with their

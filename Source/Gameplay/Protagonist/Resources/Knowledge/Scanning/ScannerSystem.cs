@@ -13,11 +13,11 @@ using FlickerVoid.Engine.Runtime.Entities;
 using FlickerVoid.Engine.Runtime.Events;
 using FlickerVoid.Engine.Runtime.Geometry;
 using FlickerVoid.Engine.Runtime.Loop;
-using FlickerVoid.Gameplay.Protagonist.Control;
+using Bleeders.Gameplay.Protagonist.Control;
 
 using Microsoft.Extensions.Logging;
 
-namespace FlickerVoid.Gameplay.Protagonist.Resources.Knowledge.Scanning;
+namespace Bleeders.Gameplay.Protagonist.Resources.Knowledge.Scanning;
 
 using World = Arch.Core.World;
 

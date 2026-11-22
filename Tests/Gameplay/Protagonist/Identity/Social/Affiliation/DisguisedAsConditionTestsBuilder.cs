@@ -1,9 +1,9 @@
 using FlickerVoid.Engine.Gameplay.Conditions;
 using FlickerVoid.Engine.Gameplay.Facts;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social.Affiliation;
+using Bleeders.Gameplay.Protagonist.Identity.Social;
+using Bleeders.Gameplay.Protagonist.Identity.Social.Affiliation;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Identity.Social.Affiliation;
+namespace Bleeders.Gameplay.Tests.Protagonist.Identity.Social.Affiliation;
 
 /// <summary>Builds the disguised-as condition under test for a faction, and a context whose services hold substitute social rules.</summary>
 internal sealed class DisguisedAsConditionTestsBuilder

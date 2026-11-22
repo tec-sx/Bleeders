@@ -1,6 +1,6 @@
 using FlickerVoid.Engine.Gameplay.Conditions;
 
-namespace FlickerVoid.Gameplay.Protagonist.Identity.Social.Fame;
+namespace Bleeders.Gameplay.Protagonist.Identity.Social.Fame;
 
 /// <summary>The player has earned the title, whether or not it is the current one.</summary>
 public sealed class HasTitleCondition : Condition

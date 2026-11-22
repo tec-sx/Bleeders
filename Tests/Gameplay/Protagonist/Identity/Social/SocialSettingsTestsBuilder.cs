@@ -1,7 +1,7 @@
 using FlickerVoid.Engine.Gameplay.Definitions;
-using FlickerVoid.Gameplay.Protagonist.Identity.Social;
+using Bleeders.Gameplay.Protagonist.Identity.Social;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Identity.Social;
+namespace Bleeders.Gameplay.Tests.Protagonist.Identity.Social;
 
 /// <summary>Builds the social settings under test.</summary>
 internal sealed class SocialSettingsTestsBuilder

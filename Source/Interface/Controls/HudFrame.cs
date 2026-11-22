@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 
-namespace FlickerVoid.Interface.Controls;
+namespace Bleeders.Interface.Controls;
 
 /// <summary>
 /// A HUD panel's frame: a see-through fill inside a thin outline with two cut corners and short ticks at the others, drawn in one

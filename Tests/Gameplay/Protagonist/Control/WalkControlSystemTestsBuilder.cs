@@ -13,17 +13,17 @@ using FlickerVoid.Engine.Runtime.Data;
 using FlickerVoid.Engine.Runtime.Loop;
 using FlickerVoid.Engine.Runtime.Scenes;
 using FlickerVoid.Engine.Runtime.Serialization;
-using FlickerVoid.Gameplay.Protagonist.Control;
+using Bleeders.Gameplay.Protagonist.Control;
 
 using Microsoft.Extensions.Logging.Abstractions;
 
 using Silk.NET.Input;
 using Silk.NET.Maths;
 
-namespace FlickerVoid.Gameplay.Tests.Protagonist.Control;
+namespace Bleeders.Gameplay.Tests.Protagonist.Control;
 
 /// <summary>
-/// Builds a playing game with FlickerVoid's gameplay, input actions whose map binds W, A, S and D to <see cref="WalkControlSystem.Move"/>,
+/// Builds a playing game with Bleeders' gameplay, input actions whose map binds W, A, S and D to <see cref="WalkControlSystem.Move"/>,
 /// and keys held down on request.
 /// </summary>
 internal sealed class WalkControlSystemTestsBuilder : IDisposable

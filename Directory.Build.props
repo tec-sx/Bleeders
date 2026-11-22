@@ -1,14 +1,14 @@
 <Project InitialTargets="CheckFlickerVoidEngine">
-  <!-- The engine this project builds against: the FLICKERVOID_ENGINE environment variable when it is set, otherwise the
-       Engine modules are referenced as $(FlickerVoidEngine)Source/Engine/<Module>/... -->
+  <!-- The engine this game builds against: the FLICKERVOID_ENGINE environment variable when it is set (an engine checkout of your own),
+       otherwise the Engine submodule. Engine modules are referenced as $(FlickerVoidEngine)Source/Engine/<Module>/... -->
   <PropertyGroup>
     <FlickerVoidEngine>$(FLICKERVOID_ENGINE)</FlickerVoidEngine>
-    <FlickerVoidEngine Condition="'$(FlickerVoidEngine)' == ''">$(MSBuildThisFileDirectory)../../</FlickerVoidEngine>
+    <FlickerVoidEngine Condition="'$(FlickerVoidEngine)' == ''">$(MSBuildThisFileDirectory)Engine/</FlickerVoidEngine>
     <FlickerVoidEngine>$([MSBuild]::EnsureTrailingSlash('$(FlickerVoidEngine)'))</FlickerVoidEngine>
   </PropertyGroup>
   <!-- The engine's build settings: target framework, warnings as errors, and the test libraries for *.Tests projects. -->
   <Import Project="$(FlickerVoidEngine)Directory.Build.props" Condition="Exists('$(FlickerVoidEngine)Directory.Build.props')" />
   <Target Name="CheckFlickerVoidEngine">
-    <Error Condition="!Exists('$(FlickerVoidEngine)Directory.Build.props')" Text="No FlickerVoid engine at $(FlickerVoidEngine). Set the FLICKERVOID_ENGINE environment variable to the engine repository's folder." />
+    <Error Condition="!Exists('$(FlickerVoidEngine)Directory.Build.props')" Text="No FlickerVoid engine at $(FlickerVoidEngine). Run 'git submodule update --init', or set the FLICKERVOID_ENGINE environment variable to an engine repository's folder." />
   </Target>
 </Project>

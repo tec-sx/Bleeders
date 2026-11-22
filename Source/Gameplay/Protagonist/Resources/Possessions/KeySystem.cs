@@ -4,9 +4,9 @@ using FlickerVoid.Engine.Interaction.Locks;
 using FlickerVoid.Engine.Interaction.Toggles;
 using FlickerVoid.Engine.Inventory.Inventories;
 using FlickerVoid.Engine.Runtime.Events;
-using FlickerVoid.Gameplay.World.Objects.Doors;
+using Bleeders.Gameplay.World.Objects.Doors;
 
-namespace FlickerVoid.Gameplay.Protagonist.Resources.Possessions;
+namespace Bleeders.Gameplay.Protagonist.Resources.Possessions;
 
 using World = Arch.Core.World;
 

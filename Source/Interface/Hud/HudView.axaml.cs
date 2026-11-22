@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace FlickerVoid.Interface.Hud;
+namespace Bleeders.Interface.Hud;
 
 public sealed partial class HudView : UserControl
 {

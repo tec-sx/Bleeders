@@ -2,7 +2,7 @@ using Arch.Core;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace FlickerVoid.Interface.Hub;
+namespace Bleeders.Interface.Hub;
 
 /// <summary>One page of the hub, filled from the protagonist's state when it is shown and kept up while it shows.</summary>
 public abstract partial class HubPageViewModel(string title) : ObservableObject

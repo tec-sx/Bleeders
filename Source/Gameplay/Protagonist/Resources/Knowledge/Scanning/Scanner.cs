@@ -1,4 +1,4 @@
-namespace FlickerVoid.Gameplay.Protagonist.Resources.Knowledge.Scanning;
+namespace Bleeders.Gameplay.Protagonist.Resources.Knowledge.Scanning;
 
 /// <summary>Lets its entity scan: in scan mode it reveals the scannables within range and scans the one the pointer is on while scan is held.</summary>
 public struct Scanner()

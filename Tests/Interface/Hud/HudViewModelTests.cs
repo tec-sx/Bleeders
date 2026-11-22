@@ -2,9 +2,9 @@ using Arch.Core;
 
 using FlickerVoid.Engine.Gameplay.Tags;
 using FlickerVoid.Engine.Story.Quests;
-using FlickerVoid.Interface.Hud;
+using Bleeders.Interface.Hud;
 
-namespace FlickerVoid.Interface.Tests.Hud;
+namespace Bleeders.Interface.Tests.Hud;
 
 public sealed class HudViewModelTests : IDisposable
 {

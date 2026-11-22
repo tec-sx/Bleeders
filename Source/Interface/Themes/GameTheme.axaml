@@ -3,7 +3,7 @@
      (both SIL OFL 1.1, licences beside the fonts). -->
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="using:FlickerVoid.Interface.Controls">
+        xmlns:controls="using:Bleeders.Interface.Controls">
   <Styles.Resources>
     <Color x:Key="HudTint">#FFFFFF</Color>
     <SolidColorBrush x:Key="HudTintBrush" Color="{StaticResource HudTint}" />
@@ -12,8 +12,8 @@
     <SolidColorBrush x:Key="PanelBrush" Color="#C4080A10" />
     <SolidColorBrush x:Key="AccentBrush" Color="#E8A700" />
     <SolidColorBrush x:Key="InkBrush" Color="#0B0B0D" />
-    <FontFamily x:Key="HeadingFont">avares://FlickerVoid.Interface/Assets/Fonts#Glitch Goblin</FontFamily>
-    <FontFamily x:Key="TextFont">avares://FlickerVoid.Interface/Assets/Fonts#Rajdhani</FontFamily>
+    <FontFamily x:Key="HeadingFont">avares://Bleeders.Interface/Assets/Fonts#Glitch Goblin</FontFamily>
+    <FontFamily x:Key="TextFont">avares://Bleeders.Interface/Assets/Fonts#Rajdhani</FontFamily>
   </Styles.Resources>
 
   <Style Selector="controls|HudFrame">
