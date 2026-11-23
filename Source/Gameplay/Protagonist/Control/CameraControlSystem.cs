@@ -38,13 +38,12 @@ public sealed class CameraControlSystem : BaseSystem<World, GameTime>
 
     public override void Update(in GameTime t)
     {
-        Vector2D<int> size = _window.Size;
         _director.Pointer = null;
-        if (size.X > 0 && size.Y > 0)
+        if (_window.Size.X > 0 && _window.Size.Y > 0)
         {
             Vector2 mouse = _input.MousePosition;
-            float x = (2 * mouse.X / size.X) - 1;
-            float y = 1 - (2 * mouse.Y / size.Y);
+            float x = (2 * mouse.X / _window.Size.X) - 1;
+            float y = 1 - (2 * mouse.Y / _window.Size.Y);
             _director.Pointer = new Vector2(x, y);
         }
 

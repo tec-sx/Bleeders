@@ -38,9 +38,12 @@ public sealed class ResidentSystem : BaseSystem<World, GameTime>
         _perception = perception;
         _dialogue = dialogue;
         _random = random;
+        
         ArrayRegistry.Add<ResidentState>();
+        
         game.Lifecycle.OnActivate((Entity entity, ref Resident resident) => Activate(entity, resident));
         game.Lifecycle.OnDeactivate((Entity entity, ref Resident _) => Deactivate(entity));
+
         _events.Handle((in TargetSeenEvent seen) => Watch(seen.Perceiver, seen.Target));
         _events.Handle((in TargetLostEvent lost) => Lose(lost.Perceiver, lost.Target));
         _events.Handle((in NoiseHeardEvent heard) => Hear(heard.Perceiver, heard.Point));
@@ -65,7 +68,7 @@ public sealed class ResidentSystem : BaseSystem<World, GameTime>
             {
                 Vector3 point = World.Get<Transform>(faced).Position;
                 _events.Send(new FaceCommand(entity, point));
-                state.RestLeft = resident.Rest;
+                state.RestLeft = resident.RestSeconds;
                 return;
             }
 
@@ -86,7 +89,7 @@ public sealed class ResidentSystem : BaseSystem<World, GameTime>
             return;
         }
 
-        state.RestLeft = resident.Rest;
+        state.RestLeft = resident.RestSeconds;
         if (_paths.TryFindRandomPoint(state.Home, resident.WanderRadius, _random, out Vector3 point))
         {
             _events.Send(new MoveCommand(entity, point));
@@ -137,7 +140,7 @@ public sealed class ResidentSystem : BaseSystem<World, GameTime>
         if (!IsWatching(state))
         {
             _events.Send(new FaceCommand(resident, point));
-            state.RestLeft = World.Get<Resident>(resident).Rest;
+            state.RestLeft = World.Get<Resident>(resident).RestSeconds;
         }
     }
 
@@ -146,7 +149,7 @@ public sealed class ResidentSystem : BaseSystem<World, GameTime>
     private void Activate(Entity entity, Resident resident)
     {
         World.TryGet(entity, out Transform transform);
-        ResidentState state = new() { Home = transform.Position, RestLeft = resident.Rest, Watching = Entity.Null };
+        ResidentState state = new() { Home = transform.Position, RestLeft = resident.RestSeconds, Watching = Entity.Null };
         if (World.Has<ResidentState>(entity))
         {
             World.Set(entity, state);
