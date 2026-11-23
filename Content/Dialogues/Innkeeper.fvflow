@@ -1,33 +1,210 @@
 {
   "$schema": "../.schemas/flow.schema.json",
   "nodes": [
-    { "$type": "start", "id": "start", "x": 0, "y": 0 },
-    { "$type": "line", "id": "greet", "x": 220, "y": 0, "text": "Evening, fox. Mind the floor, it's just been waxed." },
-    { "$type": "choice", "id": "ask", "x": 440, "y": 0, "options": [
-      { "text": "Anything I can do for you?",
-        "conditions": { "conditions": [ { "$type": "questState", "quest": "Quest.Cellar", "state": "NotStarted" } ] },
-        "onChosen": { "effects": [ { "$type": "setQuestState", "quest": "Quest.Cellar", "state": "Active" } ] } },
-      { "text": "I found your cellar key.",
-        "conditions": { "conditions": [ { "$type": "questState", "quest": "Quest.Cellar", "state": "Active" }, { "$type": "hasItem", "item": "Items/CellarKey.fvdata" } ] } },
-      { "text": "What's down in the cellar?",
-        "conditions": { "conditions": [ { "$type": "knows", "knowledge": "Knowledge.Topic.Cellar", "invert": true } ] },
-        "onChosen": { "effects": [ { "$type": "learn", "knowledge": "Knowledge.Topic.Cellar" } ] } }
-    ] },
-    { "$type": "line", "id": "job", "x": 700, "y": -120, "text": "I've lost the cellar key somewhere in this room. Find it and the wine's on me." },
-    { "$type": "completeObjective", "id": "returned", "x": 700, "y": 0, "objective": "Quest.Cellar.ReturnedKey" },
-    { "$type": "line", "id": "thanks", "x": 920, "y": 0, "text": "Keep it. Go on, open the cellar yourself." },
-    { "$type": "line", "id": "lore", "x": 700, "y": 120, "text": "Wine, mostly. And whatever the last owner left behind." },
-    { "$type": "finish", "id": "end", "x": 1140, "y": 0 }
+    {
+      "$type": "start",
+      "id": "start",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "$type": "line",
+      "speaker": "",
+      "text": "Evening, fox. Mind the floor, it\u0027s just been waxed.",
+      "mood": "",
+      "duration": 0,
+      "skippable": true,
+      "waitForInput": false,
+      "id": "greet",
+      "x": 220,
+      "y": 0
+    },
+    {
+      "$type": "choice",
+      "options": [
+        {
+          "text": "Anything I can do for you?",
+          "conditions": {
+            "mode": "All",
+            "conditions": [
+              {
+                "$type": "questState",
+                "quest": "Quest.Cellar",
+                "state": "NotStarted",
+                "invert": false
+              }
+            ],
+            "failurePresentation": "Hidden",
+            "failureReason": ""
+          },
+          "onChosen": {
+            "effects": [
+              {
+                "$type": "setQuestState",
+                "quest": "Quest.Cellar",
+                "state": "Active"
+              }
+            ]
+          }
+        },
+        {
+          "text": "I found your cellar key.",
+          "conditions": {
+            "mode": "All",
+            "conditions": [
+              {
+                "$type": "questState",
+                "quest": "Quest.Cellar",
+                "state": "Active",
+                "invert": false
+              },
+              {
+                "$type": "hasItem",
+                "item": "Items/CellarKey.fvdata",
+                "quantity": 1,
+                "subject": "Instigator",
+                "invert": false
+              }
+            ],
+            "failurePresentation": "Hidden",
+            "failureReason": ""
+          },
+          "onChosen": {
+            "effects": []
+          }
+        },
+        {
+          "text": "What\u0027s down in the cellar?",
+          "conditions": {
+            "mode": "All",
+            "conditions": [
+              {
+                "$type": "knows",
+                "knowledge": "Knowledge.Topic.Cellar",
+                "invert": true
+              }
+            ],
+            "failurePresentation": "Hidden",
+            "failureReason": ""
+          },
+          "onChosen": {
+            "effects": [
+              {
+                "$type": "learn",
+                "knowledge": "Knowledge.Topic.Cellar"
+              }
+            ]
+          }
+        }
+      ],
+      "id": "ask",
+      "x": 440,
+      "y": 0
+    },
+    {
+      "$type": "line",
+      "speaker": "",
+      "text": "I\u0027ve lost the cellar key somewhere in this room. Find it and the wine\u0027s on me.",
+      "mood": "",
+      "duration": 0,
+      "skippable": true,
+      "waitForInput": false,
+      "id": "job",
+      "x": 700,
+      "y": -120
+    },
+    {
+      "$type": "completeObjective",
+      "objective": "Quest.Cellar.ReturnedKey",
+      "id": "returned",
+      "x": 700,
+      "y": 0
+    },
+    {
+      "$type": "line",
+      "speaker": "",
+      "text": "Keep it. Go on, open the cellar yourself.",
+      "mood": "",
+      "duration": 0,
+      "skippable": true,
+      "waitForInput": false,
+      "id": "thanks",
+      "x": 920.8745,
+      "y": 0
+    },
+    {
+      "$type": "line",
+      "speaker": "",
+      "text": "Wine, mostly. And whatever the last owner left behind.",
+      "mood": "",
+      "duration": 0,
+      "skippable": true,
+      "waitForInput": false,
+      "id": "lore",
+      "x": 448.2649,
+      "y": 182.89438
+    },
+    {
+      "$type": "finish",
+      "id": "end",
+      "x": 1140,
+      "y": 0
+    }
   ],
   "links": [
-    { "from": "start", "to": "greet" },
-    { "from": "greet", "to": "ask" },
-    { "from": "ask", "output": "First", "to": "job" },
-    { "from": "ask", "output": "Second", "to": "returned" },
-    { "from": "ask", "output": "Third", "to": "lore" },
-    { "from": "job", "to": "end" },
-    { "from": "returned", "to": "thanks" },
-    { "from": "thanks", "to": "end" },
-    { "from": "lore", "to": "ask" }
+    {
+      "from": "start",
+      "output": "Out",
+      "to": "greet",
+      "input": "In"
+    },
+    {
+      "from": "greet",
+      "output": "Out",
+      "to": "ask",
+      "input": "In"
+    },
+    {
+      "from": "ask",
+      "output": "First",
+      "to": "job",
+      "input": "In"
+    },
+    {
+      "from": "ask",
+      "output": "Second",
+      "to": "returned",
+      "input": "In"
+    },
+    {
+      "from": "ask",
+      "output": "Third",
+      "to": "lore",
+      "input": "In"
+    },
+    {
+      "from": "job",
+      "output": "Out",
+      "to": "end",
+      "input": "In"
+    },
+    {
+      "from": "returned",
+      "output": "Out",
+      "to": "thanks",
+      "input": "In"
+    },
+    {
+      "from": "thanks",
+      "output": "Out",
+      "to": "end",
+      "input": "In"
+    },
+    {
+      "from": "lore",
+      "output": "Out",
+      "to": "ask",
+      "input": "In"
+    }
   ]
 }

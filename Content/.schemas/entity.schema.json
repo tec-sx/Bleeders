@@ -940,7 +940,7 @@
             "wanderRadius": {
               "type": "number"
             },
-            "rest": {
+            "restSeconds": {
               "type": "number"
             }
           }

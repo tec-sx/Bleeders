@@ -18,6 +18,9 @@
           "folder": {
             "type": "string"
           },
+          "parent": {
+            "type": "string"
+          },
           "components": {
             "type": "object",
             "properties": {
@@ -951,7 +954,7 @@
                   "wanderRadius": {
                     "type": "number"
                   },
-                  "rest": {
+                  "restSeconds": {
                     "type": "number"
                   }
                 }
