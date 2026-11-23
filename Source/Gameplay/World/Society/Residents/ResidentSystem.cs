@@ -22,8 +22,6 @@ using World = Arch.Core.World;
 /// </summary>
 public sealed class ResidentSystem : BaseSystem<World, GameTime>
 {
-    private static readonly QueryDescription Residents = new QueryDescription().WithAll<Resident, ResidentState, Transform>();
-
     private readonly EventBus _events;
     private readonly PathSystem _paths;
     private readonly PerceptionSystem _perception;
@@ -49,8 +47,11 @@ public sealed class ResidentSystem : BaseSystem<World, GameTime>
     public override void Update(in GameTime t)
     {
         float seconds = (float)t.Elapsed.TotalSeconds;
-        World.Query(in Residents, (Entity entity, ref Resident resident, ref ResidentState state, ref Transform _) =>
+        QueryDescription dwellers = Dweller.Query;
+        World.Query(in dwellers, (Entity entity) =>
         {
+            Dweller dweller = Dweller.From(World, entity);
+            ref ResidentState state = ref dweller.State;
             Entity faced = Entity.Null;
             if (_dialogue.IsInConversation && _dialogue.Owner == entity)
             {
@@ -65,16 +66,19 @@ public sealed class ResidentSystem : BaseSystem<World, GameTime>
             {
                 Vector3 point = World.Get<Transform>(faced).Position;
                 _events.Send(new FaceCommand(entity, point));
-                state.RestLeft = resident.Rest;
+                state.RestLeft = dweller.Resident.Rest;
                 return;
             }
 
-            Wander(entity, resident, ref state, seconds);
+            Wander(dweller, seconds);
         });
     }
 
-    private void Wander(Entity entity, in Resident resident, ref ResidentState state, float seconds)
+    private void Wander(Dweller dweller, float seconds)
     {
+        Entity entity = dweller.Entity;
+        ref Resident resident = ref dweller.Resident;
+        ref ResidentState state = ref dweller.State;
         if (resident.WanderRadius <= 0 || World.Has<Destination>(entity) || World.Has<Facing>(entity))
         {
             return;
@@ -95,24 +99,20 @@ public sealed class ResidentSystem : BaseSystem<World, GameTime>
 
     private void Watch(Entity resident, Entity target)
     {
-        if (World.IsAlive(resident) && World.Has<ResidentState>(resident))
+        if (Dweller.TryGet(World, resident, out Dweller dweller) && !IsWatching(dweller.State))
         {
-            ref ResidentState state = ref World.Get<ResidentState>(resident);
-            if (!IsWatching(state))
-            {
-                state.Watching = target;
-            }
+            dweller.State.Watching = target;
         }
     }
 
     private void Lose(Entity resident, Entity target)
     {
-        if (!World.IsAlive(resident) || !World.Has<ResidentState>(resident))
+        if (!Dweller.TryGet(World, resident, out Dweller dweller))
         {
             return;
         }
 
-        ref ResidentState state = ref World.Get<ResidentState>(resident);
+        ref ResidentState state = ref dweller.State;
         if (state.Watching != target)
         {
             return;
@@ -128,16 +128,16 @@ public sealed class ResidentSystem : BaseSystem<World, GameTime>
 
     private void Hear(Entity resident, Vector3 point)
     {
-        if (!World.IsAlive(resident) || !World.Has<ResidentState>(resident))
+        if (!Dweller.TryGet(World, resident, out Dweller dweller))
         {
             return;
         }
 
-        ref ResidentState state = ref World.Get<ResidentState>(resident);
+        ref ResidentState state = ref dweller.State;
         if (!IsWatching(state))
         {
             _events.Send(new FaceCommand(resident, point));
-            state.RestLeft = World.Get<Resident>(resident).Rest;
+            state.RestLeft = dweller.Resident.Rest;
         }
     }
 
