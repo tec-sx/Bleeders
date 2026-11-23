@@ -8,21 +8,23 @@ namespace Bleeders.Gameplay.World.Objects.Doors;
 
 using World = Arch.Core.World;
 
-/// <summary>Opens a lock that blocked a toggle, as a key or a lockpick does, and lets the toggle go ahead.</summary>
 public static class DoorLocks
 {
-    public static void Unlock(World world, EventBus events, Entity door, Entity instigator, bool opening)
+    public static void Unlock(World world, EventBus events, Entity target, Entity instigator, bool opening)
     {
-        ref Lockable doorLock = ref world.Get<Lockable>(door);
-        doorLock.Locked = false;
-        events.Send(new LockChangedEvent(door, false, instigator));
-        if (!world.Has<Toggle>(door))
+        ref Lockable lockable = ref world.Get<Lockable>(target);
+        lockable.Locked = false;
+
+        events.Send(new LockChangedEvent(target, false, instigator));
+        
+        if (!world.Has<Toggle>(target))
         {
             return;
         }
 
-        ref Toggle toggle = ref world.Get<Toggle>(door);
+        ref Toggle toggle = ref world.Get<Toggle>(target);
         toggle.Open = opening;
-        events.Send(new ToggledEvent(door, toggle.Open, instigator));
+
+        events.Send(new ToggledEvent(target, toggle.Open, instigator));
     }
 }
