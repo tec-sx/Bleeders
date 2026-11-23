@@ -24,8 +24,6 @@ public sealed class WalkControlSystem : BaseSystem<World, GameTime>
 {
     public static readonly Tag Move = new("Input.Move");
 
-    private static readonly QueryDescription Protagonists = new QueryDescription().WithAll<Protagonist, CharacterMover>();
-
     private readonly EventBus _events;
     private readonly InputActions _actions;
     private readonly DialogueSystem _dialogue;
@@ -59,10 +57,9 @@ public sealed class WalkControlSystem : BaseSystem<World, GameTime>
         }
 
         _steering = direction;
-        Entity protagonist = FindFirst(Protagonists);
-        if (protagonist != Entity.Null)
+        if (Player.TryFind(World, out Player player))
         {
-            _events.Send(new SteerCommand(protagonist, direction));
+            _events.Send(new SteerCommand(player.Entity, direction));
         }
     }
 
@@ -108,18 +105,5 @@ public sealed class WalkControlSystem : BaseSystem<World, GameTime>
 
         rotation = drawn.Transform.Rotation;
         return true;
-    }
-
-    private Entity FindFirst(in QueryDescription query)
-    {
-        Entity found = Entity.Null;
-        World.Query(in query, (Entity entity) =>
-        {
-            if (found == Entity.Null)
-            {
-                found = entity;
-            }
-        });
-        return found;
     }
 }
