@@ -2,11 +2,11 @@ using System.Numerics;
 
 using Arch.Core;
 
+using FlickerVoid.Engine.Interaction.Interactors;
 using FlickerVoid.Engine.Characters.Movement;
 using FlickerVoid.Engine.Dialogue.Conversations;
 using FlickerVoid.Engine.Gameplay.Tags;
 using FlickerVoid.Engine.Interaction.Interactables;
-using FlickerVoid.Engine.Interaction.Interactors;
 using FlickerVoid.Engine.Physics;
 using FlickerVoid.Engine.Platform.Input;
 using FlickerVoid.Engine.Runtime.Components;
@@ -26,8 +26,6 @@ public sealed class ClickControlSystem
 
     /// <summary>How far into its reach the protagonist walks before using something, so small misses still reach it.</summary>
     public const float ApproachFraction = 0.75f;
-
-    private static readonly QueryDescription Protagonists = new QueryDescription().WithAll<Protagonist, Interactor, CharacterMover, Transform>();
 
     private readonly World _world;
     private readonly EventBus _events;
@@ -52,17 +50,18 @@ public sealed class ClickControlSystem
             return;
         }
 
-        Entity protagonist = FindFirst(Protagonists);
-        if (protagonist == Entity.Null || !_picker.TryPick(out RayHit hit))
+        if (!Player.TryFind(_world, out Player player) || !_picker.TryPick(out RayHit hit))
         {
             return;
         }
+
+        Entity protagonist = player.Entity;
 
         if (_world.Has<ActiveInteractable>(hit.Entity))
         {
             _events.Send(new FocusCommand(protagonist, hit.Entity));
             _pending = hit.Entity;
-            Approach(protagonist, hit.Entity);
+            Approach(player, hit.Entity);
             return;
         }
 
@@ -73,7 +72,7 @@ public sealed class ClickControlSystem
 
     private void HandleArrived(Entity character)
     {
-        if (_pending == Entity.Null || !_world.Has<Protagonist>(character))
+        if (_pending == Entity.Null || !Player.Is(_world, character))
         {
             return;
         }
@@ -83,11 +82,12 @@ public sealed class ClickControlSystem
     }
 
     /// <summary>Walks within reach of the target, or uses it at once when already there.</summary>
-    private void Approach(Entity protagonist, Entity target)
+    private void Approach(Player player, Entity target)
     {
-        Vector3 position = _world.Get<Transform>(protagonist).Position;
+        Entity protagonist = player.Entity;
+        Vector3 position = player.Transform.Position;
         Vector3 targetPosition = _world.Get<Transform>(target).Position;
-        float reach = _world.Get<Interactor>(protagonist).Reach;
+        float reach = player.Interactor.Reach;
         Vector3 away = position - targetPosition;
         away.Y = 0;
         float distance = away.Length();
@@ -103,18 +103,5 @@ public sealed class ClickControlSystem
         Vector3 stand = targetPosition + (direction * standOff);
         stand.Y = position.Y;
         _events.Send(new MoveCommand(protagonist, stand));
-    }
-
-    private Entity FindFirst(in QueryDescription query)
-    {
-        Entity found = Entity.Null;
-        _world.Query(in query, (Entity entity) =>
-        {
-            if (found == Entity.Null)
-            {
-                found = entity;
-            }
-        });
-        return found;
     }
 }

@@ -27,8 +27,6 @@ public sealed class DoorSwingSystem : BaseSystem<World, GameTime>
     private const float RattleDegrees = 2.5f;
     private const float RattlePerSecond = 40;
 
-    private static readonly QueryDescription Doors = new QueryDescription().WithAll<DoorSwing, DoorHinge, Transform>();
-
     private readonly EventBus _events;
 
     public DoorSwingSystem(Game game)
@@ -46,12 +44,18 @@ public sealed class DoorSwingSystem : BaseSystem<World, GameTime>
     public override void Update(in GameTime t)
     {
         float seconds = (float)t.Elapsed.TotalSeconds;
-        World.Query(in Doors, (ref DoorSwing swing, ref DoorHinge hinge, ref Transform transform) => Turn(swing, ref hinge, ref transform, seconds));
+        QueryDescription doors = Door.Query;
+        World.Query(in doors, (Entity entity) =>
+        {
+            Door door = Door.From(World, entity);
+            Turn(door, seconds);
+        });
     }
 
-    private static void Turn(in DoorSwing swing, ref DoorHinge hinge, ref Transform transform, float seconds)
+    private static void Turn(Door door, float seconds)
     {
-        float step = swing.Speed * seconds;
+        ref DoorHinge hinge = ref door.Hinge;
+        float step = door.Swing.Speed * seconds;
         float remaining = hinge.Target - hinge.Angle;
         float turn = Math.Clamp(remaining, -step, step);
         hinge.Angle += turn;
@@ -66,7 +70,7 @@ public sealed class DoorSwingSystem : BaseSystem<World, GameTime>
 
         float radians = float.DegreesToRadians(hinge.Angle + shake);
         Quaternion yaw = Quaternion.CreateFromAxisAngle(Vector3.UnitY, radians);
-        transform.Rotation = Quaternion.Concatenate(yaw, hinge.Closed);
+        door.Transform.Rotation = Quaternion.Concatenate(yaw, hinge.Closed);
     }
 
     private void Activate(Entity entity, in DoorSwing swing)
@@ -95,19 +99,17 @@ public sealed class DoorSwingSystem : BaseSystem<World, GameTime>
         }
     }
 
-    private void Swing(Entity door, bool open)
+    private void Swing(Entity entity, bool open)
     {
-        if (!World.IsAlive(door) || !World.Has<DoorHinge>(door))
+        if (!Door.TryGet(World, entity, out Door door))
         {
             return;
         }
 
-        float openAngle = World.Get<DoorSwing>(door).OpenAngle;
-        ref DoorHinge hinge = ref World.Get<DoorHinge>(door);
-        hinge.Target = 0;
+        door.Hinge.Target = 0;
         if (open)
         {
-            hinge.Target = openAngle;
+            door.Hinge.Target = door.Swing.OpenAngle;
         }
     }
 
@@ -119,11 +121,10 @@ public sealed class DoorSwingSystem : BaseSystem<World, GameTime>
             return;
         }
 
-        if (World.Has<DoorHinge>(door))
+        if (Door.TryGet(World, door, out Door rattled))
         {
-            World.Get<DoorHinge>(door).Rattle = RattleTime;
-            World.TryGet(door, out Transform transform);
-            _events.Send(new NoiseEvent(instigator, transform.Position));
+            rattled.Hinge.Rattle = RattleTime;
+            _events.Send(new NoiseEvent(instigator, rattled.Transform.Position));
         }
     }
 }
