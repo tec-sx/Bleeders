@@ -56,4 +56,22 @@ public sealed class StreetTests : IDisposable
         _builder.IsShadowOnly("Shack Roof East").Should().BeTrue();
         _builder.IsShadowOnly("Barrel 1").Should().BeFalse();
     }
+
+    [Fact]
+    public void KeepsTheInnOpenOnceTheFoxStops()
+    {
+        _builder.Steer(-Vector3.UnitX, 1);
+
+        _builder.Cutaways.Cutaway.Should().Be(_builder.Story.Find("Inn Ground"));
+    }
+
+    [Fact]
+    public void KeepsTheFoxInsideTheInnsWalls()
+    {
+        _builder.Steer(Vector3.UnitX, 4);
+
+        Vector3 position = _builder.GetPosition(_builder.Story.Fox);
+        position.X.Should().BeLessThan(4, "the inn's right wall stops it");
+        position.Y.Should().BeApproximately(0, 0.05f, "it stays on the floor");
+    }
 }
