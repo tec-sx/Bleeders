@@ -8,6 +8,7 @@ using FlickerVoid.Engine.Ai.Senses;
 using FlickerVoid.Engine.Attributes;
 using FlickerVoid.Engine.Attributes.Checks;
 using FlickerVoid.Engine.Cameras;
+using FlickerVoid.Engine.Cameras.Cutaways;
 using FlickerVoid.Engine.Cameras.Directing;
 using FlickerVoid.Engine.Characters;
 using FlickerVoid.Engine.Dialogue;
@@ -85,7 +86,8 @@ public sealed class GameplayModule : IGameModule
         IInputState? input = game.Services.GetService<IInputState>();
         if (window is not null && input is not null)
         {
-            PointerPicker picker = new(game.World, input, window, physics);
+            CutawaySystem cutaways = game.Services.GetService<CutawaySystem>()!;
+            PointerPicker picker = new(game.World, input, window, physics, cutaways);
             game.Services.AddService(picker);
             _ = new ClickControlSystem(game.World, game.Events, picker, dialogue);
             AddScanner(game, physics, picker);
