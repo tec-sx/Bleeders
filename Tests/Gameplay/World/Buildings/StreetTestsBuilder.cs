@@ -34,6 +34,16 @@ internal sealed class StreetTestsBuilder : IDisposable
         return Story.RunUntil(() => Vector3.Distance(GetPosition(fox), point) < 0.5f, seconds);
     }
 
+    /// <summary>Steers the fox along <paramref name="direction"/> for <paramref name="seconds"/>, then stops it.</summary>
+    public void Steer(Vector3 direction, float seconds)
+    {
+        Entity fox = Story.Fox;
+        Story.Game.Events.Send(new SteerCommand(fox, direction));
+        Story.Run(seconds);
+        Story.Game.Events.Send(new SteerCommand(fox, Vector3.Zero));
+        Story.Run(0.5f);
+    }
+
     public Vector3 GetPosition(Entity entity) => Story.Game.World.Get<FlickerVoid.Engine.Runtime.Components.Transform>(entity).Position;
 
     public bool IsShadowOnly(string name) => Story.Game.World.Has<ShadowOnly>(Story.Find(name));
