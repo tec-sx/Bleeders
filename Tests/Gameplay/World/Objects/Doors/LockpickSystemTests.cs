@@ -42,6 +42,21 @@ public sealed class LockpickSystemTests : IDisposable
     }
 
     [Fact]
+    public void ALockThatBeatAPickerIsNotTriedAgainUntilTheyGetBetterAtIt()
+    {
+        _builder.Build(perception: 0, lockpick: true, difficulty: 1);
+        List<LockpickedEvent> picked = _builder.Collect<LockpickedEvent>();
+
+        _builder.TryOpen();
+        _builder.TryOpen();
+        _builder.WithPerception(1);
+        _builder.TryOpen();
+
+        picked.Should().HaveCount(2).And.OnlyContain(attempt => !attempt.Result.Success);
+        _builder.Game.World.Get<FailedPick>(_builder.Door).Bonus.Should().Be(1);
+    }
+
+    [Fact]
     public void WithoutALockpickNothingIsTried()
     {
         _builder.Build(perception: 10, lockpick: false);

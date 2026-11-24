@@ -13,6 +13,7 @@ namespace Bleeders.Gameplay.Serialization;
 [JsonSerializable(typeof(Protagonist.Protagonist))]
 [JsonSerializable(typeof(DoorSwing))]
 [JsonSerializable(typeof(DoorHinge))]
+[JsonSerializable(typeof(FailedPick))]
 [JsonSerializable(typeof(Resident))]
 [JsonSerializable(typeof(Scanner))]
 [JsonSerializable(typeof(Scannable))]

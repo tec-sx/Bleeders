@@ -7,7 +7,9 @@ using FlickerVoid.Engine.Interaction.Locks;
 using FlickerVoid.Engine.Interaction.Toggles;
 using FlickerVoid.Engine.Inventory.Inventories;
 using FlickerVoid.Engine.Maps.Markers;
+using FlickerVoid.Engine.Runtime.Components;
 using FlickerVoid.Engine.Story.Quests;
+using Bleeders.Gameplay.Protagonist.Control;
 
 namespace Bleeders.Gameplay.Tests.Story;
 
@@ -88,5 +90,64 @@ public sealed class StoryLoopTests : IDisposable
         _builder.Game.World.Get<Toggle>(door).Open.Should().BeFalse();
         bool opened = _builder.Click("Door", () => _builder.Game.World.Get<Toggle>(door).Open, Panel);
         opened.Should().BeTrue();
+    }
+
+    [Fact]
+    public void LoadingInTheSameSessionBringsBackWhatChangedSinceTheSave()
+    {
+        _builder.Start();
+        _builder.Click("Innkeeper", () => _builder.Dialogue.IsInConversation);
+        _builder.Choose("Anything I can do");
+        _builder.FinishConversation();
+        bool saved = _builder.Saves.Save("Quick");
+        _builder.Click("Cellar Key", () => _builder.Inventories.FindItemWithTag(_builder.Fox, Key) is not null);
+        _builder.Click("Door", () => _builder.Game.World.Get<Toggle>(_builder.Find("Door")).Open, Panel);
+
+        bool loaded = _builder.Saves.Load("Quick");
+        _builder.Run(0.2f);
+
+        saved.Should().BeTrue();
+        loaded.Should().BeTrue();
+        _builder.Find("Cellar Key").Should().NotBe(Entity.Null, "it lay on the floor when saving");
+        _builder.Inventories.FindItemWithTag(_builder.Fox, Key).Should().BeNull();
+        Entity door = _builder.Find("Door");
+        _builder.Game.World.Get<Lockable>(door).Locked.Should().BeTrue();
+        _builder.Game.World.Get<Toggle>(door).Open.Should().BeFalse();
+        _builder.Quests.GetState(Cellar).Should().Be(QuestState.Active);
+        bool tookKey = _builder.Click("Cellar Key", () => _builder.Inventories.FindItemWithTag(_builder.Fox, Key) is not null);
+        tookKey.Should().BeTrue();
+    }
+
+    [Fact]
+    public void OnlyTheActionsOfAConversationOrACutsceneAreReadWhileItGoesOn()
+    {
+        _builder.Start();
+
+        _builder.Click("Innkeeper", () => _builder.Dialogue.IsInConversation);
+        _builder.Run(0.1f);
+        Tag talking = _builder.Input.Context;
+        _builder.Choose("Anything I can do");
+        _builder.FinishConversation();
+        _builder.Run(0.1f);
+        Tag afterTalking = _builder.Input.Context;
+        bool cutscene = _builder.Click("Cellar Key", () => _builder.Input.Context == InputContextSystem.Cutscene);
+
+        talking.Should().Be(InputContextSystem.Conversation);
+        afterTalking.Should().Be(Tag.None);
+        cutscene.Should().BeTrue();
+    }
+
+    [Fact]
+    public void TheInnkeeperCanBeTalkedToWhereverItWalks()
+    {
+        _builder.Start();
+        Entity innkeeper = _builder.Find("Innkeeper");
+        ref Transform place = ref _builder.Game.World.Get<Transform>(innkeeper);
+        place.Position += new Vector3(1.5f, 0, 0.5f);
+        _builder.Run(0.1f);
+
+        bool talking = _builder.Click("Innkeeper", () => _builder.Dialogue.IsInConversation);
+
+        talking.Should().BeTrue();
     }
 }

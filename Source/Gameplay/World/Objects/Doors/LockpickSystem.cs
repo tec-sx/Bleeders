@@ -10,7 +10,9 @@ using FlickerVoid.Engine.Interaction.Toggles;
 using FlickerVoid.Engine.Runtime.Data;
 using FlickerVoid.Engine.Runtime.Entities;
 using FlickerVoid.Engine.Runtime.Events;
+using FlickerVoid.Engine.Runtime.Loop;
 using FlickerVoid.Engine.Runtime.Services;
+using Bleeders.Gameplay.Serialization;
 
 namespace Bleeders.Gameplay.World.Objects.Doors;
 
@@ -19,7 +21,8 @@ using World = Arch.Core.World;
 /// <summary>
 /// The lockpick ability, in place of the Unreal lockpick minigame: a pickable lock that a key didn't open is picked by whoever was
 /// blocked when they can use <c>Ability.Lockpick</c> (carrying a lockpick); the ability rolls the lockpick check against the lock's
-/// difficulty, and a success opens the lock and lets the toggle go ahead, while a failure cancels it.
+/// difficulty, and a success opens the lock and lets the toggle go ahead, while a failure cancels it and the lock, remembering the
+/// picker's bonus (<see cref="FailedPick"/>, saved), is not tried again until a picker brings a higher one.
 /// </summary>
 public sealed class LockpickSystem
 {
@@ -38,16 +41,18 @@ public sealed class LockpickSystem
     private readonly IServiceRegistry _services;
     private readonly Dictionary<Entity, bool> _opening = [];
 
-    public LockpickSystem(World world, EventBus events, AbilitySystem abilities, CheckSystem checks, IFactDatabase facts, IServiceRegistry services)
+    public LockpickSystem(Game game, AbilitySystem abilities, CheckSystem checks)
     {
-        _world = world;
-        _events = events;
+        _world = game.World;
+        _events = game.Events;
         _abilities = abilities;
         _checks = checks;
-        _facts = facts;
-        _services = services;
-        events.Handle((in ToggleBlockedEvent blocked) => TryPick(blocked));
-        events.Handle((in AbilityActivatedEvent activated) => Pick(activated));
+        _facts = game.Facts;
+        _services = game.Services;
+        ArrayRegistry.Add<FailedPick>();
+        game.Events.Handle((in ToggleBlockedEvent blocked) => TryPick(blocked));
+        game.Events.Handle((in AbilityActivatedEvent activated) => Pick(activated));
+        game.SaveStates.AddComponent("failedPick", BleedersJsonContext.Default.FailedPick);
     }
 
     /// <summary>The check's difficulty for a lock of difficulty 0 to 1.</summary>
@@ -61,7 +66,7 @@ public sealed class LockpickSystem
             return;
         }
 
-        if (!_abilities.CanActivate(blocked.Instigator, Ability, out _, door))
+        if (!_abilities.CanActivate(blocked.Instigator, Ability, out _, door) || !IsBetterThanLastFailure(blocked.Instigator, door, target))
         {
             return;
         }
@@ -86,14 +91,23 @@ public sealed class LockpickSystem
             return;
         }
 
-        WorldEntityView pickerView = new(_world, picker);
-        WorldEntityView doorView = new(_world, door);
-        ConditionContext context = new(_facts) { Instigator = pickerView, Target = doorView, Services = _services };
+        ConditionContext context = CreateContext(picker, door);
         int difficulty = GetDifficulty(target);
+        CheckResult bonus = _checks.Preview(check, context, difficulty);
         CheckResult result = _checks.Roll(check, context, difficulty);
         _events.Send(new LockpickedEvent(picker, door, result));
         if (!result.Success)
         {
+            FailedPick failed = new() { Bonus = bonus.Total };
+            if (_world.Has<FailedPick>(door))
+            {
+                _world.Set(door, failed);
+            }
+            else
+            {
+                _world.Add(door, failed);
+            }
+
             _abilities.Cancel(picker, Ability);
             return;
         }
@@ -101,6 +115,33 @@ public sealed class LockpickSystem
         _opening.Remove(picker, out bool opening);
         DoorLocks.Unlock(_world, _events, door, picker, opening);
         _abilities.End(picker, Ability);
+    }
+
+    /// <summary>Whether the picker's bonus is higher than when the lock last beat a pick, or it never did.</summary>
+    private bool IsBetterThanLastFailure(Entity picker, Entity door, Lockable target)
+    {
+        if (!_world.TryGet(door, out FailedPick failed))
+        {
+            return true;
+        }
+
+        CheckDefinition? check = LoadCheck();
+        if (check is null)
+        {
+            return false;
+        }
+
+        ConditionContext context = CreateContext(picker, door);
+        int difficulty = GetDifficulty(target);
+        CheckResult bonus = _checks.Preview(check, context, difficulty);
+        return bonus.Total > failed.Bonus;
+    }
+
+    private ConditionContext CreateContext(Entity picker, Entity door)
+    {
+        WorldEntityView pickerView = new(_world, picker);
+        WorldEntityView doorView = new(_world, door);
+        return new ConditionContext(_facts) { Instigator = pickerView, Target = doorView, Services = _services };
     }
 
     private CheckDefinition? LoadCheck()

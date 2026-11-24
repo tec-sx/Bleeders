@@ -1,5 +1,5 @@
 {
   "$schema": "../.schemas/canvas.schema.json",
-  "image": "Canvas_01.jpg",
+  "image": "Canvases/Canvas_01.png",
   "tiling": 1
 }

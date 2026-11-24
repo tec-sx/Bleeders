@@ -12,6 +12,12 @@
     { "id": "Input.Scan", "bindings": [ { "button": "Right" } ] },
     { "id": "Input.QuickSave", "bindings": [ { "key": "F5" } ] },
     { "id": "Input.QuickLoad", "bindings": [ { "key": "F9" } ] },
-    { "id": "Input.Skip", "bindings": [ { "key": "Space" } ] }
+    { "id": "Input.Skip", "bindings": [ { "key": "Space" } ] },
+    { "id": "Input.Back", "bindings": [ { "key": "Escape" } ] }
+  ],
+  "contexts": [
+    { "id": "Input.Context.Conversation", "actions": [ "Input.Back" ] },
+    { "id": "Input.Context.Hub", "actions": [ "Input.Hub", "Input.NextPage", "Input.PreviousPage", "Input.Back" ] },
+    { "id": "Input.Context.Cutscene", "actions": [ "Input.Skip", "Input.Back" ] }
   ]
 }

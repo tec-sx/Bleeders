@@ -28,9 +28,10 @@ using Silk.NET.Maths;
 namespace Bleeders.Gameplay.Tests.Story;
 
 /// <summary>
-/// Plays Bleeders' main scene from the project's own content, as the launcher does without drawing: a 100 by 100 pixel window
-/// with the mouse in its centre, clicks made by moving the live camera's drawn view straight over what is clicked, and saves in a temporary folder.
-/// It can start the game again over the same saves, as a player restarting it.
+/// Plays Bleeders' main scene from the project's own content, as the launcher does without drawing: travelling to it, a 100 by 100
+/// pixel window with the mouse in its centre and no key down, read through the game's controls, clicks made by moving the live
+/// camera's drawn view straight over what is clicked, and saves in a temporary folder. It can start the game again over the same
+/// saves, as a player restarting it.
 /// </summary>
 internal sealed class StoryLoopTestsBuilder : IDisposable
 {
@@ -50,6 +51,8 @@ internal sealed class StoryLoopTestsBuilder : IDisposable
     public MapSystem Maps => Game.Services.GetService<MapSystem>()!;
 
     public SaveSystem Saves => Game.Services.GetService<SaveSystem>()!;
+
+    public InputActions Input => Game.Services.GetService<InputActions>()!;
 
     public Entity Fox => Find("Fox");
 
@@ -74,11 +77,14 @@ internal sealed class StoryLoopTestsBuilder : IDisposable
         FlowGraphs graphs = new(content, Game.Data);
         Game.Services.AddService(graphs);
         Game.AddSaves(new SaveSettings { Folder = _saves });
+        Game.AddInput();
+        InputActions actions = Game.AddInputActions(input);
         GameplayModule gameplay = new();
         gameplay.Add(Game);
+        actions.Map = _data.Load<InputMap>("Input/Controls.fvdata");
         SceneLoader scenes = new(Game.Spawner, content, Game.World, NullLogger<SceneLoader>.Instance);
-        scenes.Load("Scenes/Main.fvscene");
-        Game.Lifecycle.Play(Game.World);
+        SceneTravel travel = Game.AddSceneTravel(scenes);
+        travel.Travel("Scenes/Main.fvscene");
         Run(0.1f);
         return this;
     }

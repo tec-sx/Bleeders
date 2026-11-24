@@ -17,7 +17,7 @@ using Bleeders.Launcher;
 
 using Microsoft.Extensions.Logging;
 
-// Runs the game in a window on its startup scene, with its interface over it; Escape closes it, F5 saves to the quick slot and F9 loads it. "--scene <file>" runs another scene (the editor's Play does),
+// Runs the game in a window on its startup scene, with its interface over it; Escape closes the hub, else the game, F5 saves to the quick slot and F9 loads it. "--scene <file>" runs another scene (the editor's Play does),
 // "--mood <file>" lights it with a lighting mood, "--frames <count>" closes it after that many frames, "--saves <folder>" keeps save slots there,
 // "--validation" checks Vulkan calls and "--debug" starts with the debug interface shown (F1 toggles it; its Game menu has the Story and Rules panels).
 HostOptions options;
@@ -38,12 +38,13 @@ gameplay.Add(host.Game);
 InterfaceModule ui = new();
 ui.Add(host.Game);
 host.Input.Map = host.Data.Load<InputMap>("Input/Controls.fvdata");
-_ = new QuickSaves(host.Game.Events, host.Saves);
-host.Start(CreateOverlays);
+_ = new QuickSaves(host.Game, host.Saves);
+SceneRenderSystem renderer = host.Start(CreateOverlays);
+renderer.CloseOnEscape = false;
 host.Run();
 return 0;
 
-// The game's interface, with the debug interface over it; clicks on either never reach the world.
+// The game's interface, with the debug interface over it; clicks on either never reach the world, nor keys typed into the debug interface.
 FrameOverlays CreateOverlays(PixelFormat format, SceneRenderer renderer)
 {
     UiPlatform.Start<InterfaceApplication>();
@@ -54,6 +55,7 @@ FrameOverlays CreateOverlays(PixelFormat format, SceneRenderer renderer)
     DebugUi debugUi = CreateDebugUi(format, renderer);
     host.Input.PointerCaptures.Add(gameUi);
     host.Input.PointerCaptures.Add(debugUi);
+    host.Input.KeyboardCaptures.Add(debugUi);
     return new FrameOverlays([gameUi, debugUi]);
 }
 

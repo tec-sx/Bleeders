@@ -6,6 +6,7 @@ using Avalonia.Controls;
 using FlickerVoid.Engine.Gameplay.Tags;
 using FlickerVoid.Engine.Physics;
 using FlickerVoid.Engine.Platform.Input;
+using FlickerVoid.Engine.Platform.Windowing;
 using FlickerVoid.Engine.Runtime.Loop;
 using Bleeders.Gameplay.Protagonist.Control;
 using Bleeders.Interface.Hub;
@@ -15,23 +16,26 @@ namespace Bleeders.Interface;
 
 /// <summary>
 /// Bleeders' interface over a game: the HUD, and the hub over it while open, with a frame system that opens and closes the hub
-/// (Hub toggles it, Next and Previous Page switch pages), shows the prompt for what the pointer is over and turns the
-/// minimap. Draw <see cref="View"/> with the engine's <c>GameUi</c>.
+/// (Hub toggles it, Next and Previous Page switch pages, Back closes it and otherwise the game's window), shows the prompt for what
+/// the pointer is over and turns the minimap. Draw <see cref="View"/> with the engine's <c>GameUi</c>.
 /// </summary>
 public sealed class GameInterface : ISystem<GameTime>
 {
     public static readonly Tag HubInput = new("Input.Hub");
     public static readonly Tag NextPageInput = new("Input.NextPage");
     public static readonly Tag PreviousPageInput = new("Input.PreviousPage");
+    public static readonly Tag BackInput = new("Input.Back");
 
     private readonly PointerPicker? _picker;
     private readonly InputActions? _actions;
+    private readonly IGameWindow? _window;
     private readonly HudView _hudView;
 
     public GameInterface(Game game)
     {
         _picker = game.Services.GetService<PointerPicker>();
         _actions = game.Services.GetService<InputActions>();
+        _window = game.Services.GetService<IGameWindow>();
 
         Hud = new HudViewModel(game);
         Hub = new HubViewModel(game);
@@ -56,7 +60,7 @@ public sealed class GameInterface : ISystem<GameTime>
 
     public void Update(in GameTime t)
     {
-        ReadHubInput();
+        ReadInput();
         _hudView.IsVisible = !Hub.IsOpen;
         Entity hovered = Entity.Null;
         if (_picker is not null && _picker.TryPick(out RayHit hit))
@@ -74,14 +78,18 @@ public sealed class GameInterface : ISystem<GameTime>
         Hud.Minimap.Update();
     }
 
-    private void ReadHubInput()
+    private void ReadInput()
     {
         if (_actions is null)
         {
             return;
         }
 
-        if (_actions.WasPressed(HubInput))
+        if (_actions.WasPressed(BackInput))
+        {
+            GoBack();
+        }
+        else if (_actions.WasPressed(HubInput))
         {
             Hub.Toggle();
         }
@@ -92,6 +100,19 @@ public sealed class GameInterface : ISystem<GameTime>
         else if (Hub.IsOpen && _actions.WasPressed(PreviousPageInput))
         {
             Hub.PreviousPageCommand.Execute(null);
+        }
+    }
+
+    /// <summary>Closes the hub when it is open, and otherwise the game's window, as there is no menu to go back to yet.</summary>
+    private void GoBack()
+    {
+        if (Hub.IsOpen)
+        {
+            Hub.Close();
+        }
+        else
+        {
+            _window?.Close();
         }
     }
 
