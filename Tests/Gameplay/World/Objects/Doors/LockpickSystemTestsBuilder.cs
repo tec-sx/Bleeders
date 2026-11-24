@@ -2,8 +2,10 @@ using System.Text.Json;
 
 using Arch.Core;
 
+using FlickerVoid.Engine.Attributes.Values;
 using FlickerVoid.Engine.Flow;
 using FlickerVoid.Engine.Flow.Graphs;
+using FlickerVoid.Engine.Gameplay.Tags;
 using FlickerVoid.Engine.Interaction.Toggles;
 using FlickerVoid.Engine.Runtime.Content;
 using FlickerVoid.Engine.Runtime.Data;
@@ -21,6 +23,8 @@ namespace Bleeders.Gameplay.Tests.World.Objects.Doors;
 /// </summary>
 internal sealed class LockpickSystemTestsBuilder : IDisposable
 {
+    private static readonly Tag Perception = new("Attribute.Skill.Perception");
+
     private readonly string _folder;
     private DataAssets? _data;
 
@@ -72,6 +76,14 @@ internal sealed class LockpickSystemTestsBuilder : IDisposable
         IReadOnlyList<Entity> spawned = Game.Spawner.Spawn(scene, Game.World);
         Hero = spawned[0];
         Door = spawned[1];
+        return this;
+    }
+
+    /// <summary>Sets the hero's Perception, as raising the skill would.</summary>
+    public LockpickSystemTestsBuilder WithPerception(int value)
+    {
+        AttributeSystem attributes = Game.Services.GetService<AttributeSystem>()!;
+        attributes.SetBaseValue(Hero, Perception, value);
         return this;
     }
 

@@ -69,7 +69,7 @@ public sealed class GameplayModule : IGameModule
         // Keys hear a blocked door before lockpicks, and both before the door rattles.
         _ = new KeySystem(game.World, game.Events, inventories);
         CheckSystem checks = game.Services.GetService<CheckSystem>()!;
-        _ = new LockpickSystem(game.World, game.Events, abilities, checks, game.Facts, game.Services);
+        _ = new LockpickSystem(game, abilities, checks);
         DoorSwingSystem doors = new(game);
         game.FixedSystems.Add(doors);
         InteractableHighlightSystem highlights = new(game.World);
