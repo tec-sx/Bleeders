@@ -3,6 +3,7 @@ using System.Numerics;
 using Arch.Core;
 using Arch.System;
 
+using FlickerVoid.Engine.Gameplay.Tags;
 using FlickerVoid.Engine.Interaction.Interactables;
 using FlickerVoid.Engine.Interaction.Interactors;
 using FlickerVoid.Engine.Rendering.Outlines;
@@ -13,9 +14,15 @@ namespace Bleeders.Gameplay.Protagonist.Control;
 
 using World = Arch.Core.World;
 
-/// <summary>Outlines the interactables an <see cref="InteractableHighlight"/>'s interactor could use within its range, and takes the outline off the rest.</summary>
+/// <summary>
+/// Outlines the interactables an <see cref="InteractableHighlight"/>'s interactor could use within its range and takes the outline off the
+/// rest, as an outline request (<see cref="Source"/>), so an interactable's own outline comes back and other requests can outrank it.
+/// </summary>
 public sealed class InteractableHighlightSystem : BaseSystem<World, GameTime>
 {
+    /// <summary>The source of the highlight's outline requests.</summary>
+    public static readonly Tag Source = new("Outline.Highlight");
+
     private static readonly QueryDescription Highlighters = new QueryDescription().WithAll<InteractableHighlight, Interactor, Transform>();
     private static readonly QueryDescription Interactables = new QueryDescription().WithAll<ActiveInteractable, Transform>();
 
@@ -47,26 +54,25 @@ public sealed class InteractableHighlightSystem : BaseSystem<World, GameTime>
             bool usable = found && active.CanInteract && active.Definition.Accepts(interactor.Kind);
             float distance = Vector3.DistanceSquared(origin.Position, transform.Position);
             bool lit = usable && distance <= reach;
-            bool outlined = World.Has<Outline>(entity);
-            if (lit && !outlined)
+            bool requested = OutlineRequests.IsRequested(World, entity, Source);
+            if (lit && !requested)
             {
                 _lit.Add(entity);
             }
-            else if (!lit && outlined)
+            else if (!lit && requested)
             {
                 _unlit.Add(entity);
             }
         });
 
-        Outline outline = new() { Color = highlight.Color };
         foreach (Entity entity in _lit)
         {
-            World.Add(entity, outline);
+            OutlineRequests.Request(World, entity, Source, highlight.Color);
         }
 
         foreach (Entity entity in _unlit)
         {
-            World.Remove<Outline>(entity);
+            OutlineRequests.Withdraw(World, entity, Source);
         }
 
         _lit.Clear();

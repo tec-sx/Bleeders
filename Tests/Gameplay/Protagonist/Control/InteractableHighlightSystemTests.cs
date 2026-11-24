@@ -63,6 +63,24 @@ public sealed class InteractableHighlightSystemTests : IDisposable
     }
 
     [Fact]
+    public void GivesAnInteractableItsOwnOutlineBackWhenTheProtagonistWalksAway()
+    {
+        _builder.Build();
+        Entity lever = _builder.SpawnInteractable(new Vector3(1, 0, 0));
+        Outline own = new() { Color = new Vector3(0, 0, 1) };
+        _builder.Game.World.Add(lever, own);
+        Entity fox = _builder.Spawn(Fox);
+        _builder.Run();
+        Vector3 near = _builder.Game.World.Get<Outline>(lever).Color;
+
+        _builder.Game.World.Get<Transform>(fox).Position = new Vector3(-5, 0, 0);
+        _builder.Run();
+
+        near.Should().Be(new Vector3(1, 0.5f, 0));
+        _builder.Game.World.Get<Outline>(lever).Color.Should().Be(new Vector3(0, 0, 1));
+    }
+
+    [Fact]
     public void LeavesInteractablesThatCantBeUsedUnlined()
     {
         _builder.Build();
