@@ -2,10 +2,7 @@
   "type": "object",
   "properties": {
     "$schema": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "string"
     },
     "nodes": {
       "type": "array",
@@ -436,6 +433,20 @@
                         {
                           "properties": {
                             "$type": {
+                              "const": "travel"
+                            },
+                            "scene": {
+                              "type": "string"
+                            },
+                            "entry": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
                               "const": "cutToShot"
                             },
                             "shot": {
@@ -804,6 +815,29 @@
                   }
                 },
                 "additionalProperties": false
+              },
+              "id": {
+                "type": "string"
+              },
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "properties": {
+              "$type": {
+                "const": "travel"
+              },
+              "scene": {
+                "type": "string"
+              },
+              "entry": {
+                "type": "string"
               },
               "id": {
                 "type": "string"

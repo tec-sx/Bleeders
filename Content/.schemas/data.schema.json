@@ -180,6 +180,21 @@
             "additionalProperties": false
           }
         },
+        "contexts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "actions": {
+                "type": "array"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
         "$schema": {
           "type": "string"
         },
@@ -703,6 +718,20 @@
                             },
                             "value": {
                               "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
+                              "const": "travel"
+                            },
+                            "scene": {
+                              "type": "string"
+                            },
+                            "entry": {
+                              "type": "string"
                             }
                           },
                           "additionalProperties": false
@@ -2018,6 +2047,20 @@
                   {
                     "properties": {
                       "$type": {
+                        "const": "travel"
+                      },
+                      "scene": {
+                        "type": "string"
+                      },
+                      "entry": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "$type": {
                         "const": "cutToShot"
                       },
                       "shot": {
@@ -2902,6 +2945,20 @@
                                 },
                                 "value": {
                                   "type": "integer"
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            {
+                              "properties": {
+                                "$type": {
+                                  "const": "travel"
+                                },
+                                "scene": {
+                                  "type": "string"
+                                },
+                                "entry": {
+                                  "type": "string"
                                 }
                               },
                               "additionalProperties": false
@@ -4219,6 +4276,20 @@
                   {
                     "properties": {
                       "$type": {
+                        "const": "travel"
+                      },
+                      "scene": {
+                        "type": "string"
+                      },
+                      "entry": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "$type": {
                         "const": "cutToShot"
                       },
                       "shot": {
@@ -4645,6 +4716,20 @@
                       },
                       "value": {
                         "type": "integer"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "$type": {
+                        "const": "travel"
+                      },
+                      "scene": {
+                        "type": "string"
+                      },
+                      "entry": {
+                        "type": "string"
                       }
                     },
                     "additionalProperties": false
@@ -5419,6 +5504,20 @@
                       },
                       "value": {
                         "type": "integer"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "$type": {
+                        "const": "travel"
+                      },
+                      "scene": {
+                        "type": "string"
+                      },
+                      "entry": {
+                        "type": "string"
                       }
                     },
                     "additionalProperties": false
@@ -6637,6 +6736,20 @@
                                 },
                                 "value": {
                                   "type": "integer"
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            {
+                              "properties": {
+                                "$type": {
+                                  "const": "travel"
+                                },
+                                "scene": {
+                                  "type": "string"
+                                },
+                                "entry": {
+                                  "type": "string"
                                 }
                               },
                               "additionalProperties": false

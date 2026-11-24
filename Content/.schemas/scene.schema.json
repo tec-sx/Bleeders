@@ -63,6 +63,39 @@
                 },
                 "additionalProperties": false
               },
+              "greybox": {
+                "type": "object",
+                "properties": {
+                  "size": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "solid": {
+                    "type": "boolean"
+                  },
+                  "swaps": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "swap": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "traveller": {
+                "type": "object",
+                "additionalProperties": false
+              },
               "camera": {
                 "type": "object",
                 "properties": {
@@ -239,6 +272,122 @@
                 },
                 "additionalProperties": false
               },
+              "mainCamera": {
+                "type": "object",
+                "properties": {
+                  "nearStart": {
+                    "type": "number"
+                  },
+                  "nearEnd": {
+                    "type": "number"
+                  },
+                  "nearAmount": {
+                    "type": "number"
+                  },
+                  "farStart": {
+                    "type": "number"
+                  },
+                  "farEnd": {
+                    "type": "number"
+                  },
+                  "farAmount": {
+                    "type": "number"
+                  },
+                  "farColor": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  }
+                },
+                "additionalProperties": false
+              },
+              "depthFadeOverride": {
+                "type": "object",
+                "properties": {
+                  "overrideNear": {
+                    "type": "boolean"
+                  },
+                  "nearStart": {
+                    "type": "number"
+                  },
+                  "nearEnd": {
+                    "type": "number"
+                  },
+                  "nearAmount": {
+                    "type": "number"
+                  },
+                  "overrideFar": {
+                    "type": "boolean"
+                  },
+                  "farStart": {
+                    "type": "number"
+                  },
+                  "farEnd": {
+                    "type": "number"
+                  },
+                  "farAmount": {
+                    "type": "number"
+                  },
+                  "farColor": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  }
+                },
+                "additionalProperties": false
+              },
+              "indoorVolume": {
+                "type": "object",
+                "properties": {
+                  "size": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "ambient": {
+                    "type": "number"
+                  },
+                  "outsideMuted": {
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "uncut": {
+                "type": "object",
+                "additionalProperties": false
+              },
+              "doorway": {
+                "type": "object",
+                "properties": {
+                  "size": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "color": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  }
+                },
+                "additionalProperties": false
+              },
               "rigidBody": {
                 "type": "object",
                 "properties": {
@@ -319,6 +468,9 @@
                     "type": "number"
                   },
                   "kinematic": {
+                    "type": "boolean"
+                  },
+                  "obstacle": {
                     "type": "boolean"
                   }
                 },
@@ -402,6 +554,9 @@
                         "additionalProperties": false
                       }
                     ]
+                  },
+                  "obstacle": {
+                    "type": "boolean"
                   }
                 },
                 "required": [
@@ -579,8 +734,47 @@
                   "on": {
                     "enum": [
                       "Enter",
-                      "Exit"
+                      "Exit",
+                      "Both"
                     ]
+                  },
+                  "exitShot": {
+                    "type": "string"
+                  },
+                  "exitTransition": {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "enum": [
+                          "Cut",
+                          "CrossFade",
+                          "Fade",
+                          "Blend"
+                        ]
+                      },
+                      "duration": {
+                        "type": "number"
+                      },
+                      "inDuration": {
+                        "type": "number"
+                      },
+                      "color": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "ease": {
+                        "enum": [
+                          "Linear",
+                          "EaseIn",
+                          "EaseOut",
+                          "EaseInOut"
+                        ]
+                      }
+                    }
                   },
                   "play": {
                     "type": "boolean"
@@ -644,6 +838,9 @@
                     "type": "number"
                   },
                   "eyeHeight": {
+                    "type": "number"
+                  },
+                  "sightInterval": {
                     "type": "number"
                   },
                   "hearingRange": {
