@@ -66,7 +66,7 @@ internal sealed class ResidentSystemTestsBuilder : IDisposable
         Spawn(Floor);
         string resident = $$"""
             { "name": "Innkeeper", "components": { "transform": {}, "characterMover": {}, "perception": { "sightAngle": 180 },
-              "resident": { "wanderRadius": {{wanderRadius}}, "rest": {{rest}} },
+              "resident": { "wanderRadius": {{wanderRadius}}, "restSeconds": {{rest}} },
               "dialogueParticipant": { "speaker": "Character.Innkeeper", "dialogue": "Greeting.fvflow" } } }
             """;
         Resident = Spawn(resident);

@@ -1,4 +1,5 @@
 {
   "game": "Source/Launcher/Bleeders.Launcher.csproj",
-  "startupScene": "Scenes/Main.fvscene"
+  "startupScene": "Scenes/Main.fvscene",
+  "splash": "Splash.jpg"
 }
