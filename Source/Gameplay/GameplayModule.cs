@@ -39,7 +39,8 @@ namespace Bleeders.Gameplay;
 /// <summary>
 /// Bleeders' gameplay: physics, point and click characters, directed cameras, interaction, attributes and abilities, possessions, quests and knowledge for the protagonist,
 /// conversations, doors that keys open and lockpicks pick, residents who wander, watch and listen, maps with their markers, and outlines on what the
-/// protagonist can use nearby; the click control, the camera control and the scanner only where there is a window to click in.
+/// protagonist can use nearby; the input contexts of conversations and cutscenes and the walk control where input is read, and the
+/// click control, the camera control and the scanner only where there is a window to click in.
 /// </summary>
 public sealed class GameplayModule : IGameModule
 {
@@ -96,6 +97,8 @@ public sealed class GameplayModule : IGameModule
         InputActions? actions = game.Services.GetService<InputActions>();
         if (actions is not null)
         {
+            InputContextSystem contexts = new(game.World, actions, dialogue, cameras);
+            game.FrameSystems.Add(contexts);
             WalkControlSystem walk = new(game.World, game.Events, actions, dialogue);
             game.FrameSystems.Add(walk);
         }

@@ -3,6 +3,8 @@ using Arch.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
+using FlickerVoid.Engine.Gameplay.Tags;
+using FlickerVoid.Engine.Platform.Input;
 using FlickerVoid.Engine.Runtime.Loop;
 using Bleeders.Interface.Hub.Character;
 using Bleeders.Interface.Hub.Inventory;
@@ -12,19 +14,29 @@ namespace Bleeders.Interface.Hub;
 
 /// <summary>
 /// The hub menu over the game: three pages (Inventory, Character, Journal) of the protagonist, one shown at a time, switched in a
-/// ring and reopened on the page last shown.
+/// ring and reopened on the page last shown. While open it holds the game paused and its own input context, so only its actions are read.
 /// </summary>
 public sealed partial class HubViewModel : ObservableObject
 {
+    /// <summary>The reason the hub holds the game paused.</summary>
+    public static readonly Tag PauseReason = new("Pause.Hub");
+
+    /// <summary>The input context the hub holds while open: Hub, Next and Previous Page, and Back.</summary>
+    public static readonly Tag InputContext = new("Input.Context.Hub");
+
     private static readonly QueryDescription Protagonists = new QueryDescription().WithAll<Gameplay.Protagonist.Protagonist>();
 
+    private readonly Game _game;
     private readonly World _world;
+    private readonly InputActions? _actions;
     private readonly List<HubPageViewModel> _pages;
     private int _selectedIndex;
 
     public HubViewModel(Game game)
     {
+        _game = game;
         _world = game.World;
+        _actions = game.Services.GetService<InputActions>();
         Inventory = new InventoryPageViewModel(game);
         Character = new CharacterPageViewModel(game);
         Journal = new JournalPageViewModel(game);
@@ -66,6 +78,8 @@ public sealed partial class HubViewModel : ObservableObject
     public void Open()
     {
         IsOpen = true;
+        _game.Pause(PauseReason);
+        _actions?.Enter(InputContext);
         Select(_selectedIndex);
     }
 
@@ -73,6 +87,8 @@ public sealed partial class HubViewModel : ObservableObject
     public void Close()
     {
         IsOpen = false;
+        _game.Resume(PauseReason);
+        _actions?.Leave(InputContext);
         SelectedPage.Hide();
     }
 

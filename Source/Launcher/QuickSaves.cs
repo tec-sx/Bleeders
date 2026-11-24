@@ -1,11 +1,14 @@
 using FlickerVoid.Engine.Gameplay.Tags;
 using FlickerVoid.Engine.Platform.Input;
-using FlickerVoid.Engine.Runtime.Events;
+using FlickerVoid.Engine.Runtime.Loop;
 using FlickerVoid.Engine.Runtime.Saves;
 
 namespace Bleeders.Launcher;
 
-/// <summary>Saves the game to the quick slot on <see cref="QuickSave"/> (F5) and loads it back on <see cref="QuickLoad"/> (F9).</summary>
+/// <summary>
+/// Saves the game to the quick slot on <see cref="QuickSave"/> (F5) and loads it back on <see cref="QuickLoad"/> (F9), before the next
+/// tick, as loading spawns the saved scene anew while the input's handlers are still running.
+/// </summary>
 public sealed class QuickSaves
 {
     public const string Slot = "Quick";
@@ -14,12 +17,14 @@ public sealed class QuickSaves
 
     public static readonly Tag QuickLoad = new("Input.QuickLoad");
 
+    private readonly Game _game;
     private readonly SaveSystem _saves;
 
-    public QuickSaves(EventBus events, SaveSystem saves)
+    public QuickSaves(Game game, SaveSystem saves)
     {
+        _game = game;
         _saves = saves;
-        events.Handle((in InputActionEvent action) => Handle(action));
+        game.Events.Handle((in InputActionEvent action) => Handle(action));
     }
 
     private void Handle(in InputActionEvent action)
@@ -35,7 +40,7 @@ public sealed class QuickSaves
         }
         else if (action.Action == QuickLoad)
         {
-            _saves.Load(Slot);
+            _game.Defer(() => _saves.Load(Slot));
         }
     }
 }
