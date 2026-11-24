@@ -79,7 +79,7 @@ public sealed class GameplayModule : IGameModule
 
         game.Spawner.Register("resident", BleedersJsonContext.Default.Resident);
         PerceptionSystem perception = game.Services.GetService<PerceptionSystem>()!;
-        ResidentSystem residents = new(game, paths, perception, dialogue, Random.Shared);
+        ResidentSystem residents = new(game, paths, perception, dialogue, game.Random);
         game.FixedSystems.Add(residents);
 
         IGameWindow? window = game.Services.GetService<IGameWindow>();
