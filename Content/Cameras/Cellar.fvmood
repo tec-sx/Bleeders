@@ -1,0 +1,7 @@
+// The low shot at the cellar door: the foreground darkens sooner and more.
+{
+  "$schema": "../.schemas/mood.schema.json",
+  "depthNearStart": 0.3,
+  "depthNearEnd": 1.5,
+  "depthNearAmount": 0.5
+}
