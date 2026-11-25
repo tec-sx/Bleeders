@@ -6,6 +6,7 @@ using FlickerVoid.Engine.Graphics.Textures;
 using FlickerVoid.Engine.Hosting;
 using FlickerVoid.Engine.Platform.Input;
 using FlickerVoid.Engine.Rendering;
+using FlickerVoid.Engine.Rendering.Pipeline;
 using FlickerVoid.Engine.Story.Knowledge;
 using FlickerVoid.Engine.Story.Quests;
 using FlickerVoid.Engine.Ui;
@@ -64,7 +65,8 @@ DebugUi CreateDebugUi(PixelFormat format, SceneRenderer renderer)
     string settings = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FlickerVoid", "Bleeders");
     DebugUi ui = new(host.Device, host.Window, format, settings);
     ui.AddEngineWindows(host.Game, host.Device);
-    ui.AddRenderingWindows(renderer, host.Game.World);
+    RenderingSettings renderingSettings = host.Game.Services.GetService<RenderingSettings>()!;
+    ui.AddRenderingWindows(renderer, host.Game.World, renderingSettings);
     DialogueSystem dialogue = host.Game.Services.GetService<DialogueSystem>()!;
     QuestSystem quests = host.Game.Services.GetService<QuestSystem>()!;
     KnowledgeSystem knowledge = host.Game.Services.GetService<KnowledgeSystem>()!;
