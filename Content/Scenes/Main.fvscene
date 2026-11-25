@@ -92,6 +92,6 @@
     {"name":"Shack Entrance","folder":"Doorways","components":{"transform":{"position":[-14,0,3.1]},"doorway":{"size":[1.2,2.2,0.3]}}},
     {"name":"Cellar Stairs Top","folder":"Doorways","components":{"transform":{"position":[-15.5,0,2.2]},"doorway":{"size":[1,2.2,0.3]}}},
     {"name":"Cellar Stairs Bottom","folder":"Doorways","components":{"transform":{"position":[-15.5,-3,-2.2]},"doorway":{"size":[1,2.2,0.3]}}},
-    {"name":"SimpleCar","components":{"transform":{"position":[2.8885436,-0.019999504,9.199311],"rotation":[0,0.50053906,0,0.865714],"scale":[1,1,1]},"vehicle":{"file":"SimpleCar.fvvehicle"}}}
+    {"name":"SimpleCar","components":{"transform":{"position":[2.8885436,-0.019999504,10.400881],"rotation":[0,0.55569565,0,0.83138585],"scale":[1,1,1]},"vehicle":{"file":"SimpleCar.fvvehicle"}}}
   ]
 }
