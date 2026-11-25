@@ -82,6 +82,32 @@
         "string",
         "null"
       ]
+    },
+    "depthNearStart": {
+      "type": "number"
+    },
+    "depthNearEnd": {
+      "type": "number"
+    },
+    "depthNearAmount": {
+      "type": "number"
+    },
+    "depthFarStart": {
+      "type": "number"
+    },
+    "depthFarEnd": {
+      "type": "number"
+    },
+    "depthFarAmount": {
+      "type": "number"
+    },
+    "depthFarColor": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
     }
   },
   "additionalProperties": false

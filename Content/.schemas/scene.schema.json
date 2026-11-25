@@ -275,69 +275,8 @@
               "mainCamera": {
                 "type": "object",
                 "properties": {
-                  "nearStart": {
-                    "type": "number"
-                  },
-                  "nearEnd": {
-                    "type": "number"
-                  },
-                  "nearAmount": {
-                    "type": "number"
-                  },
-                  "farStart": {
-                    "type": "number"
-                  },
-                  "farEnd": {
-                    "type": "number"
-                  },
-                  "farAmount": {
-                    "type": "number"
-                  },
-                  "farColor": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "minItems": 3,
-                    "maxItems": 3
-                  }
-                },
-                "additionalProperties": false
-              },
-              "depthFadeOverride": {
-                "type": "object",
-                "properties": {
-                  "overrideNear": {
-                    "type": "boolean"
-                  },
-                  "nearStart": {
-                    "type": "number"
-                  },
-                  "nearEnd": {
-                    "type": "number"
-                  },
-                  "nearAmount": {
-                    "type": "number"
-                  },
-                  "overrideFar": {
-                    "type": "boolean"
-                  },
-                  "farStart": {
-                    "type": "number"
-                  },
-                  "farEnd": {
-                    "type": "number"
-                  },
-                  "farAmount": {
-                    "type": "number"
-                  },
-                  "farColor": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "minItems": 3,
-                    "maxItems": 3
+                  "lens": {
+                    "type": "string"
                   }
                 },
                 "additionalProperties": false
@@ -733,6 +672,9 @@
                   },
                   "skippable": {
                     "type": "boolean"
+                  },
+                  "mood": {
+                    "type": "string"
                   }
                 }
               },

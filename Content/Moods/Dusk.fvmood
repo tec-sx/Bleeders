@@ -19,7 +19,6 @@
   "ambientOcclusion": 1,
   "ambientOcclusionRadius": 0.3,
   "contactShadowLength": 0.1,
-  "bloom": 0,
   "exposure": 0.91,
   "contrast": 1.34,
   "saturation": 1,
@@ -27,8 +26,5 @@
     1.1,
     0.88,
     0.72
-  ],
-  "tonemapper": "Uncharted2",
-  "whitePoint": 11.2,
-  "canvas": "Canvases/LinenCanvas.fvcanvas"
+  ]
 }
