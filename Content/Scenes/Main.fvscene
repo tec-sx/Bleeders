@@ -1,7 +1,7 @@
 {
   "$schema": "../.schemas/scene.schema.json",
   "entities": [
-    {"name":"Camera","components":{"transform":{"position":[2.8941112,3.1921704,5.8076935],"rotation":[-0.25248268,0.21224332,0.056867763,0.9423223],"scale":[1,1,1]},"camera":{"projection":"Perspective","orthographicHeight":6.5,"fieldOfView":60,"nearPlane":0.1,"farPlane":100},"shot":{"start":true,"target":"Fox","rig":"Cameras/Room.fvdata"},"mainCamera":{"nearStart":1,"nearEnd":5,"nearAmount":0.3,"farStart":2,"farEnd":10,"farAmount":0.35,"farColor":[0.78,0.74,0.68]}}},
+    {"name":"Camera","components":{"transform":{"position":[2.8941112,3.1921704,5.8076935],"rotation":[-0.25248268,0.21224332,0.056867763,0.9423223],"scale":[1,1,1]},"camera":{"projection":"Perspective","orthographicHeight":6.5,"fieldOfView":60,"nearPlane":0.1,"farPlane":100},"shot":{"start":true,"target":"Fox","rig":"Cameras/Room.fvdata"},"mainCamera":{"nearStart":11.35,"nearEnd":12.85,"nearAmount":0.3,"farStart":9.9,"farEnd":20.4,"farAmount":0.38,"farColor":[0.78,0.74,0.68]}}},
     {"name":"Mood","components":{"transform":{},"sceneMood":{"mood":"Moods/Dusk.fvmood"}}},
     {"name":"Room","components":{"transform":{"position":[0.108328104,0,0],"rotation":[0,0,0,1],"scale":[1,1,1]},"meshRenderer":{"mesh":"Room.glb","materials":["","Materials/WallAbandoned.fvmat"]},"staticBody":{"collider":{"type":"box","size":[8,0.2,8],"offset":[0,-0.1,0]}}}},
     {"name":"Fox","components":{"saveable":{"id":"Fox"},"transform":{"position":[3,0,0],"scale":[0.012,0.012,0.012]},"meshRenderer":{"mesh":"Fox.glb"},"meshAnimator":{"animation":"Walk"},"protagonist":{},"cameraTarget":{"height":0.4},"triggerActivator":{},"characterMover":{},"interactor":{"kind":"Interactor.Player","reach":1.6},"interactableHighlight":{"range":4},"inventory":{"items":[{"item":"Items/Cap.fvdata"}],"money":12},"equipment":{},"dialogueParticipant":{"speaker":"Character.Fox"},"attributes":{"values":[{"attribute":"Attribute.Skill.Perception","value":3},{"attribute":"Attribute.Skill.Stealth","value":4},{"attribute":"Attribute.Skill.Charisma","value":2},{"attribute":"Attribute.Physical.Health","value":100},{"attribute":"Attribute.Physical.Intoxication","value":0}]},"abilities":{"sets":["Abilities/Protagonist.fvdata"]},"perceivable":{},"navigator":{},"scanner":{}}},
@@ -91,6 +91,7 @@
     {"name":"House Stairs Top","folder":"Doorways","components":{"transform":{"position":[11.5,3.2,-2.5]},"doorway":{"size":[1,2.2,0.3]}}},
     {"name":"Shack Entrance","folder":"Doorways","components":{"transform":{"position":[-14,0,3.1]},"doorway":{"size":[1.2,2.2,0.3]}}},
     {"name":"Cellar Stairs Top","folder":"Doorways","components":{"transform":{"position":[-15.5,0,2.2]},"doorway":{"size":[1,2.2,0.3]}}},
-    {"name":"Cellar Stairs Bottom","folder":"Doorways","components":{"transform":{"position":[-15.5,-3,-2.2]},"doorway":{"size":[1,2.2,0.3]}}}
+    {"name":"Cellar Stairs Bottom","folder":"Doorways","components":{"transform":{"position":[-15.5,-3,-2.2]},"doorway":{"size":[1,2.2,0.3]}}},
+    {"name":"SimpleCar","components":{"transform":{"position":[2.8885436,-0.019999504,9.199311],"rotation":[0,0.50053906,0,0.865714],"scale":[1,1,1]},"vehicle":{"file":"SimpleCar.fvvehicle"}}}
   ]
 }

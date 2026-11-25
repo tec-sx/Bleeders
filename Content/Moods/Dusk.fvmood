@@ -5,9 +5,9 @@
     -0.25,
     -0.35
   ],
-  "ambient": 0.25,
+  "ambient": 0.025,
   "sunShadowDistance": 30,
-  "fogDensity": 0.15,
+  "fogDensity": 0.05,
   "fogColor": [
     1,
     0.75,
