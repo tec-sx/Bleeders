@@ -447,6 +447,50 @@
                     }
                   },
                   "additionalProperties": false
+                },
+                {
+                  "properties": {
+                    "type": {
+                      "const": "hull"
+                    },
+                    "points": {
+                      "type": "array"
+                    },
+                    "offset": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "properties": {
+                    "type": {
+                      "const": "triangles"
+                    },
+                    "positions": {
+                      "type": "array"
+                    },
+                    "indices": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      }
+                    },
+                    "offset": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "additionalProperties": false
                 }
               ]
             },
@@ -527,6 +571,50 @@
                     },
                     "length": {
                       "type": "number"
+                    },
+                    "offset": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "properties": {
+                    "type": {
+                      "const": "hull"
+                    },
+                    "points": {
+                      "type": "array"
+                    },
+                    "offset": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "properties": {
+                    "type": {
+                      "const": "triangles"
+                    },
+                    "positions": {
+                      "type": "array"
+                    },
+                    "indices": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      }
                     },
                     "offset": {
                       "type": "array",
@@ -1019,6 +1107,18 @@
               "type": "string"
             }
           }
+        },
+        "vehicle": {
+          "type": "object",
+          "properties": {
+            "file": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "file"
+          ],
+          "additionalProperties": false
         },
         "protagonist": {
           "type": "object"

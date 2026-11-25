@@ -27,6 +27,7 @@ using FlickerVoid.Engine.Runtime.Loop;
 using FlickerVoid.Engine.Story;
 using FlickerVoid.Engine.Story.Knowledge;
 using FlickerVoid.Engine.Story.Quests;
+using FlickerVoid.Engine.Vehicles;
 using Bleeders.Gameplay.Protagonist.Control;
 using Bleeders.Gameplay.Protagonist.Resources.Knowledge.Scanning;
 using Bleeders.Gameplay.Protagonist.Resources.Possessions;
@@ -38,7 +39,7 @@ namespace Bleeders.Gameplay;
 
 /// <summary>
 /// Bleeders' gameplay: physics, point and click characters, directed cameras, interaction, attributes and abilities, possessions, quests and knowledge for the protagonist,
-/// conversations, doors that keys open and lockpicks pick, residents who wander, watch and listen, maps with their markers, and outlines on what the
+/// conversations, vehicles built from their files, doors that keys open and lockpicks pick, residents who wander, watch and listen, maps with their markers, and outlines on what the
 /// protagonist can use nearby; the input contexts of conversations and cutscenes and the walk control where input is read, and the
 /// click control, the camera control and the scanner only where there is a window to click in.
 /// </summary>
@@ -57,6 +58,7 @@ public sealed class GameplayModule : IGameModule
         InventorySystem inventories = game.AddInventory(possessions);
         game.AddStory();
         DialogueSystem dialogue = game.AddDialogue();
+        game.AddVehicles();
         game.Spawner.Register("protagonist", BleedersJsonContext.Default.Protagonist);
         AddPlayer(game);
         game.Spawner.Register("doorSwing", BleedersJsonContext.Default.DoorSwing);
