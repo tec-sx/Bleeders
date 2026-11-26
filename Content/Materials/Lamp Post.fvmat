@@ -1,0 +1,8 @@
+// The street lamps' posts: the engine's painted metal in a dark green.
+{
+  "$schema": "../.schemas/material.schema.json",
+  "parent": "Engine/Rendering/Materials/Painted Metal.fvmat",
+  "parameters": {
+    "tint": [0.12, 0.2, 0.16]
+  }
+}

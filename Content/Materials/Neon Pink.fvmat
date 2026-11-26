@@ -1,0 +1,5 @@
+// The inn sign's pink neon: the engine's neon tube as it is.
+{
+  "$schema": "../.schemas/material.schema.json",
+  "parent": "Engine/Rendering/Materials/Neon Tube.fvmat"
+}

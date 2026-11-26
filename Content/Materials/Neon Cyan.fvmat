@@ -1,0 +1,8 @@
+// The inn sign's cyan neon.
+{
+  "$schema": "../.schemas/material.schema.json",
+  "parent": "Engine/Rendering/Materials/Neon Tube.fvmat",
+  "parameters": {
+    "tint": [0.2, 0.9, 1]
+  }
+}

@@ -11,5 +11,7 @@
   "fogHeightFalloff": 1.5,
   "ambientOcclusion": 1,
   "ambientOcclusionRadius": 0.3,
-  "contactShadowLength": 0.1
+  "contactShadowLength": 0.1,
+  "reflection": "Engine/Rendering/Reflections/Venice Sunset.jpg",
+  "reflectionIntensity": 0.6
 }
