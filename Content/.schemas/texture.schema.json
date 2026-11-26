@@ -10,6 +10,9 @@
         "None"
       ]
     },
+    "mask": {
+      "type": "boolean"
+    },
     "maxSize": {
       "type": "integer"
     },
