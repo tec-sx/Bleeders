@@ -1,5 +1,5 @@
 // The main camera's lens: the glow, the tonemapper, the linen canvas and the depth fade, darker nearer than the fox and
-// melting into a warm haze behind it.
+// losing colour behind it (the haze is the environment's).
 {
   "$schema": "../.schemas/lens.schema.json",
   "bloom": 0,
@@ -9,8 +9,8 @@
   "depthNearStart": 11.35,
   "depthNearEnd": 12.85,
   "depthNearAmount": 0.3,
+  "depthNearBurn": 0.3,
   "depthFarStart": 9.9,
   "depthFarEnd": 20.4,
-  "depthFarAmount": 0.38,
-  "depthFarColor": [0.78, 0.74, 0.68]
+  "depthFarAmount": 0.2
 }
