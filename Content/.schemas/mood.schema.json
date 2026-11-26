@@ -141,6 +141,35 @@
     "fogHeightFalloff": {
       "type": "number"
     },
+    "fogRange": {
+      "type": "number"
+    },
+    "hazeDensity": {
+      "type": "number"
+    },
+    "hazeStart": {
+      "type": "number"
+    },
+    "hazeMax": {
+      "type": "number"
+    },
+    "hazeHeight": {
+      "type": "number"
+    },
+    "hazeHeightFalloff": {
+      "type": "number"
+    },
+    "hazeColor": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "hazeFromSky": {
+      "type": "number"
+    },
     "ambientOcclusion": {
       "type": "number"
     },
@@ -198,6 +227,9 @@
     "depthNearAmount": {
       "type": "number"
     },
+    "depthNearBurn": {
+      "type": "number"
+    },
     "depthFarStart": {
       "type": "number"
     },
@@ -206,14 +238,6 @@
     },
     "depthFarAmount": {
       "type": "number"
-    },
-    "depthFarColor": {
-      "type": "array",
-      "items": {
-        "type": "number"
-      },
-      "minItems": 3,
-      "maxItems": 3
     }
   },
   "additionalProperties": false

@@ -164,6 +164,9 @@
             },
             "castsShadows": {
               "type": "boolean"
+            },
+            "sourceRadius": {
+              "type": "number"
             }
           },
           "additionalProperties": false
@@ -193,6 +196,9 @@
             },
             "castsShadows": {
               "type": "boolean"
+            },
+            "sourceRadius": {
+              "type": "number"
             },
             "cookie": {
               "type": [
@@ -236,6 +242,39 @@
           "type": "object",
           "properties": {
             "mood": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "sceneEnvironment": {
+          "type": "object",
+          "properties": {
+            "environment": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "speed": {
+              "type": "number"
+            },
+            "startHour": {
+              "type": "number"
+            },
+            "latitude": {
+              "type": "number"
+            },
+            "north": {
+              "type": "number"
+            },
+            "declination": {
+              "type": "number"
+            },
+            "skyMask": {
               "type": [
                 "string",
                 "null"
@@ -1194,39 +1233,6 @@
               "type": "number"
             }
           }
-        },
-        "sceneEnvironment": {
-          "type": "object",
-          "properties": {
-            "environment": {
-              "type": [
-                "string",
-                "null"
-              ]
-            },
-            "speed": {
-              "type": "number"
-            },
-            "startHour": {
-              "type": "number"
-            },
-            "latitude": {
-              "type": "number"
-            },
-            "north": {
-              "type": "number"
-            },
-            "declination": {
-              "type": "number"
-            },
-            "skyMask": {
-              "type": [
-                "string",
-                "null"
-              ]
-            }
-          },
-          "additionalProperties": false
         }
       },
       "additionalProperties": false
