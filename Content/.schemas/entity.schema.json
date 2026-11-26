@@ -1194,6 +1194,39 @@
               "type": "number"
             }
           }
+        },
+        "sceneEnvironment": {
+          "type": "object",
+          "properties": {
+            "environment": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "speed": {
+              "type": "number"
+            },
+            "startHour": {
+              "type": "number"
+            },
+            "latitude": {
+              "type": "number"
+            },
+            "north": {
+              "type": "number"
+            },
+            "declination": {
+              "type": "number"
+            },
+            "skyMask": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false

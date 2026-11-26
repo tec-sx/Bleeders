@@ -21,6 +21,106 @@
     "sunAngle": {
       "type": "number"
     },
+    "sunColor": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "sunIntensity": {
+      "type": "number"
+    },
+    "moonDirection": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "moonColor": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "moonIntensity": {
+      "type": "number"
+    },
+    "skyZenith": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "skyHorizon": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "skyGround": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "horizonSoftness": {
+      "type": "number"
+    },
+    "sunDiscSize": {
+      "type": "number"
+    },
+    "sunDiscIntensity": {
+      "type": "number"
+    },
+    "sunGlow": {
+      "type": "number"
+    },
+    "sunGlowSize": {
+      "type": "number"
+    },
+    "moonDiscSize": {
+      "type": "number"
+    },
+    "moonDiscIntensity": {
+      "type": "number"
+    },
+    "moonCorona": {
+      "type": "number"
+    },
+    "starPole": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "starIntensity": {
+      "type": "number"
+    },
+    "skyMaskStrength": {
+      "type": "number"
+    },
+    "skyBandColor": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
     "fogDensity": {
       "type": "number"
     },
@@ -85,6 +185,9 @@
         "string",
         "null"
       ]
+    },
+    "skyFieldOfView": {
+      "type": "number"
     },
     "depthNearStart": {
       "type": "number"
