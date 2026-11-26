@@ -5,26 +5,11 @@
     -0.25,
     -0.35
   ],
-  "ambient": 0.025,
   "sunShadowDistance": 30,
-  "fogDensity": 0.05,
-  "fogColor": [
-    1,
-    0.75,
-    0.55
-  ],
   "fogAnisotropy": 0.3,
   "fogHeight": 0,
   "fogHeightFalloff": 1.5,
   "ambientOcclusion": 1,
   "ambientOcclusionRadius": 0.3,
-  "contactShadowLength": 0.1,
-  "exposure": 0.91,
-  "contrast": 1.34,
-  "saturation": 1,
-  "tint": [
-    1.1,
-    0.88,
-    0.72
-  ]
+  "contactShadowLength": 0.1
 }

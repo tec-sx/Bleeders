@@ -18,6 +18,9 @@
     "sunShadowDistance": {
       "type": "number"
     },
+    "sunAngle": {
+      "type": "number"
+    },
     "fogDensity": {
       "type": "number"
     },
