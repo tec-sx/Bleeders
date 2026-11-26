@@ -23,6 +23,9 @@
         "null"
       ]
     },
+    "skyFieldOfView": {
+      "type": "number"
+    },
     "depthNearStart": {
       "type": "number"
     },

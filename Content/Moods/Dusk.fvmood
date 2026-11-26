@@ -1,10 +1,5 @@
 {
   "$schema": "../.schemas/mood.schema.json",
-  "sunDirection": [
-    -0.9,
-    -0.25,
-    -0.35
-  ],
   "sunShadowDistance": 30,
   "fogAnisotropy": 0.3,
   "fogHeight": 0,
