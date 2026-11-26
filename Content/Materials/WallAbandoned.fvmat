@@ -1,8 +1,15 @@
-// The abandoned wall painted in Rebelle, once over the wall's height and repeated along it.
+// The abandoned wall painted in Rebelle, once over the wall's height and repeated along it, on the engine's Surface master:
+// its tint strays a little from place to place, and damp darkens its foot.
 {
   "$schema": "../.schemas/material.schema.json",
+  "parent": "Engine/Rendering/Masters/Surface.fvmaster",
   "parameters": {
     "texture": "Paintings/Wall_Abandoned_01.reb",
-    "textureScale": 2.6667
+    "textureScale": 2.6667,
+    "variation": 0.12,
+    "variationScale": 1.5,
+    "layerTint": [0.2, 0.18, 0.15],
+    "layerAmount": 0.35,
+    "layerHeight": 0.6
   }
 }

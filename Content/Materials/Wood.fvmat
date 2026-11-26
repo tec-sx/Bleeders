@@ -1,0 +1,8 @@
+// The engine's varnished wood in the model's own colours: the door, the crate, the table and the mug.
+{
+  "$schema": "../.schemas/material.schema.json",
+  "parent": "Engine/Rendering/Materials/Wood.fvmat",
+  "parameters": {
+    "tint": [1, 1, 1]
+  }
+}

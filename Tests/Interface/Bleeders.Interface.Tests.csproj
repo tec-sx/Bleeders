@@ -2,4 +2,7 @@
   <ItemGroup>
     <ProjectReference Include="../../Source/Interface/Bleeders.Interface.csproj" />
   </ItemGroup>
+
+  <!-- Builds the engine's content beside the tests, where the content check finds what the game's content names under Engine/. -->
+  <Import Project="$(FlickerVoidEngine)Source/Tools/Builder/FlickerVoid.Tools.Builder.targets" />
 </Project>
