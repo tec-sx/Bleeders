@@ -1,0 +1,8 @@
+// The wine shack's shop windows: the engine's dirty window, a little more grime toward the street.
+{
+  "$schema": "../.schemas/material.schema.json",
+  "parent": "Engine/Rendering/Materials/Dirty Window.fvmat",
+  "parameters": {
+    "paintAmount": 0.25
+  }
+}
