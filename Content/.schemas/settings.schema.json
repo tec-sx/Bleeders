@@ -1,0 +1,59 @@
+{
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "r.LocalLights": {
+      "description": "Draws point and spot lights.",
+      "type": "boolean",
+      "default": true
+    },
+    "r.Probes": {
+      "description": "Lights the scene with its irradiance probes.",
+      "type": "boolean",
+      "default": true
+    },
+    "r.RayTracing": {
+      "description": "Traces shadows, ambient occlusion and live probes where the GPU has ray queries.",
+      "type": "boolean",
+      "default": true
+    },
+    "r.LiveProbes": {
+      "description": "Updates the irradiance probes with traced rays every frame (with ray tracing).",
+      "type": "boolean",
+      "default": true
+    },
+    "r.Upscaling": {
+      "description": "The game window\u0027s upscaling where the GPU has DLSS: Off, Quality (DLSS Quality) or Dlaa.",
+      "type": "string",
+      "enum": [
+        "Off",
+        "Quality",
+        "Dlaa"
+      ],
+      "default": "Quality"
+    },
+    "r.ViewportUpscaling": {
+      "description": "The editor viewport\u0027s upscaling where the GPU has DLSS: Off, Quality or Dlaa; read when the editor starts.",
+      "type": "string",
+      "enum": [
+        "Off",
+        "Quality",
+        "Dlaa"
+      ],
+      "default": "Off"
+    },
+    "r.RayReconstruction": {
+      "description": "Denoises traced shadows and occlusion with DLSS Ray Reconstruction while DLSS upscales.",
+      "type": "boolean",
+      "default": true
+    },
+    "r.DepthFades": {
+      "description": "Draws the main camera\u0027s depth fade.",
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "additionalProperties": false
+}

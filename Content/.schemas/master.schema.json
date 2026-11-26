@@ -1,0 +1,61 @@
+{
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "shadingModel": {
+      "enum": [
+        "Painted",
+        "Metal",
+        "Glow",
+        "Skin",
+        "Glass"
+      ]
+    },
+    "twoSided": {
+      "type": "boolean"
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "Float",
+              "Color",
+              "Texture"
+            ]
+          },
+          "default": true,
+          "minimum": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "maximum": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "components": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "name",
+          "type",
+          "default"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

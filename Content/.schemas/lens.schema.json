@@ -35,6 +35,9 @@
     "depthNearAmount": {
       "type": "number"
     },
+    "depthNearBurn": {
+      "type": "number"
+    },
     "depthFarStart": {
       "type": "number"
     },
@@ -43,14 +46,6 @@
     },
     "depthFarAmount": {
       "type": "number"
-    },
-    "depthFarColor": {
-      "type": "array",
-      "items": {
-        "type": "number"
-      },
-      "minItems": 3,
-      "maxItems": 3
     }
   },
   "additionalProperties": false
