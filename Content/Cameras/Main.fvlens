@@ -1,8 +1,11 @@
-// The main camera's lens: the glow, the tonemapper, the linen canvas and the depth fade, darker nearer than the fox and
+// The main camera's lens: the glow (none) and a soft vignette, the tonemapper, the linen canvas and the depth fade, darker nearer than the fox and
 // losing colour behind it (the haze is the environment's).
 {
   "$schema": "../.schemas/lens.schema.json",
   "bloom": 0,
+  "vignetteIntensity": 0.35,
+  "vignetteRadius": 0.65,
+  "vignetteSoftness": 0.6,
   "tonemapper": "Uncharted2",
   "whitePoint": 11.2,
   "canvas": "Canvases/LinenCanvas.fvcanvas",
