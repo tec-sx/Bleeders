@@ -1,0 +1,14 @@
+{
+  "$schema": "../.schemas/environment.schema.json",
+  "numbers": {
+    "ambient": { "keys": [ { "time": 0, "value": 0.12 }, { "time": 12, "value": 0.35 }, { "time": 18, "value": 0.025 } ] },
+    "fogDensity": { "keys": [ { "time": 0, "value": 0.08 }, { "time": 12, "value": 0.01 }, { "time": 18, "value": 0.05 } ] },
+    "exposure": { "keys": [ { "time": 0, "value": 0.9 }, { "time": 12, "value": 1 }, { "time": 18, "value": 0.91 } ] },
+    "contrast": { "keys": [ { "time": 0, "value": 1.1 }, { "time": 12, "value": 1.05 }, { "time": 18, "value": 1.34 } ] },
+    "saturation": { "keys": [ { "time": 0, "value": 0.7 }, { "time": 12, "value": 1.05 }, { "time": 18, "value": 1 } ] }
+  },
+  "colors": {
+    "fogColor": { "keys": [ { "time": 0, "color": [0.5, 0.6, 1] }, { "time": 12, "color": [1, 0.95, 0.9] }, { "time": 18, "color": [1, 0.75, 0.55] } ] },
+    "tint": { "keys": [ { "time": 0, "color": [0.6, 0.7, 1] }, { "time": 12, "color": [1.02, 1, 0.96] }, { "time": 18, "color": [1.1, 0.88, 0.72] } ] }
+  }
+}
