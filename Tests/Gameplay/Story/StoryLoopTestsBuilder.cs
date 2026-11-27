@@ -70,6 +70,7 @@ internal sealed class StoryLoopTestsBuilder : IDisposable
         Game.Services.AddService(input);
         string folder = FindContent();
         ContentManager content = new(folder);
+        Game.Services.AddService<IContentManager>(content);
         _data = new DataAssets(content, Game.Data);
         Game.Services.AddService(_data);
         Game.AddRendering();

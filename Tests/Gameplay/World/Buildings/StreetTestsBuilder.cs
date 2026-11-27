@@ -4,6 +4,8 @@ using Arch.Core;
 
 using Bleeders.Gameplay.Tests.Story;
 
+using FlickerVoid.Engine.Audio.Devices;
+using FlickerVoid.Engine.Audio.Sounds;
 using FlickerVoid.Engine.Cameras.Cutaways;
 using FlickerVoid.Engine.Cameras.Directing;
 using FlickerVoid.Engine.Characters.Movement;
@@ -17,6 +19,8 @@ internal sealed class StreetTestsBuilder : IDisposable
     public StoryLoopTestsBuilder Story { get; } = new();
 
     public CutawaySystem Cutaways => Story.Game.Services.GetService<CutawaySystem>()!;
+
+    public AudioSystem Audio => Story.Game.Services.GetService<AudioSystem>()!;
 
     public CameraDirector Director => Story.Game.Services.GetService<CameraDirector>()!;
 
@@ -47,6 +51,14 @@ internal sealed class StreetTestsBuilder : IDisposable
     public Vector3 GetPosition(Entity entity) => Story.Game.World.Get<FlickerVoid.Engine.Runtime.Components.Transform>(entity).Position;
 
     public bool IsShadowOnly(string name) => Story.Game.World.Has<ShadowOnly>(Story.Find(name));
+
+    /// <summary>The loudest sample the game plays over the next second, heard through a device without speakers.</summary>
+    public float Hear()
+    {
+        NullAudioDevice device = new(Audio.Mixer);
+        float[] heard = device.Render(TimeSpan.FromSeconds(1));
+        return heard.Max(MathF.Abs);
+    }
 
     public void Dispose() => Story.Dispose();
 }

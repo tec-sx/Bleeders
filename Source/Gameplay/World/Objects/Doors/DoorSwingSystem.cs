@@ -4,6 +4,7 @@ using Arch.Core;
 using Arch.System;
 
 using FlickerVoid.Engine.Ai.Senses;
+using FlickerVoid.Engine.Audio.Sounds;
 using FlickerVoid.Engine.Interaction.Locks;
 using FlickerVoid.Engine.Interaction.Toggles;
 using FlickerVoid.Engine.Runtime.Components;
@@ -111,6 +112,8 @@ public sealed class DoorSwingSystem : BaseSystem<World, GameTime>
         {
             door.Hinge.Target = door.Swing.OpenAngle;
         }
+
+        Play(door.Swing.SwingSound, entity);
     }
 
     private void Rattle(Entity door, Entity instigator)
@@ -125,6 +128,17 @@ public sealed class DoorSwingSystem : BaseSystem<World, GameTime>
         {
             rattled.Hinge.Rattle = RattleTime;
             _events.Send(new NoiseEvent(instigator, rattled.Transform.Position));
+            Play(rattled.Swing.RattleSound, door);
+        }
+    }
+
+    /// <summary>Asks for a door's sound to be played on it, when it names one.</summary>
+    private void Play(string sound, Entity door)
+    {
+        if (sound.Length > 0)
+        {
+            PlaySoundCommand command = new(sound, Entity: door);
+            _events.Send(in command);
         }
     }
 }

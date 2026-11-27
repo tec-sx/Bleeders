@@ -1,0 +1,8 @@
+{
+  "$schema": "../.schemas/data.schema.json",
+  "type": "sound",
+  "files": [ "Sounds/LanternHum.wav" ],
+  "loop": true,
+  "minDistance": 1,
+  "maxDistance": 7
+}

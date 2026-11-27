@@ -1,5 +1,6 @@
 using Arch.Core;
 
+using FlickerVoid.Engine.Audio;
 using FlickerVoid.Engine.Abilities;
 using FlickerVoid.Engine.Abilities.Activation;
 using FlickerVoid.Engine.Ai;
@@ -40,7 +41,7 @@ using Bleeders.Gameplay.World.Society.Residents;
 namespace Bleeders.Gameplay;
 
 /// <summary>
-/// Bleeders' gameplay: physics, point and click characters, directed cameras, interaction, attributes and abilities, possessions, quests and knowledge for the protagonist,
+/// Bleeders' gameplay: physics, point and click characters, directed cameras, sound, interaction, attributes and abilities, possessions, quests and knowledge for the protagonist,
 /// conversations, vehicles built from their files, doors that keys open and lockpicks pick, residents who wander, watch and listen, maps with their markers, and outlines on what the
 /// protagonist can use nearby; the input contexts of conversations and cutscenes and the walk control where input is read, and the
 /// click control, the camera control and the scanner only where there is a window to click in.
@@ -52,6 +53,7 @@ public sealed class GameplayModule : IGameModule
         IPhysicsSystem physics = game.AddPhysics();
         game.AddCharacters();
         CameraDirector cameras = game.AddCameras();
+        game.AddAudio();
         PathSystem paths = game.AddAi();
         game.AddInteraction();
         game.AddAttributes();
