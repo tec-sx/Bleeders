@@ -7,7 +7,7 @@
              x:DataType="character:CharacterPageViewModel">
   <Grid ColumnDefinitions="*,24,*,24,*" VerticalAlignment="Top">
     <StackPanel Grid.Column="0" Spacing="6">
-      <TextBlock Classes="label" Text="ATTRIBUTES" />
+      <TextBlock Classes="label" Text="{Binding Labels.Attributes}" />
       <controls:HudFrame>
         <ItemsControl ItemsSource="{Binding Attributes}">
           <ItemsControl.ItemTemplate>
@@ -22,19 +22,19 @@
       </controls:HudFrame>
     </StackPanel>
     <StackPanel Grid.Column="2" Spacing="6">
-      <TextBlock Classes="label" Text="EFFECTS" />
+      <TextBlock Classes="label" Text="{Binding Labels.Effects}" />
       <controls:HudFrame>
         <Panel>
-          <TextBlock Classes="muted" Text="Nothing affects you." IsVisible="{Binding !Modifiers.Count}" />
+          <TextBlock Classes="muted" Text="{Binding Labels.NoEffects}" IsVisible="{Binding !Modifiers.Count}" />
           <ItemsControl ItemsSource="{Binding Modifiers}" />
         </Panel>
       </controls:HudFrame>
     </StackPanel>
     <StackPanel Grid.Column="4" Spacing="6">
-      <TextBlock Classes="label" Text="ABILITIES" />
+      <TextBlock Classes="label" Text="{Binding Labels.Abilities}" />
       <controls:HudFrame>
         <Panel>
-          <TextBlock Classes="muted" Text="No abilities." IsVisible="{Binding !Abilities.Count}" />
+          <TextBlock Classes="muted" Text="{Binding Labels.NoAbilities}" IsVisible="{Binding !Abilities.Count}" />
           <ItemsControl ItemsSource="{Binding Abilities}" />
         </Panel>
       </controls:HudFrame>

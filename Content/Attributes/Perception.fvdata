@@ -2,7 +2,7 @@
   "$schema": "../.schemas/data.schema.json",
   "type": "attribute",
   "id": "Attribute.Skill.Perception",
-  "display": { "name": "Perception", "shortDescription": "Noticing details, and the steady eye a lock needs." },
+  "display": { "name": { "key": "Attribute.Perception.Name", "text": "Perception", "note": "The name of the attribute Perception." }, "shortDescription": { "key": "Attribute.Perception.Short", "text": "Noticing details, and the steady eye a lock needs.", "note": "The short description of the attribute Perception." } },
   "category": "Attribute.Skill",
   "max": 10,
   "integer": true

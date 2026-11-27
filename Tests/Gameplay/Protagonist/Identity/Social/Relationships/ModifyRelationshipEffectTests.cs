@@ -1,5 +1,6 @@
 using FlickerVoid.Engine.Gameplay.Conditions;
 using FlickerVoid.Engine.Gameplay.Definitions;
+using FlickerVoid.Engine.Gameplay.Localization;
 using FlickerVoid.Engine.Gameplay.Scales;
 using FlickerVoid.Engine.Gameplay.Tags;
 using Bleeders.Gameplay.Protagonist.Identity.Social.Relationships;
@@ -9,7 +10,7 @@ namespace Bleeders.Gameplay.Tests.Protagonist.Identity.Social.Relationships;
 public class ModifyRelationshipEffectTests
 {
     private readonly ModifyRelationshipEffectTestsBuilder _builder = new();
-    private readonly CharacterDefinition _mara = new() { Display = new() { Name = "Mara" } };
+    private readonly CharacterDefinition _mara = new() { Display = new() { Name = new LocalizedText("", "Mara") } };
     private readonly ScaleDefinition _relationship = new() { Id = new Tag("Fact.Relationship.Mara") };
 
     public ModifyRelationshipEffectTests()

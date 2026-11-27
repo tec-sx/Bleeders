@@ -1,11 +1,11 @@
 {
   "$schema": "../.schemas/data.schema.json",
   "type": "scan",
-  "display": { "name": "Innkeeper" },
+  "display": { "name": { "key": "Scan.Innkeeper.Name", "text": "Innkeeper", "note": "The title of the scan card while the fox scans the innkeeper." } },
   "category": "Scan.Category.Person",
   "entries": [
-    { "label": "Apron", "text": "Wine stains, old and new." },
-    { "label": "Keys", "text": "A ring of keys on the belt, one hook empty.",
+    { "label": { "key": "Scan.Innkeeper.Apron.Label", "text": "Apron", "note": "The heading of one thing the scan of the innkeeper tells." }, "text": { "key": "Scan.Innkeeper.Apron", "text": "Wine stains, old and new.", "note": "What the scan of the innkeeper tells under Apron." } },
+    { "label": { "key": "Scan.Innkeeper.Keys.Label", "text": "Keys", "note": "The heading of one thing the scan of the innkeeper tells." }, "text": { "key": "Scan.Innkeeper.Keys", "text": "A ring of keys on the belt, one hook empty.", "note": "What the scan of the innkeeper tells under Keys." },
       "visibleWhen": { "conditions": [ { "$type": "questState", "quest": "Quest.Cellar", "state": "Active" } ] } }
   ]
 }

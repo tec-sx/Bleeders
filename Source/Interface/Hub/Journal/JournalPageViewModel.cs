@@ -1,8 +1,10 @@
 using System.Collections.ObjectModel;
 
+using FlickerVoid.Engine.Gameplay.Localization;
 using FlickerVoid.Engine.Story.Knowledge;
 using FlickerVoid.Engine.Story.Quests;
 using FlickerVoid.Engine.Runtime.Loop;
+using Bleeders.Interface.Localization;
 
 namespace Bleeders.Interface.Hub.Journal;
 
@@ -13,7 +15,7 @@ public sealed class JournalPageViewModel : HubPageViewModel
     private readonly KnowledgeSystem _knowledge;
 
     public JournalPageViewModel(Game game)
-        : base("Journal")
+        : base(InterfaceTexts.Journal, game.Localization)
     {
         _quests = game.Services.GetService<QuestSystem>()!;
         _knowledge = game.Services.GetService<KnowledgeSystem>()!;
@@ -37,29 +39,35 @@ public sealed class JournalPageViewModel : HubPageViewModel
             {
                 if (_quests.IsObjectiveVisible(objective))
                 {
-                    objectives.Add(objective.Description);
+                    objectives.Add(Localizer.Get(objective.Description));
                 }
             }
 
-            ActiveQuests.Add(new JournalQuestViewModel(DisplayNames.Of(quest), quest.Display.ShortDescription, objectives));
+            string name = DisplayNames.Of(quest, Localizer);
+            string description = Localizer.Get(quest.Display.ShortDescription);
+            ActiveQuests.Add(new JournalQuestViewModel(name, description, objectives));
         }
 
         FinishedQuests.Clear();
-        AddFinished(QuestState.Completed, "Completed");
-        AddFinished(QuestState.Failed, "Failed");
+        AddFinished(QuestState.Completed, InterfaceTexts.Completed);
+        AddFinished(QuestState.Failed, InterfaceTexts.Failed);
 
         Knowledge.Clear();
         foreach (KnowledgeDefinition known in _knowledge.GetKnown())
         {
-            Knowledge.Add(new JournalEntryViewModel(DisplayNames.Of(known), known.Display.ShortDescription));
+            string name = DisplayNames.Of(known, Localizer);
+            string description = Localizer.Get(known.Display.ShortDescription);
+            Knowledge.Add(new JournalEntryViewModel(name, description));
         }
     }
 
-    private void AddFinished(QuestState state, string label)
+    private void AddFinished(QuestState state, LocalizedText label)
     {
+        string shown = Localizer.Get(label);
         foreach (QuestDefinition quest in _quests.GetQuests(state))
         {
-            FinishedQuests.Add(new JournalEntryViewModel(DisplayNames.Of(quest), label));
+            string name = DisplayNames.Of(quest, Localizer);
+            FinishedQuests.Add(new JournalEntryViewModel(name, shown));
         }
     }
 }

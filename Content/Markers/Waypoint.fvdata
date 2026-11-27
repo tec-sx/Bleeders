@@ -2,7 +2,7 @@
   "$schema": "../.schemas/data.schema.json",
   "type": "marker",
   "id": "Marker.Waypoint",
-  "display": { "name": "Waypoint" },
+  "display": { "name": { "key": "Marker.Waypoint.Name", "text": "Waypoint", "note": "The name of the marker Waypoint." } },
   "priority": 3,
   "fragments": [ { "$type": "minimap", "clampToEdge": true }, { "$type": "compass" }, { "$type": "worldMap" } ]
 }

@@ -15,7 +15,7 @@ public sealed class RelationshipCondition : Condition
 
     public override string Describe()
     {
-        string characterName = Character?.Display.Name ?? "Target";
+        string characterName = Character?.Display.Name.Text ?? "Target";
         string symbol = Compare.ToSymbol();
         return $"Relationship with {characterName} {symbol} {Value}";
     }

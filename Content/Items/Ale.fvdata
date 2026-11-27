@@ -2,7 +2,7 @@
   "$schema": "../.schemas/data.schema.json",
   "type": "item",
   "id": "Item.Ale",
-  "display": { "name": "Mug of ale", "shortDescription": "Dark, sweet and strong." },
+  "display": { "name": { "key": "Item.Ale.Name", "text": "Mug of ale", "note": "The name of the item Ale." }, "shortDescription": { "key": "Item.Ale.Short", "text": "Dark, sweet and strong.", "note": "The short description of the item Ale." } },
   "category": "Item.Drink",
   "weight": 0.5,
   "fragments": [

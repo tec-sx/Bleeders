@@ -42,7 +42,7 @@ public sealed class StoryWindow(DialogueSystem dialogue, QuestSystem quests, Kno
         }
 
         DialogueLine line = dialogue.CurrentLine;
-        if (line.Text.Length > 0)
+        if (!line.Text.IsEmpty)
         {
             string speaker = "Someone";
             if (line.SpeakerEntity != Entity.Null && world.IsAlive(line.SpeakerEntity) && world.TryGet(line.SpeakerEntity, out DialogueParticipant participant))
@@ -52,7 +52,7 @@ public sealed class StoryWindow(DialogueSystem dialogue, QuestSystem quests, Kno
             }
 
             ImGui.TextColored(new Vector4(0.95f, 0.75f, 0.45f, 1), speaker);
-            ImGui.TextWrapped(line.Text);
+            ImGui.TextWrapped(line.Text.Text);
             if (!dialogue.IsWaitingForChoice && ImGui.Button("Next"))
             {
                 dialogue.Advance();
@@ -61,7 +61,7 @@ public sealed class StoryWindow(DialogueSystem dialogue, QuestSystem quests, Kno
 
         foreach (DialogueChoice choice in dialogue.Choices)
         {
-            string label = $"{choice.Index + 1}. {choice.Text}##choice{choice.Index}";
+            string label = $"{choice.Index + 1}. {choice.Text.Text}##choice{choice.Index}";
             ImGui.BeginDisabled(!choice.Available);
             if (ImGui.Button(label))
             {
@@ -69,10 +69,10 @@ public sealed class StoryWindow(DialogueSystem dialogue, QuestSystem quests, Kno
             }
 
             ImGui.EndDisabled();
-            if (choice.LockedReason.Length > 0)
+            if (!choice.LockedReason.IsEmpty)
             {
                 ImGui.SameLine();
-                ImGui.TextDisabled(choice.LockedReason);
+                ImGui.TextDisabled(choice.LockedReason.Text);
             }
         }
 

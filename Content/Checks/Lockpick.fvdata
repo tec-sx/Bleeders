@@ -1,10 +1,10 @@
 {
   "$schema": "../.schemas/data.schema.json",
   "type": "check",
-  "display": { "name": "Lockpicking" },
+  "display": { "name": { "key": "Check.Lockpick.Name", "text": "Lockpicking", "note": "The name of the check Lockpick." } },
   "attribute": "Attribute.Skill.Perception",
   "roll": "D6x2",
   "modifiers": [
-    { "label": "Steady hands", "bonus": 1, "conditions": { "conditions": [ { "$type": "interactorTags", "blocked": [ "Status.Drunk" ] } ] } }
+    { "label": { "key": "Check.Lockpick.SteadyHands", "text": "Steady hands", "note": "A bonus line of the lockpicking check: the fox is sober, so its hands are steady." }, "bonus": 1, "conditions": { "conditions": [ { "$type": "interactorTags", "blocked": [ "Status.Drunk" ] } ] } }
   ]
 }

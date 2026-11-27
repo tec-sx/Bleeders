@@ -10,7 +10,11 @@
     {
       "$type": "line",
       "speaker": "",
-      "text": "Evening, fox. Mind the floor, it\u0027s just been waxed.",
+      "text": {
+        "key": "Dialogue.Innkeeper.Greet",
+        "text": "Evening, fox. Mind the floor, it\u0027s just been waxed.",
+        "note": "The innkeeper\u0027s greeting when the fox walks up to talk."
+      },
       "mood": "",
       "duration": 0,
       "skippable": true,
@@ -23,7 +27,11 @@
       "$type": "choice",
       "options": [
         {
-          "text": "Anything I can do for you?",
+          "text": {
+            "key": "Dialogue.Innkeeper.Choice.Ask",
+            "text": "Anything I can do for you?",
+            "note": "A dialogue choice: the fox offers help."
+          },
           "conditions": {
             "mode": "All",
             "conditions": [
@@ -35,7 +43,11 @@
               }
             ],
             "failurePresentation": "Hidden",
-            "failureReason": ""
+            "failureReason": {
+              "key": "",
+              "text": "",
+              "note": ""
+            }
           },
           "onChosen": {
             "effects": [
@@ -48,7 +60,11 @@
           }
         },
         {
-          "text": "I found your cellar key.",
+          "text": {
+            "key": "Dialogue.Innkeeper.Choice.Found",
+            "text": "I found your cellar key.",
+            "note": "A dialogue choice, shown once the key is found: the fox returns it."
+          },
           "conditions": {
             "mode": "All",
             "conditions": [
@@ -67,14 +83,22 @@
               }
             ],
             "failurePresentation": "Hidden",
-            "failureReason": ""
+            "failureReason": {
+              "key": "",
+              "text": "",
+              "note": ""
+            }
           },
           "onChosen": {
             "effects": []
           }
         },
         {
-          "text": "What\u0027s down in the cellar?",
+          "text": {
+            "key": "Dialogue.Innkeeper.Choice.Cellar",
+            "text": "What\u0027s down in the cellar?",
+            "note": "A dialogue choice: the fox asks about the cellar."
+          },
           "conditions": {
             "mode": "All",
             "conditions": [
@@ -85,7 +109,11 @@
               }
             ],
             "failurePresentation": "Hidden",
-            "failureReason": ""
+            "failureReason": {
+              "key": "",
+              "text": "",
+              "note": ""
+            }
           },
           "onChosen": {
             "effects": [
@@ -104,7 +132,11 @@
     {
       "$type": "line",
       "speaker": "",
-      "text": "I\u0027ve lost the cellar key somewhere in this room. Find it and the wine\u0027s on me.",
+      "text": {
+        "key": "Dialogue.Innkeeper.Job",
+        "text": "I\u0027ve lost the cellar key somewhere in this room. Find it and the wine\u0027s on me.",
+        "note": "The innkeeper explains that the cellar key is lost somewhere in the room."
+      },
       "mood": "",
       "duration": 0,
       "skippable": true,
@@ -123,7 +155,11 @@
     {
       "$type": "line",
       "speaker": "",
-      "text": "Keep it. Go on, open the cellar yourself.",
+      "text": {
+        "key": "Dialogue.Innkeeper.Thanks",
+        "text": "Keep it. Go on, open the cellar yourself.",
+        "note": "The innkeeper\u0027s reply when the fox has found the key; the innkeeper lets the fox keep it."
+      },
       "mood": "",
       "duration": 0,
       "skippable": true,
@@ -135,7 +171,11 @@
     {
       "$type": "line",
       "speaker": "",
-      "text": "Wine, mostly. And whatever the last owner left behind.",
+      "text": {
+        "key": "Dialogue.Innkeeper.Lore",
+        "text": "Wine, mostly. And whatever the last owner left behind.",
+        "note": "The innkeeper\u0027s answer about what is in the cellar."
+      },
       "mood": "",
       "duration": 0,
       "skippable": true,

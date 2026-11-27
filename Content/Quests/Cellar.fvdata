@@ -2,17 +2,17 @@
   "$schema": "../.schemas/data.schema.json",
   "type": "quest",
   "id": "Quest.Cellar",
-  "display": { "name": "The cellar key", "shortDescription": "The innkeeper lost the key to the cellar." },
+  "display": { "name": { "key": "Quest.Cellar.Name", "text": "The cellar key", "note": "The name of the quest Cellar." }, "shortDescription": { "key": "Quest.Cellar.Short", "text": "The innkeeper lost the key to the cellar.", "note": "The short description of the quest Cellar." } },
   "flow": "Quests/Cellar.fvflow",
   "objectives": [
     {
       "fact": "Quest.Cellar.FoundKey",
-      "description": "Find the cellar key",
+      "description": { "key": "Quest.Cellar.FindKey", "text": "Find the cellar key", "note": "A quest objective in the tracker: the key is somewhere in the inn." },
       "completeWhen": { "conditions": [ { "$type": "hasItem", "item": "Items/CellarKey.fvdata" } ] }
     },
     {
       "fact": "Quest.Cellar.ReturnedKey",
-      "description": "Tell the innkeeper",
+      "description": { "key": "Quest.Cellar.TellInnkeeper", "text": "Tell the innkeeper", "note": "A quest objective in the tracker, once the key is found: the innkeeper is told." },
       "visibleWhen": { "conditions": [ { "$type": "fact", "fact": "Quest.Cellar.FoundKey" } ] }
     }
   ],

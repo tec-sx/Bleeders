@@ -2,6 +2,6 @@
   "$schema": "../.schemas/data.schema.json",
   "type": "map",
   "id": "Map.Inn",
-  "display": { "name": "The Gilded Fox" },
-  "layers": [ { "name": "Hall", "displayName": "Hall", "min": [-5, -5], "max": [5, 5] } ]
+  "display": { "name": { "key": "Map.Inn.Name", "text": "The Gilded Fox", "note": "The name of the map Inn." } },
+  "layers": [ { "name": "Hall", "displayName": { "key": "Map.Inn.Hall", "text": "Hall", "note": "The name of the inn's ground floor on its map." }, "min": [-5, -5], "max": [5, 5] } ]
 }

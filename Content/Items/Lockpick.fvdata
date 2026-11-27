@@ -2,7 +2,7 @@
   "$schema": "../.schemas/data.schema.json",
   "type": "item",
   "id": "Item.Lockpick",
-  "display": { "name": "Lockpick", "shortDescription": "A bent wire with a wooden grip." },
+  "display": { "name": { "key": "Item.Lockpick.Name", "text": "Lockpick", "note": "The name of the item Lockpick." }, "shortDescription": { "key": "Item.Lockpick.Short", "text": "A bent wire with a wooden grip.", "note": "The short description of the item Lockpick." } },
   "category": "Item.Tool",
   "tags": [ "Item.Lockpick" ],
   "weight": 0.02

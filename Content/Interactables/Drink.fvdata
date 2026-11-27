@@ -2,12 +2,12 @@
   "$schema": "../.schemas/data.schema.json",
   "type": "interactable",
   "id": "Interactable.Drink",
-  "display": { "name": "Drink" },
+  "display": { "name": { "key": "Interactable.Drink.Name", "text": "Drink", "note": "What the prompt calls Drink things, shown over its offers." } },
   "offers": [
     {
       "input": "Input.Use",
       "action": "Interaction.Action.Use",
-      "display": { "name": "Drink" },
+      "display": { "name": { "key": "Interaction.Offer.Drink", "text": "Drink", "note": "The button of an interaction offer in the prompt, a verb." } },
       "effects": { "effects": [ { "$type": "useInPlace" } ] }
     }
   ]

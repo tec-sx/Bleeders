@@ -15,10 +15,10 @@
   </UserControl.DataTemplates>
   <Grid ColumnDefinitions="*,24,*,24,*" VerticalAlignment="Top">
     <StackPanel Grid.Column="0" Spacing="6">
-      <TextBlock Classes="label" Text="QUESTS" />
+      <TextBlock Classes="label" Text="{Binding Labels.Quests}" />
       <controls:HudFrame>
         <Panel>
-          <TextBlock Classes="muted" Text="No quests." IsVisible="{Binding !ActiveQuests.Count}" />
+          <TextBlock Classes="muted" Text="{Binding Labels.NoQuests}" IsVisible="{Binding !ActiveQuests.Count}" />
           <ItemsControl ItemsSource="{Binding ActiveQuests}">
             <ItemsControl.ItemTemplate>
               <DataTemplate x:DataType="journal:JournalQuestViewModel">
@@ -43,19 +43,19 @@
       </controls:HudFrame>
     </StackPanel>
     <StackPanel Grid.Column="2" Spacing="6">
-      <TextBlock Classes="label" Text="FINISHED" />
+      <TextBlock Classes="label" Text="{Binding Labels.Finished}" />
       <controls:HudFrame>
         <Panel>
-          <TextBlock Classes="muted" Text="Nothing finished yet." IsVisible="{Binding !FinishedQuests.Count}" />
+          <TextBlock Classes="muted" Text="{Binding Labels.NothingFinished}" IsVisible="{Binding !FinishedQuests.Count}" />
           <ItemsControl ItemsSource="{Binding FinishedQuests}" />
         </Panel>
       </controls:HudFrame>
     </StackPanel>
     <StackPanel Grid.Column="4" Spacing="6">
-      <TextBlock Classes="label" Text="KNOWLEDGE" />
+      <TextBlock Classes="label" Text="{Binding Labels.Knowledge}" />
       <controls:HudFrame>
         <Panel>
-          <TextBlock Classes="muted" Text="Nothing learned yet." IsVisible="{Binding !Knowledge.Count}" />
+          <TextBlock Classes="muted" Text="{Binding Labels.NothingLearned}" IsVisible="{Binding !Knowledge.Count}" />
           <ItemsControl ItemsSource="{Binding Knowledge}" />
         </Panel>
       </controls:HudFrame>

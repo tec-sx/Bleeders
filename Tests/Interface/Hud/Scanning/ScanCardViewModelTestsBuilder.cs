@@ -30,9 +30,9 @@ namespace Bleeders.Interface.Tests.Hud.Scanning;
 internal sealed class ScanCardViewModelTestsBuilder : IDisposable
 {
     private const string Scan = """
-        { "type": "scan", "display": { "name": "Old crate" }, "scanDuration": 1, "entries": [
-          { "label": "Wood", "text": "Old oak." }, { "label": "Marks", "text": "Knife scratches." },
-          { "label": "Smell", "text": "Wine." }, { "label": "Weight", "text": "Heavy." } ] }
+        { "type": "scan", "display": { "name": { "key": "Test.OldCrate", "text": "Old crate" } }, "scanDuration": 1, "entries": [
+          { "label": { "key": "Test.Wood", "text": "Wood" }, "text": { "key": "Test.OldOak", "text": "Old oak." } }, { "label": { "key": "Test.Marks", "text": "Marks" }, "text": { "key": "Test.KnifeScratches", "text": "Knife scratches." } },
+          { "label": { "key": "Test.Smell", "text": "Smell" }, "text": { "key": "Test.Wine", "text": "Wine." } }, { "label": { "key": "Test.Weight", "text": "Weight" }, "text": { "key": "Test.Heavy", "text": "Heavy." } } ] }
         """;
 
     private const string Scene = """
@@ -84,7 +84,7 @@ internal sealed class ScanCardViewModelTestsBuilder : IDisposable
         IReadOnlyList<Entity> spawned = Game.Spawner.Spawn(scene, Game.World);
         Protagonist = spawned[1];
         Run(0.1f);
-        return new ScanCardViewModel(Scanner, Game.World);
+        return new ScanCardViewModel(Scanner, Game.World, Game.Localization);
     }
 
     public void Run(float seconds)

@@ -349,13 +349,49 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "type": "string"
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      },
+                      "note": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
                   },
                   "shortDescription": {
-                    "type": "string"
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      },
+                      "note": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
                   },
                   "longDescription": {
-                    "type": "string"
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      },
+                      "note": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
                   }
                 },
                 "additionalProperties": false
@@ -431,7 +467,19 @@
                                   ]
                                 },
                                 "failureReason": {
-                                  "type": "string"
+                                  "type": "object",
+                                  "properties": {
+                                    "key": {
+                                      "type": "string"
+                                    },
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "note": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "additionalProperties": false
                                 }
                               },
                               "additionalProperties": false
@@ -685,7 +733,7 @@
                     ]
                   },
                   "failureReason": {
-                    "type": "string"
+                    "$ref": "#/properties/offers/items/properties/conditions/properties/conditions/items/anyOf/1/properties/set/properties/failureReason"
                   }
                 },
                 "additionalProperties": false
@@ -1095,13 +1143,13 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "$ref": "#/properties/offers/items/properties/display/properties/name"
             },
             "shortDescription": {
-              "type": "string"
+              "$ref": "#/properties/offers/items/properties/display/properties/shortDescription"
             },
             "longDescription": {
-              "type": "string"
+              "$ref": "#/properties/offers/items/properties/display/properties/longDescription"
             }
           },
           "additionalProperties": false
@@ -1143,13 +1191,49 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "shortDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "longDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "additionalProperties": false
@@ -1204,13 +1288,49 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "shortDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "longDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "additionalProperties": false
@@ -1250,7 +1370,19 @@
             "type": "object",
             "properties": {
               "label": {
-                "type": "string"
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "note": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
               },
               "conditions": {
                 "type": "object",
@@ -1323,7 +1455,19 @@
                                   ]
                                 },
                                 "failureReason": {
-                                  "type": "string"
+                                  "type": "object",
+                                  "properties": {
+                                    "key": {
+                                      "type": "string"
+                                    },
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "note": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "additionalProperties": false
                                 }
                               },
                               "additionalProperties": false
@@ -1577,7 +1721,7 @@
                     ]
                   },
                   "failureReason": {
-                    "type": "string"
+                    "$ref": "#/properties/modifiers/items/properties/conditions/properties/conditions/items/anyOf/1/properties/set/properties/failureReason"
                   }
                 },
                 "additionalProperties": false
@@ -1596,13 +1740,49 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "shortDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "longDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "additionalProperties": false
@@ -1728,7 +1908,19 @@
                             ]
                           },
                           "failureReason": {
-                            "type": "string"
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "text": {
+                                "type": "string"
+                              },
+                              "note": {
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "additionalProperties": false
@@ -1982,7 +2174,7 @@
               ]
             },
             "failureReason": {
-              "type": "string"
+              "$ref": "#/properties/conditions/properties/conditions/items/anyOf/1/properties/set/properties/failureReason"
             }
           },
           "additionalProperties": false
@@ -2397,7 +2589,19 @@
                 "type": "string"
               },
               "text": {
-                "type": "string"
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "note": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
               }
             },
             "additionalProperties": false
@@ -2410,13 +2614,49 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "shortDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "longDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "additionalProperties": false
@@ -2467,13 +2707,49 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "shortDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "longDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "additionalProperties": false
@@ -2527,13 +2803,49 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "shortDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "longDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "additionalProperties": false
@@ -2658,7 +2970,19 @@
                                       ]
                                     },
                                     "failureReason": {
-                                      "type": "string"
+                                      "type": "object",
+                                      "properties": {
+                                        "key": {
+                                          "type": "string"
+                                        },
+                                        "text": {
+                                          "type": "string"
+                                        },
+                                        "note": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "additionalProperties": false
                                     }
                                   },
                                   "additionalProperties": false
@@ -2912,7 +3236,7 @@
                         ]
                       },
                       "failureReason": {
-                        "type": "string"
+                        "$ref": "#/properties/fragments/items/anyOf/0/properties/useConditions/properties/conditions/items/anyOf/1/properties/set/properties/failureReason"
                       }
                     },
                     "additionalProperties": false
@@ -3358,7 +3682,7 @@
                         ]
                       },
                       "failureReason": {
-                        "type": "string"
+                        "$ref": "#/properties/fragments/items/anyOf/0/properties/useConditions/properties/conditions/items/anyOf/1/properties/set/properties/failureReason"
                       }
                     },
                     "additionalProperties": false
@@ -3393,13 +3717,49 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "shortDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "longDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "additionalProperties": false
@@ -3513,7 +3873,19 @@
                                   ]
                                 },
                                 "failureReason": {
-                                  "type": "string"
+                                  "type": "object",
+                                  "properties": {
+                                    "key": {
+                                      "type": "string"
+                                    },
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "note": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "additionalProperties": false
                                 }
                               },
                               "additionalProperties": false
@@ -3767,7 +4139,7 @@
                     ]
                   },
                   "failureReason": {
-                    "type": "string"
+                    "$ref": "#/properties/entries/items/properties/conditions/properties/conditions/items/anyOf/1/properties/set/properties/failureReason"
                   }
                 },
                 "additionalProperties": false
@@ -3789,13 +4161,49 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "shortDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "longDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "additionalProperties": false
@@ -3889,7 +4297,19 @@
                             ]
                           },
                           "failureReason": {
-                            "type": "string"
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "text": {
+                                "type": "string"
+                              },
+                              "note": {
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "additionalProperties": false
@@ -4143,7 +4563,7 @@
               ]
             },
             "failureReason": {
-              "type": "string"
+              "$ref": "#/properties/autoStartWhen/properties/conditions/items/anyOf/1/properties/set/properties/failureReason"
             }
           },
           "additionalProperties": false
@@ -4157,7 +4577,19 @@
                 "type": "string"
               },
               "description": {
-                "type": "string"
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "note": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
               },
               "completeWhen": {
                 "type": "object",
@@ -4179,7 +4611,7 @@
                     ]
                   },
                   "failureReason": {
-                    "type": "string"
+                    "$ref": "#/properties/autoStartWhen/properties/conditions/items/anyOf/1/properties/set/properties/failureReason"
                   }
                 },
                 "additionalProperties": false
@@ -4204,7 +4636,7 @@
                     ]
                   },
                   "failureReason": {
-                    "type": "string"
+                    "$ref": "#/properties/autoStartWhen/properties/conditions/items/anyOf/1/properties/set/properties/failureReason"
                   }
                 },
                 "additionalProperties": false
@@ -4236,7 +4668,7 @@
               ]
             },
             "failureReason": {
-              "type": "string"
+              "$ref": "#/properties/autoStartWhen/properties/conditions/items/anyOf/1/properties/set/properties/failureReason"
             }
           },
           "additionalProperties": false
@@ -4648,13 +5080,49 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "shortDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "longDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "additionalProperties": false
@@ -5071,13 +5539,49 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "shortDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "longDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "additionalProperties": false
@@ -5177,7 +5681,19 @@
                             ]
                           },
                           "failureReason": {
-                            "type": "string"
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "text": {
+                                "type": "string"
+                              },
+                              "note": {
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "additionalProperties": false
@@ -5431,7 +5947,7 @@
               ]
             },
             "failureReason": {
-              "type": "string"
+              "$ref": "#/properties/scannableWhen/properties/conditions/items/anyOf/1/properties/set/properties/failureReason"
             }
           },
           "additionalProperties": false
@@ -5442,10 +5958,34 @@
             "type": "object",
             "properties": {
               "label": {
-                "type": "string"
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "note": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
               },
               "text": {
-                "type": "string"
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "note": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
               },
               "visibleWhen": {
                 "type": "object",
@@ -5467,7 +6007,7 @@
                     ]
                   },
                   "failureReason": {
-                    "type": "string"
+                    "$ref": "#/properties/scannableWhen/properties/conditions/items/anyOf/1/properties/set/properties/failureReason"
                   }
                 },
                 "additionalProperties": false
@@ -5859,13 +6399,49 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "shortDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "longDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "additionalProperties": false
@@ -5962,7 +6538,19 @@
                             ]
                           },
                           "failureReason": {
-                            "type": "string"
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "text": {
+                                "type": "string"
+                              },
+                              "note": {
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "additionalProperties": false
@@ -6216,7 +6804,7 @@
               ]
             },
             "failureReason": {
-              "type": "string"
+              "$ref": "#/properties/availableWhen/properties/conditions/items/anyOf/1/properties/set/properties/failureReason"
             }
           },
           "additionalProperties": false
@@ -6230,7 +6818,19 @@
                 "type": "string"
               },
               "displayName": {
-                "type": "string"
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "note": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
               },
               "image": {
                 "type": "string"
@@ -6279,13 +6879,49 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "shortDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "longDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "additionalProperties": false
@@ -6385,7 +7021,19 @@
                             ]
                           },
                           "failureReason": {
-                            "type": "string"
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "text": {
+                                "type": "string"
+                              },
+                              "note": {
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false
                           }
                         },
                         "additionalProperties": false
@@ -6639,7 +7287,7 @@
               ]
             },
             "failureReason": {
-              "type": "string"
+              "$ref": "#/properties/visibleWhen/properties/conditions/items/anyOf/1/properties/set/properties/failureReason"
             }
           },
           "additionalProperties": false
@@ -7097,13 +7745,49 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "shortDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "longDescription": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "additionalProperties": false

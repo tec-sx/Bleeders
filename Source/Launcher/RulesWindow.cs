@@ -61,7 +61,7 @@ public sealed class RulesWindow : DebugWindow
         IEnumerable<KeyValuePair<Tag, AttributeValue>> values = _attributes.GetValues(player).OrderBy(pair => pair.Value.Definition?.Category.Name).ThenBy(pair => pair.Key.Name);
         foreach ((Tag attribute, AttributeValue value) in values)
         {
-            string name = value.Definition?.Display.Name ?? attribute.Name;
+            string name = value.Definition?.Display.Name.Text ?? attribute.Name;
             ImGui.Text(name);
             ImGui.SameLine(150);
             if (value.Current == value.Base)
@@ -89,11 +89,11 @@ public sealed class RulesWindow : DebugWindow
         foreach (AppliedModifier applied in modifiers)
         {
             ModifierDefinition modifier = applied.Modifier;
-            ImGui.BulletText(modifier.Display.Name);
-            if (modifier.Display.ShortDescription.Length > 0)
+            ImGui.BulletText(modifier.Display.Name.Text);
+            if (!modifier.Display.ShortDescription.IsEmpty)
             {
                 ImGui.SameLine();
-                ImGui.TextDisabled(modifier.Display.ShortDescription);
+                ImGui.TextDisabled(modifier.Display.ShortDescription.Text);
             }
         }
     }
@@ -103,7 +103,12 @@ public sealed class RulesWindow : DebugWindow
         foreach (AbilitySpec spec in _abilities.GetAbilities(player))
         {
             bool can = _abilities.CanActivate(player, spec.Ability.Id, out Tag reason);
-            string name = spec.Ability.Display.Name.Length > 0 ? spec.Ability.Display.Name : spec.Ability.Id.Name;
+            string name = spec.Ability.Id.Name;
+            if (!spec.Ability.Display.Name.IsEmpty)
+            {
+                name = spec.Ability.Display.Name.Text;
+            }
+
             ImGui.BulletText(name);
             ImGui.SameLine(150);
             if (spec.IsActive)

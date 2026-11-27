@@ -67,7 +67,7 @@ internal sealed class InteractableHighlightSystemTestsBuilder : IDisposable
         }
 
         string definition = $$"""
-            { "type": "interactable", "offers": [ { "input": "Input.Use", "action": "Interaction.Action.Pull", "display": { "name": "Pull" } } ]{{interactors}} }
+            { "type": "interactable", "offers": [ { "input": "Input.Use", "action": "Interaction.Action.Pull", "display": { "name": { "key": "Test.Pull", "text": "Pull" } } } ]{{interactors}} }
             """;
         string fullPath = Path.Combine(_folder, file);
         File.WriteAllText(fullPath, definition);

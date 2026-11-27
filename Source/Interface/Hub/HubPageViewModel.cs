@@ -2,18 +2,36 @@ using Arch.Core;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 
+using FlickerVoid.Engine.Gameplay.Localization;
+using FlickerVoid.Engine.Runtime.Localization;
+using Bleeders.Interface.Localization;
+
 namespace Bleeders.Interface.Hub;
 
-/// <summary>One page of the hub, filled from the protagonist's state when it is shown and kept up while it shows.</summary>
-public abstract partial class HubPageViewModel(string title) : ObservableObject
+/// <summary>One page of the hub, filled from the protagonist's state when it is shown and kept up while it shows, in the chosen language.</summary>
+public abstract partial class HubPageViewModel : ObservableObject
 {
-    public string Title { get; } = title;
+    private readonly LocalizedText _title;
+
+    protected HubPageViewModel(LocalizedText title, TextLocalizer localizer)
+    {
+        _title = title;
+        Localizer = localizer;
+        Labels = new InterfaceLabels(localizer);
+        localizer.Changed += HandleLanguageChanged;
+    }
+
+    public string Title => Localizer.Get(_title);
+
+    public InterfaceLabels Labels { get; }
 
     [ObservableProperty]
     public partial bool IsSelected { get; private set; }
 
     /// <summary>Whose state the page shows while it is selected; <see cref="Entity.Null"/> otherwise.</summary>
     protected Entity Owner { get; private set; } = Entity.Null;
+
+    protected TextLocalizer Localizer { get; }
 
     public void Show(Entity owner)
     {
@@ -37,5 +55,11 @@ public abstract partial class HubPageViewModel(string title) : ObservableObject
         {
             Refresh();
         }
+    }
+
+    private void HandleLanguageChanged()
+    {
+        OnPropertyChanged(nameof(Title));
+        RefreshFor(Owner);
     }
 }

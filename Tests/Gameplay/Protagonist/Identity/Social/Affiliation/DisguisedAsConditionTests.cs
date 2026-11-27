@@ -1,5 +1,6 @@
 using FlickerVoid.Engine.Gameplay.Conditions;
 using FlickerVoid.Engine.Gameplay.Facts;
+using FlickerVoid.Engine.Gameplay.Localization;
 using FlickerVoid.Engine.Gameplay.Scales;
 using FlickerVoid.Engine.Gameplay.Tags;
 using Bleeders.Gameplay.Protagonist.Identity.Social.Affiliation;
@@ -15,7 +16,7 @@ public class DisguisedAsConditionTests
     {
         _police = new FactionDefinition
         {
-            Display = new() { Name = "Police" },
+            Display = new() { Name = new LocalizedText("", "Police") },
             Standing = new ScaleDefinition { Id = new Tag("Fact.Social.Standing.Police") },
         };
         _builder = new DisguisedAsConditionTestsBuilder(_police);

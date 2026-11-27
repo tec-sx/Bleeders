@@ -34,22 +34,22 @@ internal sealed class HubViewModelTestsBuilder : IDisposable
         _folder = Path.Combine(Path.GetTempPath(), folderName);
         Directory.CreateDirectory(_folder);
         WithFile("Items/Ale.fvdata", """
-            { "type": "item", "id": "Item.Ale", "display": { "name": "Mug of ale", "shortDescription": "Dark and strong." }, "weight": 0.5,
+            { "type": "item", "id": "Item.Ale", "display": { "name": { "key": "Test.MugOfAle", "text": "Mug of ale" }, "shortDescription": { "key": "Test.DarkAndStrong", "text": "Dark and strong." } }, "weight": 0.5,
               "fragments": [ { "$type": "usable", "consumeOnUse": true } ] }
             """);
         WithFile("Items/Cap.fvdata", """
-            { "type": "item", "id": "Item.Cap", "display": { "name": "Flat cap" }, "weight": 0.5, "maxQuantity": 1,
+            { "type": "item", "id": "Item.Cap", "display": { "name": { "key": "Test.FlatCap", "text": "Flat cap" } }, "weight": 0.5, "maxQuantity": 1,
               "fragments": [ { "$type": "equippable", "slots": [ "Equipment.Slot.Head" ] } ] }
             """);
         WithFile("Attributes/Stealth.fvdata", """
-            { "type": "attribute", "id": "Attribute.Skill.Stealth", "display": { "name": "Stealth" }, "max": 10, "integer": true }
+            { "type": "attribute", "id": "Attribute.Skill.Stealth", "display": { "name": { "key": "Test.Stealth", "text": "Stealth" } }, "max": 10, "integer": true }
             """);
         WithFile("Quests/Cellar.fvdata", """
-            { "type": "quest", "id": "Quest.Cellar", "display": { "name": "The cellar key" },
-              "objectives": [ { "fact": "Quest.Cellar.FoundKey", "description": "Find the cellar key", "completeWhen": { "conditions": [ { "$type": "fact", "fact": "Has.Key" } ] } } ] }
+            { "type": "quest", "id": "Quest.Cellar", "display": { "name": { "key": "Test.TheCellarKey", "text": "The cellar key" } },
+              "objectives": [ { "fact": "Quest.Cellar.FoundKey", "description": { "key": "Test.FindTheCellarKey", "text": "Find the cellar key" }, "completeWhen": { "conditions": [ { "$type": "fact", "fact": "Has.Key" } ] } } ] }
             """);
         WithFile("Knowledge/Cellar.fvdata", """
-            { "type": "knowledge", "id": "Knowledge.Cellar", "display": { "name": "The cellar", "shortDescription": "Locked since spring." } }
+            { "type": "knowledge", "id": "Knowledge.Cellar", "display": { "name": { "key": "Test.TheCellar", "text": "The cellar" }, "shortDescription": { "key": "Test.LockedSinceSpring", "text": "Locked since spring." } } }
             """);
     }
 
@@ -60,6 +60,7 @@ internal sealed class HubViewModelTestsBuilder : IDisposable
     public HubViewModel Build()
     {
         ContentManager content = new(_folder);
+        Game.Localization.Load(content);
         _data = new DataAssets(content, Game.Data);
         Game.Services.AddService(_data);
         Game.AddFlow();

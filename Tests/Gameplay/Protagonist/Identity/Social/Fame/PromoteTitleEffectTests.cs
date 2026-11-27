@@ -1,5 +1,6 @@
 using FlickerVoid.Engine.Gameplay.Conditions;
 using FlickerVoid.Engine.Gameplay.Facts;
+using FlickerVoid.Engine.Gameplay.Localization;
 using FlickerVoid.Engine.Gameplay.Tags;
 using Bleeders.Gameplay.Protagonist.Identity.Social.Fame;
 
@@ -7,7 +8,7 @@ namespace Bleeders.Gameplay.Tests.Protagonist.Identity.Social.Fame;
 
 public class PromoteTitleEffectTests
 {
-    private readonly TitleDefinition _hero = new() { Id = new Tag("Fact.Title.Hero"), Display = new() { Name = "Hero" } };
+    private readonly TitleDefinition _hero = new() { Id = new Tag("Fact.Title.Hero"), Display = new() { Name = new LocalizedText("", "Hero") } };
     private readonly PromoteTitleEffectTestsBuilder _builder;
 
     public PromoteTitleEffectTests()

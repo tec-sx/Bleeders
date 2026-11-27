@@ -5,6 +5,8 @@ using Arch.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 using FlickerVoid.Engine.Runtime.Components;
+using FlickerVoid.Engine.Runtime.Localization;
+using Bleeders.Interface.Localization;
 using Bleeders.Gameplay.Protagonist.Resources.Knowledge.Scanning;
 
 namespace Bleeders.Interface.Hud.Scanning;
@@ -13,16 +15,15 @@ namespace Bleeders.Interface.Hud.Scanning;
 /// The HUD's scan card while the protagonist is in scan mode: the focused scannable's title and how far its scan has come, then, once
 /// scanned, at most three of its entries the protagonist can see.
 /// </summary>
-public sealed partial class ScanCardViewModel(ScannerSystem scanner, World world) : ObservableObject
+public sealed partial class ScanCardViewModel(ScannerSystem scanner, World world, TextLocalizer localizer) : ObservableObject
 {
     public const int MaxEntries = 3;
-
-    public const string ScanModeTitle = "Scan mode";
 
     private static readonly QueryDescription Protagonists = new QueryDescription().WithAll<Gameplay.Protagonist.Protagonist, Scanner>();
 
     private Entity _shown = Entity.Null;
     private bool _shownScanned;
+    private string _shownCulture = "";
 
     [ObservableProperty]
     public partial bool IsVisible { get; private set; }
@@ -31,7 +32,7 @@ public sealed partial class ScanCardViewModel(ScannerSystem scanner, World world
     public partial bool HasFocus { get; private set; }
 
     [ObservableProperty]
-    public partial string Title { get; private set; } = ScanModeTitle;
+    public partial string Title { get; private set; } = InterfaceTexts.ScanMode.Text;
 
     /// <summary>From 0 to 100.</summary>
     [ObservableProperty]
@@ -62,13 +63,15 @@ public sealed partial class ScanCardViewModel(ScannerSystem scanner, World world
         bool scanned = scanner.WasScanned(focus);
         IsScanned = scanned;
         ShowsProgress = HasFocus && !scanned;
-        if (focus == _shown && scanned == _shownScanned)
+        string culture = localizer.Culture.Value;
+        if (focus == _shown && scanned == _shownScanned && culture == _shownCulture)
         {
             return;
         }
 
         _shown = focus;
         _shownScanned = scanned;
+        _shownCulture = culture;
         Title = FindTitle(focus);
         Entries.Clear();
         if (!scanned)
@@ -79,7 +82,9 @@ public sealed partial class ScanCardViewModel(ScannerSystem scanner, World world
         IReadOnlyList<ScanEntry> entries = scanner.GetVisibleEntries(protagonist, focus);
         foreach (ScanEntry entry in entries.Take(MaxEntries))
         {
-            Entries.Add(new ScanEntryViewModel(entry.Label, entry.Text));
+            string label = localizer.Get(entry.Label);
+            string text = localizer.Get(entry.Text);
+            Entries.Add(new ScanEntryViewModel(label, text));
         }
     }
 
@@ -87,13 +92,13 @@ public sealed partial class ScanCardViewModel(ScannerSystem scanner, World world
     {
         if (focus == Entity.Null)
         {
-            return ScanModeTitle;
+            return localizer.Get(InterfaceTexts.ScanMode);
         }
 
         ScanDefinition? definition = scanner.GetDefinition(focus);
-        if (definition is not null && definition.Display.Name.Length > 0)
+        if (definition is not null && !definition.Display.Name.IsEmpty)
         {
-            return definition.Display.Name;
+            return localizer.Get(definition.Display.Name);
         }
 
         if (world.TryGet(focus, out EntityName name))

@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 
 using FlickerVoid.Engine.Gameplay.Tags;
 using FlickerVoid.Engine.Runtime.Events;
+using FlickerVoid.Engine.Runtime.Localization;
 using FlickerVoid.Engine.Story.Quests;
 
 namespace Bleeders.Interface.Hud.Quests;
@@ -13,11 +14,14 @@ public sealed class QuestTrackerViewModel
 
     private readonly QuestSystem _quests;
     private readonly List<Tag> _order = [];
+    private readonly TextLocalizer _localizer;
 
-    public QuestTrackerViewModel(QuestSystem quests, EventBus events)
+    public QuestTrackerViewModel(QuestSystem quests, EventBus events, TextLocalizer localizer)
     {
         _quests = quests;
+        _localizer = localizer;
         events.Handle((in QuestChangedEvent changed) => HandleChanged(changed.Quest));
+        localizer.Changed += Rebuild;
         Rebuild();
     }
 
@@ -30,7 +34,7 @@ public sealed class QuestTrackerViewModel
         {
             if (_quests.IsObjectiveVisible(objective) && !_quests.IsObjectiveComplete(objective.Fact))
             {
-                return objective.Description;
+                return _localizer.Get(objective.Description);
             }
         }
 
@@ -71,7 +75,8 @@ public sealed class QuestTrackerViewModel
         {
             QuestDefinition quest = shown[index];
             string objective = GetCurrentObjective(quest);
-            Quests.Add(new TrackedQuestViewModel(quest.Display.Name, objective));
+            string name = DisplayNames.Of(quest, _localizer);
+            Quests.Add(new TrackedQuestViewModel(name, objective));
         }
     }
 }

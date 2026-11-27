@@ -28,7 +28,7 @@ internal sealed class ResidentSystemTestsBuilder : IDisposable
 
     /// <summary>A flow with a single line that waits for the player.</summary>
     private const string Greeting = """
-        { "nodes": [ { "$type": "start", "id": "start" }, { "$type": "line", "id": "hello", "text": "Welcome.", "waitForInput": true } ],
+        { "nodes": [ { "$type": "start", "id": "start" }, { "$type": "line", "id": "hello", "text": { "key": "Test.Welcome", "text": "Welcome." }, "waitForInput": true } ],
           "links": [ { "from": "start", "to": "hello" } ] }
         """;
 

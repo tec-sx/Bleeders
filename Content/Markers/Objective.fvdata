@@ -2,7 +2,7 @@
   "$schema": "../.schemas/data.schema.json",
   "type": "marker",
   "id": "Marker.Objective",
-  "display": { "name": "Objective" },
+  "display": { "name": { "key": "Marker.Objective.Name", "text": "Objective", "note": "The name of the marker Objective." } },
   "tags": [ "Marker.Category.Quest" ],
   "priority": 2,
   "visibleWhen": { "conditions": [ { "$type": "questState", "quest": "Quest.Cellar", "state": "Active" } ] },

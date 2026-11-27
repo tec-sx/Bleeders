@@ -15,7 +15,7 @@
   <Grid>
     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="28" Width="320" Spacing="6"
                 IsHitTestVisible="False" IsVisible="{Binding !!Quests.Count}">
-      <TextBlock Classes="label" Text="OBJECTIVES" />
+      <TextBlock Classes="label" Text="{Binding Labels.Objectives}" />
       <controls:HudFrame>
         <ItemsControl ItemsSource="{Binding Quests}">
           <ItemsControl.ItemTemplate>
@@ -55,10 +55,10 @@
         </ItemsControl>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="4">
           <Button Classes="choice" Command="{Binding Dialogue.AdvanceCommand}" IsVisible="{Binding Dialogue.CanAdvance}">
-            <TextBlock Classes="label" Text="Next" />
+            <TextBlock Classes="label" Text="{Binding Labels.Next}" />
           </Button>
           <Button Classes="choice" Command="{Binding Dialogue.LeaveCommand}">
-            <TextBlock Classes="label" Text="Leave" />
+            <TextBlock Classes="label" Text="{Binding Labels.Leave}" />
           </Button>
         </StackPanel>
       </StackPanel>
@@ -84,7 +84,7 @@
     <controls:HudFrame HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="24,0,24,36" Width="420" Padding="20,14"
                        IsHitTestVisible="False" IsVisible="{Binding Scan.IsVisible, FallbackValue=False}">
       <StackPanel Spacing="6">
-        <TextBlock Classes="label" Text="SCAN" />
+        <TextBlock Classes="label" Text="{Binding Labels.Scan}" />
         <TextBlock Classes="heading" Text="{Binding Scan.Title}" />
         <ProgressBar Minimum="0" Maximum="100" Value="{Binding Scan.Progress}" MinHeight="3" Height="3"
                      Foreground="{DynamicResource HudTintBrush}" IsVisible="{Binding Scan.ShowsProgress}" />

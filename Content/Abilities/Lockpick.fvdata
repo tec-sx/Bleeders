@@ -2,10 +2,10 @@
   "$schema": "../.schemas/data.schema.json",
   "type": "ability",
   "id": "Ability.Lockpick",
-  "display": { "name": "Pick lock", "shortDescription": "Opens a lock without its key." },
+  "display": { "name": { "key": "Ability.Lockpick.Name", "text": "Pick lock", "note": "The name of the ability Lockpick." }, "shortDescription": { "key": "Ability.Lockpick.Short", "text": "Opens a lock without its key.", "note": "The short description of the ability Lockpick." } },
   "tags": [ "Ability.Interaction" ],
   "group": "ExclusiveReplace",
   "ownedTagsWhileActive": [ "Status.Interacting" ],
   "conditions": { "conditions": [ { "$type": "hasItemWithTag", "tag": "Item.Lockpick" } ] },
-  "failureMessages": [ { "reason": "Ability.Failure.Conditions", "text": "I need a lockpick." } ]
+  "failureMessages": [ { "reason": "Ability.Failure.Conditions", "text": { "key": "Ability.Lockpick.NeedsPick", "text": "I need a lockpick.", "note": "What the fox thinks when it tries to pick a lock without a lockpick." } } ]
 }

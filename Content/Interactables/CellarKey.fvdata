@@ -2,12 +2,12 @@
   "$schema": "../.schemas/data.schema.json",
   "type": "interactable",
   "id": "Interactable.Pickup.CellarKey",
-  "display": { "name": "Item" },
+  "display": { "name": { "key": "Interactable.CellarKey.Name", "text": "Item", "note": "What the prompt calls CellarKey things, shown over its offers." } },
   "offers": [
     {
       "input": "Input.Use",
       "action": "Interaction.Action.PickUp",
-      "display": { "name": "Take" },
+      "display": { "name": { "key": "Interaction.Offer.Take", "text": "Take", "note": "The button of an interaction offer in the prompt, a verb." } },
       "effects": { "effects": [ { "$type": "pickUp" }, { "$type": "fact", "fact": "Found.CellarKey" } ] }
     }
   ]

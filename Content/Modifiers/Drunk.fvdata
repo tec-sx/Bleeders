@@ -1,7 +1,7 @@
 {
   "$schema": "../.schemas/data.schema.json",
   "type": "modifier",
-  "display": { "name": "Drunk", "shortDescription": "Bold, loud and clumsy." },
+  "display": { "name": { "key": "Modifier.Drunk.Name", "text": "Drunk", "note": "The name of the modifier Drunk." }, "shortDescription": { "key": "Modifier.Drunk.Short", "text": "Bold, loud and clumsy.", "note": "The short description of the modifier Drunk." } },
   "grantedTags": [ "Status.Drunk" ],
   "changes": [
     { "attribute": "Attribute.Skill.Perception", "operation": "Add", "value": -2 },

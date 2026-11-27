@@ -19,7 +19,7 @@ public sealed class ModifyRelationshipEffect : Effect
 
     public override string Describe()
     {
-        string characterName = Character?.Display.Name ?? "Target";
+        string characterName = Character?.Display.Name.Text ?? "Target";
         return $"Relationship with {characterName} {Delta}";
     }
 

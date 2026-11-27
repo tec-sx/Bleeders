@@ -1,12 +1,12 @@
 {
   "$schema": "../.schemas/data.schema.json",
   "type": "scan",
-  "display": { "name": "Mug of ale" },
+  "display": { "name": { "key": "Scan.Ale.Name", "text": "Mug of ale", "note": "The title of the scan card while the fox scans the ale." } },
   "category": "Scan.Category.Object",
   "scanDuration": 0.6,
   "entries": [
-    { "label": "Ale", "text": "Dark and still cold." },
-    { "label": "Strength", "text": "Stronger than it smells.",
+    { "label": { "key": "Scan.Ale.Ale.Label", "text": "Ale", "note": "The heading of one thing the scan of the ale tells." }, "text": { "key": "Scan.Ale.Ale", "text": "Dark and still cold.", "note": "What the scan of the ale tells under Ale." } },
+    { "label": { "key": "Scan.Ale.Strength.Label", "text": "Strength", "note": "The heading of one thing the scan of the ale tells." }, "text": { "key": "Scan.Ale.Strength", "text": "Stronger than it smells.", "note": "What the scan of the ale tells under Strength." },
       "visibleWhen": { "conditions": [ { "$type": "attribute", "attribute": "Attribute.Skill.Perception", "value": 2 } ] } }
   ]
 }
