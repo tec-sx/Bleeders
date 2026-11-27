@@ -47,14 +47,16 @@ public sealed class DriveControlSystem : BaseSystem<World, GameTime>
     private readonly InputActions _actions;
     private readonly IPhysicsSystem _physics;
     private readonly DialogueSystem _dialogue;
+    private readonly VehicleDriveSystem? _vehicles;
 
-    public DriveControlSystem(World world, EventBus events, InputActions actions, IPhysicsSystem physics, DialogueSystem dialogue)
+    public DriveControlSystem(World world, EventBus events, InputActions actions, IPhysicsSystem physics, DialogueSystem dialogue, VehicleDriveSystem? vehicles)
         : base(world)
     {
         _events = events;
         _actions = actions;
         _physics = physics;
         _dialogue = dialogue;
+        _vehicles = vehicles;
         ArrayRegistry.Add<Driving>();
         ArrayRegistry.Add<Hidden>();
         events.Handle((in InputActionEvent action) => HandleInput(action));
@@ -119,15 +121,20 @@ public sealed class DriveControlSystem : BaseSystem<World, GameTime>
         }
     }
 
-    /// <summary>The nearest vehicle without a driver within <see cref="EnterRange"/> of the position, or <see cref="Entity.Null"/>.</summary>
+    /// <summary>The nearest vehicle that takes a driver and has none within <see cref="EnterRange"/> of the position, or <see cref="Entity.Null"/>.</summary>
     private Entity FindNearest(Vector3 position)
     {
         Entity nearest = Entity.Null;
+        if (_vehicles is not { } vehicles)
+        {
+            return nearest;
+        }
+
         float nearestDistance = EnterRange;
         World.Query(in Vehicles, (Entity entity, ref Transform transform) =>
         {
             float distance = Vector3.Distance(transform.Position, position);
-            if (distance <= nearestDistance)
+            if (distance <= nearestDistance && vehicles.CanDrive(entity))
             {
                 nearest = entity;
                 nearestDistance = distance;
