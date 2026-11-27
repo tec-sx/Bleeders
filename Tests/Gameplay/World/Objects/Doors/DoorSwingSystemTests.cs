@@ -6,7 +6,7 @@ namespace Bleeders.Gameplay.Tests.World.Objects.Doors;
 
 public sealed class DoorSwingSystemTests : IDisposable
 {
-    private const string Sounds = "\"rattleSound\": \"Sounds/Rattle.fvdata\", \"swingSound\": \"Sounds/Swing.fvdata\"";
+    private const string Sounds = "\"rattleSound\": \"Sounds/Rattle.fvsound\", \"swingSound\": \"Sounds/Swing.fvsound\"";
 
     private readonly DoorSwingSystemTestsBuilder _builder = new();
 
@@ -19,7 +19,7 @@ public sealed class DoorSwingSystemTests : IDisposable
 
         _builder.Block(door);
 
-        PlaySoundCommand expected = new("Sounds/Rattle.fvdata", Entity: door);
+        PlaySoundCommand expected = new("Sounds/Rattle.fvsound", Entity: door);
         _builder.Sounds.Should().ContainSingle().Which.Should().Be(expected);
     }
 
@@ -32,7 +32,7 @@ public sealed class DoorSwingSystemTests : IDisposable
 
         _builder.Toggle(door, open);
 
-        PlaySoundCommand expected = new("Sounds/Swing.fvdata", Entity: door);
+        PlaySoundCommand expected = new("Sounds/Swing.fvsound", Entity: door);
         _builder.Sounds.Should().ContainSingle().Which.Should().Be(expected);
     }
 

@@ -371,8 +371,66 @@
     {
       "type": "object",
       "properties": {
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "ducks": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "bus": {
+                      "enum": [
+                        "Master",
+                        "Music",
+                        "Ambience",
+                        "Effects",
+                        "Dialogue",
+                        "Interface"
+                      ]
+                    },
+                    "gain": {
+                      "type": "number"
+                    },
+                    "cutoff": {
+                      "type": "number"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "fade": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "$schema": {
+          "type": "string"
+        },
+        "type": {
+          "const": "mix"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
         "tempo": {
           "type": "number"
+        },
+        "tempoFromBelow": {
+          "type": "boolean"
         },
         "beatsPerBar": {
           "type": "integer"
@@ -401,6 +459,9 @@
               "name": {
                 "type": "string"
               },
+              "icon": {
+                "type": "string"
+              },
               "loop": {
                 "type": "string"
               },
@@ -410,11 +471,28 @@
               "fillIn": {
                 "type": "string"
               },
+              "tempo": {
+                "type": "number"
+              },
               "fillOut": {
                 "type": "string"
               },
               "gain": {
                 "type": "number"
+              },
+              "bus": {
+                "enum": [
+                  "Master",
+                  "Music",
+                  "Ambience",
+                  "Effects",
+                  "Dialogue",
+                  "Interface",
+                  null
+                ]
+              },
+              "triggers": {
+                "type": "array"
               },
               "byRequest": {
                 "type": "boolean"
@@ -802,6 +880,63 @@
                 "type": "number"
               },
               "farDistance": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "notifies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "bar": {
+                "type": "number"
+              },
+              "track": {
+                "type": "string"
+              },
+              "repeat": {
+                "type": "boolean"
+              },
+              "sound": {
+                "type": "string"
+              },
+              "gain": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "bars": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "continuePoints": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "bar": {
                 "type": "number"
               }
             },

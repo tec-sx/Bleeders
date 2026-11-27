@@ -1,0 +1,9 @@
+{
+  "$schema": "../.schemas/data.schema.json",
+  "states": [
+    { "name": "Indoors", "ducks": [ { "bus": "Ambience", "gain": 0.6, "cutoff": 1200 } ], "fade": 0.3 },
+    { "name": "Talking", "ducks": [ { "bus": "Music", "gain": 0.5 }, { "bus": "Ambience", "gain": 0.6 } ], "fade": 0.4 },
+    { "name": "Hub open", "ducks": [ { "bus": "Ambience", "gain": 0.4, "cutoff": 3000 }, { "bus": "Effects", "gain": 0.6 } ], "fade": 0.5 },
+    { "name": "Paused", "ducks": [ { "bus": "Music", "gain": 0.7 } ], "fade": 0.2 }
+  ]
+}

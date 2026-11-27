@@ -5,6 +5,7 @@
   "beatsPerBar": 4,
   "phraseBars": 4,
   "gain": 0.8,
+  "continuePoints": [ { "name": "Start", "bar": 1 }, { "name": "Second phrase", "bar": 5 }, { "name": "Third phrase", "bar": 9 } ],
   "tracks": [
     { "name": "Bass", "loop": "Music/BassLoop.ogg" },
     { "name": "Drums", "loop": "Music/DrumsLoop.ogg", "fillIn": "Music/DrumsFillIn.ogg", "fillOut": "Music/DrumsFillOut.ogg", "byRequest": true },
