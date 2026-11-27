@@ -90,7 +90,7 @@ public sealed class ClickControlSystem
     {
         Entity protagonist = player.Entity;
         Vector3 position = player.Transform.Position;
-        Vector3 targetPosition = _world.Get<Transform>(target).Position;
+        Vector3 targetPosition = InteractionSystem.GetUsePoint(_world, target);
         float reach = player.Interactor.Reach;
         Vector3 away = position - targetPosition;
         away.Y = 0;
