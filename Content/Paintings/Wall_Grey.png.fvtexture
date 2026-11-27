@@ -1,0 +1,4 @@
+{
+  "$schema": "../.schemas/texture.schema.json",
+  "relief": true
+}
