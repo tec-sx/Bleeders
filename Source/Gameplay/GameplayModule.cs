@@ -103,6 +103,8 @@ public sealed class GameplayModule : IGameModule
             game.FrameSystems.Add(contexts);
             WalkControlSystem walk = new(game.World, game.Events, actions, dialogue);
             game.FrameSystems.Add(walk);
+            DriveControlSystem drive = new(game.World, game.Events, actions, physics, dialogue);
+            game.FrameSystems.Add(drive);
         }
 
         if (actions is not null && window is not null && input is not null)

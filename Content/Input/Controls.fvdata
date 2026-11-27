@@ -13,7 +13,9 @@
     { "id": "Input.QuickSave", "bindings": [ { "key": "F5" } ] },
     { "id": "Input.QuickLoad", "bindings": [ { "key": "F9" } ] },
     { "id": "Input.Skip", "bindings": [ { "key": "Space" } ] },
-    { "id": "Input.Back", "bindings": [ { "key": "Escape" } ] }
+    { "id": "Input.Back", "bindings": [ { "key": "Escape" } ] },
+    { "id": "Input.Drive", "bindings": [ { "key": "E" } ] },
+    { "id": "Input.HandBrake", "bindings": [ { "key": "Space" } ] }
   ],
   "contexts": [
     { "id": "Input.Context.Conversation", "actions": [ "Input.Back" ] },

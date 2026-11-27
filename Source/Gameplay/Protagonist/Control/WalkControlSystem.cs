@@ -18,7 +18,7 @@ using World = Arch.Core.World;
 
 /// <summary>
 /// Walks the protagonist with <see cref="Move"/> (W, A, S and D) each frame, relative to the camera: up on the screen walks away
-/// from it. Steering only changes when the keys do, so a click's walk goes on until a key is pressed; talking stands it still.
+/// from it. Steering only changes when the keys do, so a click's walk goes on until a key is pressed; talking stands it still, and while it drives the keys are the vehicle's.
 /// </summary>
 public sealed class WalkControlSystem : BaseSystem<World, GameTime>
 {
@@ -39,6 +39,12 @@ public sealed class WalkControlSystem : BaseSystem<World, GameTime>
 
     public override void Update(in GameTime t)
     {
+        if (Player.TryFind(World, out Player driver) && World.Has<Driving>(driver.Entity))
+        {
+            _steering = Vector3.Zero;
+            return;
+        }
+
         Vector2 value = _actions.GetValue(Move);
         if (_dialogue.IsInConversation)
         {

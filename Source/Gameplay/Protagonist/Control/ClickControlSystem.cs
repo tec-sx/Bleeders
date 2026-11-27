@@ -18,7 +18,7 @@ using World = Arch.Core.World;
 
 /// <summary>
 /// Point and click: a press of <see cref="Use"/> walks the protagonist to where the mouse points, or, on an interactable, focuses it,
-/// walks within reach and uses it. While the protagonist talks, clicks belong to the conversation and walk nowhere.
+/// walks within reach and uses it. While the protagonist talks, clicks belong to the conversation and walk nowhere, and while it drives it stays in its seat.
 /// </summary>
 public sealed class ClickControlSystem
 {
@@ -56,6 +56,10 @@ public sealed class ClickControlSystem
         }
 
         Entity protagonist = player.Entity;
+        if (_world.Has<Driving>(protagonist))
+        {
+            return;
+        }
 
         if (_world.Has<ActiveInteractable>(hit.Entity))
         {
