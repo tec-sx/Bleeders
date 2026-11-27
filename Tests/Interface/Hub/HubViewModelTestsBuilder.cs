@@ -48,6 +48,7 @@ internal sealed class HubViewModelTestsBuilder : IDisposable
             { "type": "quest", "id": "Quest.Cellar", "display": { "name": { "key": "Test.TheCellarKey", "text": "The cellar key" } },
               "objectives": [ { "fact": "Quest.Cellar.FoundKey", "description": { "key": "Test.FindTheCellarKey", "text": "Find the cellar key" }, "completeWhen": { "conditions": [ { "$type": "fact", "fact": "Has.Key" } ] } } ] }
             """);
+        WithFile("Music/Hub.fvdata", """{ "type": "music", "tempo": 96, "tracks": [] }""");
         WithFile("Knowledge/Cellar.fvdata", """
             { "type": "knowledge", "id": "Knowledge.Cellar", "display": { "name": { "key": "Test.TheCellar", "text": "The cellar" }, "shortDescription": { "key": "Test.LockedSinceSpring", "text": "Locked since spring." } } }
             """);
