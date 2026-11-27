@@ -444,69 +444,6 @@
                 },
                 "additionalProperties": false
               },
-              "vehicle": {
-                "type": "object",
-                "properties": {
-                  "file": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "file"
-                ],
-                "additionalProperties": false
-              },
-              "building": {
-                "type": "object",
-                "properties": {
-                  "file": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "file"
-                ],
-                "additionalProperties": false
-              },
-              "foliage": {
-                "type": "object",
-                "properties": {
-                  "file": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "file"
-                ],
-                "additionalProperties": false
-              },
-              "foliageScatter": {
-                "type": "object",
-                "properties": {
-                  "file": {
-                    "type": "string"
-                  },
-                  "count": {
-                    "type": "integer"
-                  },
-                  "radius": {
-                    "type": "number"
-                  },
-                  "seed": {
-                    "type": "integer"
-                  },
-                  "minScale": {
-                    "type": "number"
-                  },
-                  "maxScale": {
-                    "type": "number"
-                  }
-                },
-                "required": [
-                  "file"
-                ],
-                "additionalProperties": false
-              },
               "rigidBody": {
                 "type": "object",
                 "properties": {
@@ -1441,6 +1378,69 @@
                     "type": "string"
                   }
                 }
+              },
+              "vehicle": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "file"
+                ],
+                "additionalProperties": false
+              },
+              "building": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "file"
+                ],
+                "additionalProperties": false
+              },
+              "foliage": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "file"
+                ],
+                "additionalProperties": false
+              },
+              "foliageScatter": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string"
+                  },
+                  "count": {
+                    "type": "integer"
+                  },
+                  "radius": {
+                    "type": "number"
+                  },
+                  "seed": {
+                    "type": "integer"
+                  },
+                  "minScale": {
+                    "type": "number"
+                  },
+                  "maxScale": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "file"
+                ],
+                "additionalProperties": false
               },
               "protagonist": {
                 "type": "object"
