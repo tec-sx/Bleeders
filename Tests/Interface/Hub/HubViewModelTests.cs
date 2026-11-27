@@ -1,4 +1,5 @@
 using FlickerVoid.Engine.Audio.Music;
+using FlickerVoid.Engine.Audio.Sounds;
 using Bleeders.Interface.Hub;
 using Bleeders.Interface.Hub.Character;
 using Bleeders.Interface.Hub.Inventory;
@@ -201,5 +202,21 @@ public sealed class HubViewModelTests : IDisposable
 
         open.Should().Be(HubViewModel.Music);
         music.GetCurrent().Should().BeNull();
+    }
+
+    [Fact]
+    public void HoldsTheHubOpenMixStateWhileOpen()
+    {
+        HubViewModel hub = _builder.Build();
+        AudioSystem audio = _builder.Game.Services.GetService<AudioSystem>()!;
+
+        hub.Toggle();
+        _builder.Game.Tick(TimeSpan.FromSeconds(1));
+        float open = audio.GetMixWeight("Hub open");
+        hub.Toggle();
+        _builder.Game.Tick(TimeSpan.FromSeconds(1));
+
+        open.Should().BeGreaterThan(0);
+        audio.GetMixWeight("Hub open").Should().BeLessThan(open);
     }
 }

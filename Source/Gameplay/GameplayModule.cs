@@ -1,6 +1,8 @@
 using Arch.Core;
 
 using FlickerVoid.Engine.Audio;
+using FlickerVoid.Engine.Audio.Mixing;
+using FlickerVoid.Engine.Audio.Sounds;
 using FlickerVoid.Engine.Abilities;
 using FlickerVoid.Engine.Abilities.Activation;
 using FlickerVoid.Engine.Ai;
@@ -54,7 +56,9 @@ public sealed class GameplayModule : IGameModule
         IPhysicsSystem physics = game.AddPhysics();
         game.AddCharacters();
         CameraDirector cameras = game.AddCameras();
-        game.AddAudio();
+        AudioSystem audio = game.AddAudio();
+        game.Events.Handle((in ConversationStartedEvent _) => audio.SetMixState(MixSet.Talking, true));
+        game.Events.Handle((in ConversationEndedEvent _) => audio.SetMixState(MixSet.Talking, false));
         PathSystem paths = game.AddAi();
         game.AddInteraction();
         game.AddAttributes();

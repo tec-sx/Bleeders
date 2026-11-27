@@ -371,6 +371,61 @@
     {
       "type": "object",
       "properties": {
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "ducks": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "bus": {
+                      "enum": [
+                        "Master",
+                        "Music",
+                        "Ambience",
+                        "Effects",
+                        "Dialogue",
+                        "Interface"
+                      ]
+                    },
+                    "gain": {
+                      "type": "number"
+                    },
+                    "cutoff": {
+                      "type": "number"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "fade": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "$schema": {
+          "type": "string"
+        },
+        "type": {
+          "const": "mix"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
         "tempo": {
           "type": "number"
         },
@@ -409,6 +464,9 @@
               },
               "fillIn": {
                 "type": "string"
+              },
+              "tempo": {
+                "type": "number"
               },
               "fillOut": {
                 "type": "string"
@@ -802,6 +860,21 @@
                 "type": "number"
               },
               "farDistance": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "notifies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "bar": {
                 "type": "number"
               }
             },

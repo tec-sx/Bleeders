@@ -3,7 +3,9 @@ using Arch.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
+using FlickerVoid.Engine.Audio.Mixing;
 using FlickerVoid.Engine.Audio.Music;
+using FlickerVoid.Engine.Audio.Sounds;
 using FlickerVoid.Engine.Gameplay.Tags;
 using FlickerVoid.Engine.Platform.Input;
 using FlickerVoid.Engine.Runtime.Loop;
@@ -35,6 +37,7 @@ public sealed partial class HubViewModel : ObservableObject
     private readonly World _world;
     private readonly InputActions? _actions;
     private readonly IMusicPlayer? _music;
+    private readonly AudioSystem? _audio;
     private readonly List<HubPageViewModel> _pages;
     private int _selectedIndex;
 
@@ -44,6 +47,7 @@ public sealed partial class HubViewModel : ObservableObject
         _world = game.World;
         _actions = game.Services.GetService<InputActions>();
         _music = game.Services.GetService<IMusicPlayer>();
+        _audio = game.Services.GetService<AudioSystem>();
         Inventory = new InventoryPageViewModel(game);
         Character = new CharacterPageViewModel(game);
         Journal = new JournalPageViewModel(game);
@@ -87,6 +91,7 @@ public sealed partial class HubViewModel : ObservableObject
         if (!IsOpen)
         {
             _music?.Push(Music);
+            _audio?.SetMixState(MixSet.HubOpen, true);
         }
 
         IsOpen = true;
@@ -101,6 +106,7 @@ public sealed partial class HubViewModel : ObservableObject
         if (IsOpen)
         {
             _music?.Pop();
+            _audio?.SetMixState(MixSet.HubOpen, false);
         }
 
         IsOpen = false;

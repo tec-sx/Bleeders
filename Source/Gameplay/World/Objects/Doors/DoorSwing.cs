@@ -13,10 +13,10 @@ public struct DoorSwing
     public float Speed { get; set; } = 120;
 
     /// <summary>The <c>sound</c> data asset played on the door when a lock blocks it; none when empty.</summary>
-    [ContentFile(".fvdata")]
+    [ContentFile(".fvsound", ".fvdata")]
     public string RattleSound { get; set; } = string.Empty;
 
     /// <summary>The <c>sound</c> data asset played on the door as it starts to swing open or shut; none when empty.</summary>
-    [ContentFile(".fvdata")]
+    [ContentFile(".fvsound", ".fvdata")]
     public string SwingSound { get; set; } = string.Empty;
 }
