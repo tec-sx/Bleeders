@@ -4,6 +4,12 @@
     "$schema": {
       "type": "string"
     },
+    "parent": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "parameters": {
       "type": "object"
     }

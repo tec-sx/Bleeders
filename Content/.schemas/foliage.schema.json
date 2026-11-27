@@ -1,0 +1,217 @@
+{
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "Tree",
+        "Bush"
+      ]
+    },
+    "seed": {
+      "type": "integer"
+    },
+    "shape": {
+      "type": "object",
+      "properties": {
+        "height": {
+          "type": "number"
+        },
+        "trunkRadius": {
+          "type": "number"
+        },
+        "limbs": {
+          "type": "integer"
+        },
+        "crownRadius": {
+          "type": "number"
+        },
+        "crowns": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "trunk": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "place": {
+          "type": "object",
+          "properties": {
+            "position": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "rotation": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "scale": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          },
+          "additionalProperties": false
+        },
+        "mesh": {
+          "type": "object",
+          "properties": {
+            "points": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              }
+            },
+            "faces": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "minItems": 3
+              }
+            }
+          },
+          "required": [
+            "points",
+            "faces"
+          ],
+          "additionalProperties": false
+        },
+        "mirror": {
+          "type": "boolean"
+        },
+        "joint": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "kind": {
+              "enum": [
+                "Hinge",
+                "Slider"
+              ]
+            },
+            "pivot": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "axis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            },
+            "speed": {
+              "type": "number"
+            }
+          },
+          "additionalProperties": false
+        },
+        "toggle": true
+      },
+      "required": [
+        "mesh"
+      ],
+      "additionalProperties": false
+    },
+    "limbs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "place": {
+            "$ref": "#/properties/trunk/properties/place"
+          },
+          "mesh": {
+            "type": "object",
+            "properties": {
+              "points": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                }
+              },
+              "faces": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "minItems": 3
+                }
+              }
+            },
+            "required": [
+              "points",
+              "faces"
+            ],
+            "additionalProperties": false
+          },
+          "mirror": {
+            "type": "boolean"
+          },
+          "joint": {
+            "$ref": "#/properties/trunk/properties/joint"
+          },
+          "toggle": true
+        },
+        "required": [
+          "mesh"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "crowns": {
+      "type": "array",
+      "items": {
+        "$ref": "#/properties/limbs/items"
+      }
+    }
+  },
+  "additionalProperties": false
+}

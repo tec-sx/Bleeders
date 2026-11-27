@@ -7,7 +7,8 @@
     "type": {
       "enum": [
         "car",
-        "motorcycle"
+        "motorcycle",
+        "trailer"
       ]
     },
     "body": {
@@ -74,7 +75,51 @@
             "faces"
           ],
           "additionalProperties": false
-        }
+        },
+        "mirror": {
+          "type": "boolean"
+        },
+        "joint": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "kind": {
+              "enum": [
+                "Hinge",
+                "Slider"
+              ]
+            },
+            "pivot": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "axis": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            },
+            "speed": {
+              "type": "number"
+            }
+          },
+          "additionalProperties": false
+        },
+        "toggle": true
       },
       "required": [
         "mesh"
@@ -120,13 +165,63 @@
               "faces"
             ],
             "additionalProperties": false
-          }
+          },
+          "mirror": {
+            "type": "boolean"
+          },
+          "joint": {
+            "$ref": "#/properties/body/properties/joint"
+          },
+          "toggle": true
         },
         "required": [
           "mesh"
         ],
         "additionalProperties": false
       }
+    },
+    "doors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/properties/wheels/items"
+      }
+    },
+    "drive": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "mass": {
+          "type": "number"
+        },
+        "engineTorque": {
+          "type": "number"
+        },
+        "brakeTorque": {
+          "type": "number"
+        },
+        "driven": {
+          "enum": [
+            "rear",
+            "front",
+            "all"
+          ]
+        },
+        "steer": {
+          "type": "number"
+        },
+        "suspensionTravel": {
+          "type": "number"
+        },
+        "suspensionFrequency": {
+          "type": "number"
+        },
+        "suspensionDamping": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
     }
   },
   "required": [

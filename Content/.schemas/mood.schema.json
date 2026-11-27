@@ -144,6 +144,40 @@
     "fogRange": {
       "type": "number"
     },
+    "fogNoise": {
+      "type": "number"
+    },
+    "fogNoiseScale": {
+      "type": "number"
+    },
+    "fogWind": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "fogWindSpeed": {
+      "type": "number"
+    },
+    "beamIntensity": {
+      "type": "number"
+    },
+    "beamWidth": {
+      "type": "number"
+    },
+    "beamReach": {
+      "type": "number"
+    },
+    "beamColor": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
     "hazeDensity": {
       "type": "number"
     },
@@ -176,10 +210,66 @@
     "ambientOcclusionRadius": {
       "type": "number"
     },
+    "reflection": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reflectionIntensity": {
+      "type": "number"
+    },
     "contactShadowLength": {
       "type": "number"
     },
     "bloom": {
+      "type": "number"
+    },
+    "bloomRadius": {
+      "type": "number"
+    },
+    "dirt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dirtAmount": {
+      "type": "number"
+    },
+    "vignetteIntensity": {
+      "type": "number"
+    },
+    "vignetteRadius": {
+      "type": "number"
+    },
+    "vignetteSoftness": {
+      "type": "number"
+    },
+    "vignetteRoundness": {
+      "type": "number"
+    },
+    "vignetteColor": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "flare": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "flareIntensity": {
+      "type": "number"
+    },
+    "flareThreshold": {
+      "type": "number"
+    },
+    "flareThresholdRange": {
       "type": "number"
     },
     "exposure": {

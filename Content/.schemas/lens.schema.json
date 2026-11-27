@@ -7,6 +7,53 @@
     "bloom": {
       "type": "number"
     },
+    "bloomRadius": {
+      "type": "number"
+    },
+    "dirt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dirtAmount": {
+      "type": "number"
+    },
+    "vignetteIntensity": {
+      "type": "number"
+    },
+    "vignetteRadius": {
+      "type": "number"
+    },
+    "vignetteSoftness": {
+      "type": "number"
+    },
+    "vignetteRoundness": {
+      "type": "number"
+    },
+    "vignetteColor": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "flare": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "flareIntensity": {
+      "type": "number"
+    },
+    "flareThreshold": {
+      "type": "number"
+    },
+    "flareThresholdRange": {
+      "type": "number"
+    },
     "tonemapper": {
       "enum": [
         "None",

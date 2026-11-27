@@ -4,6 +4,11 @@
     "$schema": {
       "type": "string"
     },
+    "loc.Culture": {
+      "description": "The language texts are shown in, such as pl; empty shows them as written.",
+      "type": "string",
+      "default": ""
+    },
     "r.LocalLights": {
       "description": "Draws point and spot lights.",
       "type": "boolean",
@@ -53,6 +58,36 @@
       "description": "Draws the main camera\u0027s depth fade.",
       "type": "boolean",
       "default": true
+    },
+    "audio.Master": {
+      "description": "The volume of everything, from 0 to 1.",
+      "type": "number",
+      "default": 1
+    },
+    "audio.Music": {
+      "description": "The volume of the music, from 0 to 1.",
+      "type": "number",
+      "default": 1
+    },
+    "audio.Ambience": {
+      "description": "The volume of the ambience, from 0 to 1.",
+      "type": "number",
+      "default": 1
+    },
+    "audio.Effects": {
+      "description": "The volume of the world\u0027s sounds, from 0 to 1.",
+      "type": "number",
+      "default": 1
+    },
+    "audio.Dialogue": {
+      "description": "The volume of voices, from 0 to 1.",
+      "type": "number",
+      "default": 1
+    },
+    "audio.Interface": {
+      "description": "The volume of the interface\u0027s sounds, from 0 to 1.",
+      "type": "number",
+      "default": 1
     }
   },
   "additionalProperties": false

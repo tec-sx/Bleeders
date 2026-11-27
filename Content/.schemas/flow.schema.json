@@ -544,6 +544,17 @@
                         {
                           "properties": {
                             "$type": {
+                              "const": "playSound"
+                            },
+                            "sound": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
                               "const": "modifyAttribute"
                             },
                             "attribute": {
@@ -1028,6 +1039,26 @@
               },
               "duration": {
                 "type": "number"
+              },
+              "id": {
+                "type": "string"
+              },
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "properties": {
+              "$type": {
+                "const": "playSound"
+              },
+              "sound": {
+                "type": "string"
               },
               "id": {
                 "type": "string"

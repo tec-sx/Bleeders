@@ -313,6 +313,64 @@
     {
       "type": "object",
       "properties": {
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "gain": {
+          "type": "number"
+        },
+        "gainVariation": {
+          "type": "number"
+        },
+        "pitch": {
+          "type": "number"
+        },
+        "pitchVariation": {
+          "type": "number"
+        },
+        "bus": {
+          "enum": [
+            "Master",
+            "Music",
+            "Ambience",
+            "Effects",
+            "Dialogue",
+            "Interface"
+          ]
+        },
+        "spatial": {
+          "type": "boolean"
+        },
+        "minDistance": {
+          "type": "number"
+        },
+        "maxDistance": {
+          "type": "number"
+        },
+        "loop": {
+          "type": "boolean"
+        },
+        "throttle": {
+          "type": "number"
+        },
+        "$schema": {
+          "type": "string"
+        },
+        "type": {
+          "const": "sound"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
         "offers": {
           "type": "array",
           "items": {
@@ -865,6 +923,17 @@
                             },
                             "duration": {
                               "type": "number"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
+                              "const": "playSound"
+                            },
+                            "sound": {
+                              "type": "string"
                             }
                           },
                           "additionalProperties": false
@@ -2338,6 +2407,17 @@
                   {
                     "properties": {
                       "$type": {
+                        "const": "playSound"
+                      },
+                      "sound": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "$type": {
                         "const": "modifyAttribute"
                       },
                       "attribute": {
@@ -3368,6 +3448,17 @@
                                 },
                                 "duration": {
                                   "type": "number"
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            {
+                              "properties": {
+                                "$type": {
+                                  "const": "playSound"
+                                },
+                                "sound": {
+                                  "type": "string"
                                 }
                               },
                               "additionalProperties": false
@@ -4807,6 +4898,17 @@
                   {
                     "properties": {
                       "$type": {
+                        "const": "playSound"
+                      },
+                      "sound": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "$type": {
                         "const": "modifyAttribute"
                       },
                       "attribute": {
@@ -5283,6 +5385,17 @@
                       },
                       "duration": {
                         "type": "number"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "$type": {
+                        "const": "playSound"
+                      },
+                      "sound": {
+                        "type": "string"
                       }
                     },
                     "additionalProperties": false
@@ -6143,6 +6256,17 @@
                       },
                       "duration": {
                         "type": "number"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "$type": {
+                        "const": "playSound"
+                      },
+                      "sound": {
+                        "type": "string"
                       }
                     },
                     "additionalProperties": false
@@ -7483,6 +7607,17 @@
                                 },
                                 "duration": {
                                   "type": "number"
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            {
+                              "properties": {
+                                "$type": {
+                                  "const": "playSound"
+                                },
+                                "sound": {
+                                  "type": "string"
                                 }
                               },
                               "additionalProperties": false

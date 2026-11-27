@@ -1,0 +1,78 @@
+{
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "ghosts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "scale": {
+            "type": "number"
+          },
+          "color": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "chromaShift": {
+      "type": "number"
+    },
+    "edgeFade": {
+      "type": "number"
+    },
+    "haloRadius": {
+      "type": "number"
+    },
+    "haloWidth": {
+      "type": "number"
+    },
+    "haloIntensity": {
+      "type": "number"
+    },
+    "haloChroma": {
+      "type": "number"
+    },
+    "centerColor": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "edgeColor": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "glareIntensity": {
+      "type": "number"
+    },
+    "glareThreshold": {
+      "type": "number"
+    },
+    "glareLength": {
+      "type": "number"
+    },
+    "glareWidth": {
+      "type": "number"
+    },
+    "glareAngle": {
+      "type": "number"
+    }
+  },
+  "additionalProperties": false
+}

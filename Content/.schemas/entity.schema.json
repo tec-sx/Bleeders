@@ -60,6 +60,38 @@
               "minItems": 3,
               "maxItems": 3
             },
+            "mesh": {
+              "type": "object",
+              "properties": {
+                "points": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  }
+                },
+                "faces": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "minItems": 3
+                  }
+                }
+              },
+              "required": [
+                "points",
+                "faces"
+              ],
+              "additionalProperties": false
+            },
             "solid": {
               "type": "boolean"
             },
@@ -332,6 +364,46 @@
           },
           "additionalProperties": false
         },
+        "fogVolume": {
+          "type": "object",
+          "properties": {
+            "shape": {
+              "enum": [
+                "Box",
+                "Ball"
+              ]
+            },
+            "size": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "density": {
+              "type": "number"
+            },
+            "color": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "edgeSoftness": {
+              "type": "number"
+            },
+            "heightFalloff": {
+              "type": "number"
+            },
+            "noise": {
+              "type": "number"
+            }
+          },
+          "additionalProperties": false
+        },
         "uncut": {
           "type": "object",
           "additionalProperties": false
@@ -356,6 +428,69 @@
               "maxItems": 3
             }
           },
+          "additionalProperties": false
+        },
+        "vehicle": {
+          "type": "object",
+          "properties": {
+            "file": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "file"
+          ],
+          "additionalProperties": false
+        },
+        "building": {
+          "type": "object",
+          "properties": {
+            "file": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "file"
+          ],
+          "additionalProperties": false
+        },
+        "foliage": {
+          "type": "object",
+          "properties": {
+            "file": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "file"
+          ],
+          "additionalProperties": false
+        },
+        "foliageScatter": {
+          "type": "object",
+          "properties": {
+            "file": {
+              "type": "string"
+            },
+            "count": {
+              "type": "integer"
+            },
+            "radius": {
+              "type": "number"
+            },
+            "seed": {
+              "type": "integer"
+            },
+            "minScale": {
+              "type": "number"
+            },
+            "maxScale": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "file"
+          ],
           "additionalProperties": false
         },
         "rigidBody": {
@@ -614,6 +749,188 @@
               ]
             },
             "obstacle": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "collider"
+          ],
+          "additionalProperties": false
+        },
+        "wheeledBody": {
+          "type": "object",
+          "properties": {
+            "collider": {
+              "type": "object",
+              "required": [
+                "type"
+              ],
+              "anyOf": [
+                {
+                  "properties": {
+                    "type": {
+                      "const": "box"
+                    },
+                    "size": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    },
+                    "offset": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "properties": {
+                    "type": {
+                      "const": "sphere"
+                    },
+                    "radius": {
+                      "type": "number"
+                    },
+                    "offset": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "properties": {
+                    "type": {
+                      "const": "capsule"
+                    },
+                    "radius": {
+                      "type": "number"
+                    },
+                    "length": {
+                      "type": "number"
+                    },
+                    "offset": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "properties": {
+                    "type": {
+                      "const": "hull"
+                    },
+                    "points": {
+                      "type": "array"
+                    },
+                    "offset": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "properties": {
+                    "type": {
+                      "const": "triangles"
+                    },
+                    "positions": {
+                      "type": "array"
+                    },
+                    "indices": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      }
+                    },
+                    "offset": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "mass": {
+              "type": "number"
+            },
+            "wheels": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "position": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  },
+                  "radius": {
+                    "type": "number"
+                  },
+                  "width": {
+                    "type": "number"
+                  },
+                  "maxSteer": {
+                    "type": "number"
+                  },
+                  "driven": {
+                    "type": "boolean"
+                  },
+                  "handBrake": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "engineTorque": {
+              "type": "number"
+            },
+            "brakeTorque": {
+              "type": "number"
+            },
+            "suspensionTravel": {
+              "type": "number"
+            },
+            "suspensionFrequency": {
+              "type": "number"
+            },
+            "suspensionDamping": {
+              "type": "number"
+            },
+            "weightDrop": {
+              "type": "number"
+            },
+            "leans": {
               "type": "boolean"
             }
           },
@@ -886,6 +1203,22 @@
             }
           }
         },
+        "audioListener": {
+          "type": "object",
+          "properties": {
+            "height": {
+              "type": "number"
+            }
+          }
+        },
+        "soundEmitter": {
+          "type": "object",
+          "properties": {
+            "sound": {
+              "type": "string"
+            }
+          }
+        },
         "perception": {
           "type": "object",
           "properties": {
@@ -1095,18 +1428,6 @@
             }
           }
         },
-        "vehicle": {
-          "type": "object",
-          "properties": {
-            "file": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "file"
-          ],
-          "additionalProperties": false
-        },
         "protagonist": {
           "type": "object"
         },
@@ -1118,6 +1439,12 @@
             },
             "speed": {
               "type": "number"
+            },
+            "rattleSound": {
+              "type": "string"
+            },
+            "swingSound": {
+              "type": "string"
             }
           }
         },
