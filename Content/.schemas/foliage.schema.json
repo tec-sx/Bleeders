@@ -145,7 +145,140 @@
           },
           "additionalProperties": false
         },
-        "toggle": true
+        "toggle": true,
+        "source": {
+          "type": "object",
+          "properties": {
+            "points": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              }
+            },
+            "faces": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "minItems": 3
+              }
+            }
+          },
+          "required": [
+            "points",
+            "faces"
+          ],
+          "additionalProperties": false
+        },
+        "fit": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "wall": {
+              "type": "string"
+            },
+            "centre": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "normal": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "right": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "thickness": {
+              "type": "number"
+            },
+            "sill": {
+              "type": "number"
+            },
+            "margin": {
+              "type": "number"
+            },
+            "depthIn": {
+              "type": "number"
+            },
+            "depthOut": {
+              "type": "number"
+            },
+            "hingeLeft": {
+              "type": "boolean"
+            },
+            "outward": {
+              "type": "boolean"
+            },
+            "angle": {
+              "type": "number"
+            },
+            "frameWidth": {
+              "type": "number"
+            },
+            "windowWidth": {
+              "type": "number"
+            },
+            "windowHeight": {
+              "type": "number"
+            },
+            "windowFrom": {
+              "type": "number"
+            },
+            "glass": {
+              "type": "boolean"
+            },
+            "grabHeight": {
+              "type": "number"
+            },
+            "grabInset": {
+              "type": "number"
+            },
+            "up": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "hasWindow": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "wall"
+          ],
+          "additionalProperties": false
+        }
       },
       "required": [
         "mesh"
@@ -198,7 +331,42 @@
           "joint": {
             "$ref": "#/properties/trunk/properties/joint"
           },
-          "toggle": true
+          "toggle": true,
+          "source": {
+            "type": "object",
+            "properties": {
+              "points": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                }
+              },
+              "faces": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "minItems": 3
+                }
+              }
+            },
+            "required": [
+              "points",
+              "faces"
+            ],
+            "additionalProperties": false
+          },
+          "fit": {
+            "$ref": "#/properties/trunk/properties/fit"
+          }
         },
         "required": [
           "mesh"

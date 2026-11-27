@@ -468,6 +468,18 @@
                 ],
                 "additionalProperties": false
               },
+              "prop": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "file"
+                ],
+                "additionalProperties": false
+              },
               "foliage": {
                 "type": "object",
                 "properties": {
