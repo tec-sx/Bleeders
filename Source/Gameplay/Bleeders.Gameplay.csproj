@@ -17,6 +17,7 @@
     <ProjectReference Include="$(FlickerVoidEngine)Source/Engine/Story/FlickerVoid.Engine.Story.csproj" />
     <ProjectReference Include="$(FlickerVoidEngine)Source/Engine/Vehicles/FlickerVoid.Engine.Vehicles.csproj" />
     <ProjectReference Include="$(FlickerVoidEngine)Source/Engine/Buildings/FlickerVoid.Engine.Buildings.csproj" />
+    <ProjectReference Include="$(FlickerVoidEngine)Source/Engine/Props/FlickerVoid.Engine.Props.csproj" />
     <ProjectReference Include="$(FlickerVoidEngine)Source/Engine/Foliage/FlickerVoid.Engine.Foliage.csproj" />
     <ProjectReference Include="$(FlickerVoidEngine)Source/Engine/Flow/FlickerVoid.Engine.Flow.csproj" />
     <!-- Registers the classes marked [FlowNodeType] (FlowNodeTypes.Register). -->
