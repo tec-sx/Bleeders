@@ -6,12 +6,14 @@ using Arch.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
+using FlickerVoid.Engine.Gameplay.Localization;
 using FlickerVoid.Engine.Gameplay.Tags;
 using FlickerVoid.Engine.Inventory.Inventories;
 using FlickerVoid.Engine.Inventory.Items;
 using FlickerVoid.Engine.Inventory.Outfits;
 using FlickerVoid.Engine.Runtime.Loop;
 using FlickerVoid.Engine.Ui.Stages;
+using Bleeders.Interface.Localization;
 
 namespace Bleeders.Interface.Hub.Inventory;
 
@@ -28,7 +30,7 @@ public sealed partial class InventoryPageViewModel : HubPageViewModel
     private Tag _selectedSlot;
 
     public InventoryPageViewModel(Game game)
-        : base("Inventory")
+        : base(InterfaceTexts.Inventory, game.Localization)
     {
         _inventories = game.Services.GetService<InventorySystem>()!;
         _equipment = game.Services.GetService<EquipmentSystem>()!;
@@ -46,12 +48,12 @@ public sealed partial class InventoryPageViewModel : HubPageViewModel
     /// <summary>Two columns of three, the way the page lays them out.</summary>
     public static IReadOnlyList<OutfitSlot> OutfitSlots { get; } =
     [
-        new(new Tag("Equipment.Slot.Head"), "Head"),
-        new(new Tag("Equipment.Slot.UpperBody"), "Upper Body"),
-        new(new Tag("Equipment.Slot.Coat"), "Coat"),
-        new(new Tag("Equipment.Slot.LowerBody"), "Lower Body"),
-        new(new Tag("Equipment.Slot.Shoes"), "Shoes"),
-        new(new Tag("Equipment.Slot.Storage"), "Storage"),
+        new(new Tag("Equipment.Slot.Head"), InterfaceTexts.Head),
+        new(new Tag("Equipment.Slot.UpperBody"), InterfaceTexts.UpperBody),
+        new(new Tag("Equipment.Slot.Coat"), InterfaceTexts.Coat),
+        new(new Tag("Equipment.Slot.LowerBody"), InterfaceTexts.LowerBody),
+        new(new Tag("Equipment.Slot.Shoes"), InterfaceTexts.Shoes),
+        new(new Tag("Equipment.Slot.Storage"), InterfaceTexts.Storage),
     ];
 
     /// <summary>The protagonist turning in the middle of the page; null in a game without stages.</summary>
@@ -83,7 +85,7 @@ public sealed partial class InventoryPageViewModel : HubPageViewModel
     public partial bool CanWear { get; private set; }
 
     [ObservableProperty]
-    public partial string WearLabel { get; private set; } = "Wear";
+    public partial string WearLabel { get; private set; } = InterfaceTexts.Wear.Text;
 
     protected override void Refresh()
     {
@@ -152,13 +154,14 @@ public sealed partial class InventoryPageViewModel : HubPageViewModel
         foreach (ItemStack stack in stacks)
         {
             bool worn = _equipment.IsStackEquipped(Owner, stack.Id);
-            Cells.Add(new InventoryCellViewModel(stack, worn, SelectCell) { IsSelected = stack.Id == _selectedStack });
+            string name = DisplayNames.Of(stack.Item, Localizer);
+            Cells.Add(new InventoryCellViewModel(stack, name, worn, SelectCell) { IsSelected = stack.Id == _selectedStack });
         }
 
         int capacity = _inventories.GetCellCapacity(Owner);
         while (Cells.Count < capacity)
         {
-            Cells.Add(new InventoryCellViewModel(null, false, SelectCell));
+            Cells.Add(new InventoryCellViewModel(null, string.Empty, false, SelectCell));
         }
     }
 
@@ -179,11 +182,12 @@ public sealed partial class InventoryPageViewModel : HubPageViewModel
             string name = string.Empty;
             if (shown is not null)
             {
-                name = DisplayNames.Of(shown);
+                name = DisplayNames.Of(shown, Localizer);
             }
 
             bool canTake = carried && _equipment.CanEquipStack(Owner, _selectedStack, slot.Slot);
-            Slots.Add(new OutfitSlotViewModel(slot, name, blocked, slot.Slot == _selectedSlot, canTake, SelectSlot));
+            string label = Localizer.Get(slot.Label);
+            Slots.Add(new OutfitSlotViewModel(slot, label, name, blocked, slot.Slot == _selectedSlot, canTake, SelectSlot));
         }
     }
 
@@ -198,7 +202,7 @@ public sealed partial class InventoryPageViewModel : HubPageViewModel
             SelectedDescription = string.Empty;
             CanUse = false;
             CanWear = false;
-            WearLabel = "Wear";
+            WearLabel = Localizer.Get(InterfaceTexts.Wear);
             return;
         }
 
@@ -208,23 +212,25 @@ public sealed partial class InventoryPageViewModel : HubPageViewModel
         if (worn.IsValid)
         {
             CanWear = _equipment.CanUnequip(Owner, worn);
-            WearLabel = "Take off";
+            WearLabel = Localizer.Get(InterfaceTexts.TakeOff);
         }
         else
         {
             CanWear = _equipment.CanEquipStack(Owner, stack.Id);
-            WearLabel = "Wear";
+            WearLabel = Localizer.Get(InterfaceTexts.Wear);
         }
     }
 
     private void ShowItemText(ItemDefinition item)
     {
-        SelectedName = DisplayNames.Of(item);
-        SelectedDescription = item.Display.LongDescription;
-        if (SelectedDescription.Length == 0)
+        SelectedName = DisplayNames.Of(item, Localizer);
+        LocalizedText description = item.Display.LongDescription;
+        if (description.IsEmpty)
         {
-            SelectedDescription = item.Display.ShortDescription;
+            description = item.Display.ShortDescription;
         }
+
+        SelectedDescription = Localizer.Get(description);
     }
 
     private Tag FindWornSlot(Guid stack)

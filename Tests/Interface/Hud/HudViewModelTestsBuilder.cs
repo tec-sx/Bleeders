@@ -36,22 +36,22 @@ internal sealed class HudViewModelTestsBuilder : IDisposable
         _folder = Path.Combine(Path.GetTempPath(), folderName);
         Directory.CreateDirectory(_folder);
         WithFile("Quests/Cellar.fvdata", """
-            { "type": "quest", "id": "Quest.Cellar", "display": { "name": "The cellar key" },
+            { "type": "quest", "id": "Quest.Cellar", "display": { "name": { "key": "Test.TheCellarKey", "text": "The cellar key" } },
               "objectives": [
-                { "fact": "Quest.Cellar.FoundKey", "description": "Find the cellar key", "completeWhen": { "conditions": [ { "$type": "fact", "fact": "Has.Key" } ] } },
-                { "fact": "Quest.Cellar.ReturnedKey", "description": "Tell the innkeeper", "visibleWhen": { "conditions": [ { "$type": "fact", "fact": "Quest.Cellar.FoundKey" } ] } } ] }
+                { "fact": "Quest.Cellar.FoundKey", "description": { "key": "Test.FindTheCellarKey", "text": "Find the cellar key" }, "completeWhen": { "conditions": [ { "$type": "fact", "fact": "Has.Key" } ] } },
+                { "fact": "Quest.Cellar.ReturnedKey", "description": { "key": "Test.TellTheInnkeeper", "text": "Tell the innkeeper" }, "visibleWhen": { "conditions": [ { "$type": "fact", "fact": "Quest.Cellar.FoundKey" } ] } } ] }
             """);
         WithFile("Interactables/Talk.fvdata", """
-            { "type": "interactable", "id": "Interactable.Talk", "display": { "name": "Person" },
-              "offers": [ { "input": "Input.Use", "action": "Interaction.Action.Talk", "display": { "name": "Talk" },
+            { "type": "interactable", "id": "Interactable.Talk", "display": { "name": { "key": "Test.Person", "text": "Person" } },
+              "offers": [ { "input": "Input.Use", "action": "Interaction.Action.Talk", "display": { "name": { "key": "Test.Talk", "text": "Talk" } },
                             "effects": { "effects": [ { "$type": "startConversation" } ] } } ] }
             """);
         WithFile("Dialogues/Innkeeper.fvflow", """
             { "nodes": [
                 { "$type": "start", "id": "start" },
-                { "$type": "line", "id": "greet", "text": "Evening, fox.", "waitForInput": true },
-                { "$type": "choice", "id": "ask", "options": [ { "text": "Anything I can do for you?" }, { "text": "Goodbye." } ] },
-                { "$type": "line", "id": "job", "text": "Find my key.", "waitForInput": true } ],
+                { "$type": "line", "id": "greet", "text": { "key": "Test.EveningFox", "text": "Evening, fox." }, "waitForInput": true },
+                { "$type": "choice", "id": "ask", "options": [ { "text": { "key": "Test.AnythingICanDoForYou", "text": "Anything I can do for you?" } }, { "text": { "key": "Test.Goodbye", "text": "Goodbye." } } ] },
+                { "$type": "line", "id": "job", "text": { "key": "Test.FindMyKey", "text": "Find my key." }, "waitForInput": true } ],
               "links": [
                 { "from": "start", "to": "greet" }, { "from": "greet", "to": "ask" },
                 { "from": "ask", "output": "First", "to": "job" } ] }
@@ -77,7 +77,7 @@ internal sealed class HudViewModelTestsBuilder : IDisposable
     {
         for (int index = 1; index <= _extraQuests; index++)
         {
-            WithFile($"Quests/Extra{index}.fvdata", $$"""{ "type": "quest", "id": "Quest.Extra{{index}}", "display": { "name": "Extra {{index}}" } }""");
+            WithFile($"Quests/Extra{index}.fvdata", $$"""{ "type": "quest", "id": "Quest.Extra{{index}}", "display": { "name": { "key": "Test.Extra{{index}}", "text": "Extra {{index}}" } } }""");
         }
 
         ContentManager content = new(_folder);

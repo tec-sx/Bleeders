@@ -6,6 +6,7 @@ using FlickerVoid.Engine.Attributes.Modifiers;
 using FlickerVoid.Engine.Attributes.Values;
 using FlickerVoid.Engine.Gameplay.Tags;
 using FlickerVoid.Engine.Runtime.Loop;
+using Bleeders.Interface.Localization;
 
 namespace Bleeders.Interface.Hub.Character;
 
@@ -16,7 +17,7 @@ public sealed class CharacterPageViewModel : HubPageViewModel
     private readonly AbilitySystem _abilities;
 
     public CharacterPageViewModel(Game game)
-        : base("Character")
+        : base(InterfaceTexts.Character, game.Localization)
     {
         _attributes = game.Services.GetService<AttributeSystem>()!;
         _abilities = game.Services.GetService<AbilitySystem>()!;
@@ -41,7 +42,7 @@ public sealed class CharacterPageViewModel : HubPageViewModel
             string name = DisplayNames.Leaf(tag);
             if (value.Definition is not null)
             {
-                name = DisplayNames.Of(value.Definition);
+                name = DisplayNames.Of(value.Definition, Localizer);
             }
 
             string text = value.Current.ToString("0.#", CultureInfo.InvariantCulture);
@@ -57,13 +58,15 @@ public sealed class CharacterPageViewModel : HubPageViewModel
         Modifiers.Clear();
         foreach (AppliedModifier applied in _attributes.GetModifiers(Owner))
         {
-            Modifiers.Add(DisplayNames.Of(applied.Modifier));
+            string name = DisplayNames.Of(applied.Modifier, Localizer);
+            Modifiers.Add(name);
         }
 
         Abilities.Clear();
         foreach (AbilitySpec spec in _abilities.GetAbilities(Owner))
         {
-            Abilities.Add(DisplayNames.Of(spec.Ability));
+            string name = DisplayNames.Of(spec.Ability, Localizer);
+            Abilities.Add(name);
         }
     }
 }

@@ -125,10 +125,10 @@ internal sealed class StoryLoopTestsBuilder : IDisposable
     /// <summary>Picks the offered choice whose text starts with <paramref name="text"/>, once the conversation offers it.</summary>
     public bool Choose(string text)
     {
-        RunUntil(() => Dialogue.Choices.Any(choice => choice.Text.StartsWith(text, StringComparison.Ordinal)), 10);
+        RunUntil(() => Dialogue.Choices.Any(choice => choice.Text.Text.StartsWith(text, StringComparison.Ordinal)), 10);
         foreach (DialogueChoice choice in Dialogue.Choices)
         {
-            if (choice.Text.StartsWith(text, StringComparison.Ordinal))
+            if (choice.Text.Text.StartsWith(text, StringComparison.Ordinal))
             {
                 return Dialogue.Choose(choice.Index);
             }

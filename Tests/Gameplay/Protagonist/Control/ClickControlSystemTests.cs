@@ -22,7 +22,7 @@ public sealed class ClickControlSystemTests : IDisposable
         """;
 
     private const string LockedDoor = """
-        { "type": "interactable", "offers": [ { "input": "Input.Use", "action": "Interaction.Action.Toggle", "display": { "name": "Open" } } ] }
+        { "type": "interactable", "offers": [ { "input": "Input.Use", "action": "Interaction.Action.Toggle", "display": { "name": { "key": "Test.Open", "text": "Open" } } } ] }
         """;
 
     private const string Door = """
@@ -35,7 +35,7 @@ public sealed class ClickControlSystemTests : IDisposable
         """;
 
     private const string KeyPickup = """
-        { "type": "interactable", "offers": [ { "input": "Input.Use", "action": "Interaction.Action.PickUp", "display": { "name": "Take" },
+        { "type": "interactable", "offers": [ { "input": "Input.Use", "action": "Interaction.Action.PickUp", "display": { "name": { "key": "Test.Take", "text": "Take" } },
           "effects": { "effects": [ { "$type": "pickUp" } ] } } ] }
         """;
 
@@ -49,7 +49,7 @@ public sealed class ClickControlSystemTests : IDisposable
         """;
 
     private const string Talk = """
-        { "type": "interactable", "offers": [ { "input": "Input.Use", "action": "Interaction.Action.Talk", "display": { "name": "Talk" },
+        { "type": "interactable", "offers": [ { "input": "Input.Use", "action": "Interaction.Action.Talk", "display": { "name": { "key": "Test.Talk", "text": "Talk" } },
           "effects": { "effects": [ { "$type": "startConversation" } ] } } ] }
         """;
 
@@ -71,9 +71,9 @@ public sealed class ClickControlSystemTests : IDisposable
         { "nodes": [
             { "$type": "start", "id": "start" },
             { "$type": "choice", "id": "ask", "options": [
-              { "text": "Anything I can do?", "conditions": { "conditions": [ { "$type": "questState", "quest": "Quest.Cellar", "state": "NotStarted" } ] },
+              { "text": { "key": "Test.AnythingICanDo", "text": "Anything I can do?" }, "conditions": { "conditions": [ { "$type": "questState", "quest": "Quest.Cellar", "state": "NotStarted" } ] },
                 "onChosen": { "effects": [ { "$type": "setQuestState", "quest": "Quest.Cellar", "state": "Active" } ] } },
-              { "text": "I found your key.", "conditions": { "conditions": [ { "$type": "hasItem", "item": "CellarKey.fvdata" } ] } } ] },
+              { "text": { "key": "Test.IFoundYourKey", "text": "I found your key." }, "conditions": { "conditions": [ { "$type": "hasItem", "item": "CellarKey.fvdata" } ] } } ] },
             { "$type": "completeObjective", "id": "returned", "objective": "Quest.Cellar.ReturnedKey" },
             { "$type": "finish", "id": "end" } ],
           "links": [ { "from": "start", "to": "ask" }, { "from": "ask", "output": "First", "to": "end" },

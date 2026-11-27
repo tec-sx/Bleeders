@@ -1,5 +1,6 @@
 using FlickerVoid.Engine.Gameplay.Conditions;
 using FlickerVoid.Engine.Gameplay.Facts;
+using FlickerVoid.Engine.Gameplay.Localization;
 using FlickerVoid.Engine.Gameplay.Tags;
 using Bleeders.Gameplay.Protagonist.Identity.Social.Fame;
 
@@ -8,7 +9,7 @@ namespace Bleeders.Gameplay.Tests.Protagonist.Identity.Social.Fame;
 public class HasTitleConditionTests
 {
     private readonly IFactDatabase _facts = Substitute.For<IFactDatabase>();
-    private readonly TitleDefinition _known = new() { Id = new Tag("Fact.Title.Known"), Display = new() { Name = "Known" } };
+    private readonly TitleDefinition _known = new() { Id = new Tag("Fact.Title.Known"), Display = new() { Name = new LocalizedText("", "Known") } };
     private readonly HasTitleCondition _condition;
     private readonly ConditionContext _context;
 

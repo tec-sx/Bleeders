@@ -7,7 +7,9 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using FlickerVoid.Engine.Dialogue.Conversations;
 using FlickerVoid.Engine.Interaction.Interactables;
 using FlickerVoid.Engine.Interaction.Interactors;
+using FlickerVoid.Engine.Gameplay.Localization;
 using FlickerVoid.Engine.Runtime.Components;
+using FlickerVoid.Engine.Runtime.Localization;
 
 namespace Bleeders.Interface.Hud.Prompts;
 
@@ -15,7 +17,7 @@ namespace Bleeders.Interface.Hud.Prompts;
 /// The HUD's interaction prompt: the name and offers of the interactable under the pointer, as the protagonist sees them;
 /// hidden away from interactables and while the protagonist talks.
 /// </summary>
-public sealed partial class InteractionPromptViewModel(InteractionSystem interaction, DialogueSystem dialogue, World world)
+public sealed partial class InteractionPromptViewModel(InteractionSystem interaction, DialogueSystem dialogue, World world, TextLocalizer localizer)
     : ObservableObject
 {
     private static readonly QueryDescription Protagonists = new QueryDescription().WithAll<Gameplay.Protagonist.Protagonist, Interactor>();
@@ -56,7 +58,9 @@ public sealed partial class InteractionPromptViewModel(InteractionSystem interac
         IReadOnlyList<OfferView> offers = interaction.GetOffers(protagonist, hovered);
         foreach (OfferView offer in offers)
         {
-            Offers.Add(new PromptOfferViewModel(offer.Display.Name, offer.CanExecute, offer.LockedReason));
+            string name = localizer.Get(offer.Display.Name);
+            string reason = localizer.Get(offer.LockedReason);
+            Offers.Add(new PromptOfferViewModel(name, offer.CanExecute, reason));
         }
 
         IsVisible = Offers.Count > 0;
@@ -70,11 +74,12 @@ public sealed partial class InteractionPromptViewModel(InteractionSystem interac
         Offers.Clear();
     }
 
-    /// <summary>Changes when the interactable's state or uses change, so the prompt follows a door that unlocked or a pickup taken.</summary>
+    /// <summary>Changes when the interactable's state or uses change, so the prompt follows a door that unlocked or a pickup taken, or the language changes.</summary>
     private int Version(Entity hovered)
     {
         ActiveInteractable active = world.Get<ActiveInteractable>(hovered);
         HashCode hash = new();
+        hash.Add(localizer.Culture.Value);
         hash.Add(active.State);
         foreach (int uses in active.Uses)
         {
@@ -91,7 +96,8 @@ public sealed partial class InteractionPromptViewModel(InteractionSystem interac
             return name.Value;
         }
 
-        return world.Get<ActiveInteractable>(hovered).Definition.Display.Name;
+        LocalizedText display = world.Get<ActiveInteractable>(hovered).Definition.Display.Name;
+        return localizer.Get(display);
     }
 
     private Entity FindProtagonist()

@@ -1,5 +1,6 @@
 using FlickerVoid.Engine.Gameplay.Definitions;
 using FlickerVoid.Engine.Gameplay.Tags;
+using FlickerVoid.Engine.Runtime.Localization;
 
 namespace Bleeders.Interface;
 
@@ -14,12 +15,12 @@ public static class DisplayNames
         return name[(last + 1)..];
     }
 
-    /// <summary>The definition's display name, else the leaf of its id.</summary>
-    public static string Of(Definition definition)
+    /// <summary>The definition's display name in the chosen language, else the leaf of its id.</summary>
+    public static string Of(Definition definition, TextLocalizer localizer)
     {
-        if (definition.Display.Name.Length > 0)
+        if (!definition.Display.Name.IsEmpty)
         {
-            return definition.Display.Name;
+            return localizer.Get(definition.Display.Name);
         }
 
         return Leaf(definition.Id);

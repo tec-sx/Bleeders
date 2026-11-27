@@ -2,12 +2,12 @@
   "$schema": "../.schemas/data.schema.json",
   "type": "interactable",
   "id": "Interactable.Talk",
-  "display": { "name": "Person" },
+  "display": { "name": { "key": "Interactable.Talk.Name", "text": "Person", "note": "What the prompt calls Talk things, shown over its offers." } },
   "offers": [
     {
       "input": "Input.Use",
       "action": "Interaction.Action.Talk",
-      "display": { "name": "Talk" },
+      "display": { "name": { "key": "Interaction.Offer.Talk", "text": "Talk", "note": "The button of an interaction offer in the prompt, a verb." } },
       "effects": { "effects": [ { "$type": "startConversation" } ] }
     }
   ]

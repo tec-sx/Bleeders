@@ -6,7 +6,7 @@ using FlickerVoid.Engine.Inventory.Inventories;
 namespace Bleeders.Interface.Hub.Inventory;
 
 /// <summary>A cell of the inventory grid: a carried stack, or an empty cell when <see cref="Stack"/> is null.</summary>
-public sealed partial class InventoryCellViewModel(ItemStack? stack, bool isWorn, Action<InventoryCellViewModel> select) : ObservableObject
+public sealed partial class InventoryCellViewModel(ItemStack? stack, string name, bool isWorn, Action<InventoryCellViewModel> select) : ObservableObject
 {
     public ItemStack? Stack { get; } = stack;
 
@@ -14,7 +14,7 @@ public sealed partial class InventoryCellViewModel(ItemStack? stack, bool isWorn
 
     public bool IsWorn { get; } = isWorn;
 
-    public string Name { get; } = stack is null ? string.Empty : DisplayNames.Of(stack.Item);
+    public string Name { get; } = name;
 
     /// <summary>The units in the stack when more than one.</summary>
     public string Quantity { get; } = stack is { Quantity: > 1 } ? stack.Quantity.ToString(System.Globalization.CultureInfo.InvariantCulture) : string.Empty;

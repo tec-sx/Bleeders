@@ -1,14 +1,14 @@
 {
   "$schema": "../.schemas/data.schema.json",
   "type": "scan",
-  "display": { "name": "Cellar door" },
+  "display": { "name": { "key": "Scan.Door.Name", "text": "Cellar door", "note": "The title of the scan card while the fox scans the door." } },
   "category": "Scan.Category.Object",
   "scanDuration": 1.2,
   "entries": [
-    { "label": "Lock", "text": "Old iron, the keyhole worn smooth by one key." },
-    { "label": "Scratches", "text": "Fresh marks round the keyhole: someone tried to pick it.",
+    { "label": { "key": "Scan.Door.Lock.Label", "text": "Lock", "note": "The heading of one thing the scan of the door tells." }, "text": { "key": "Scan.Door.Lock", "text": "Old iron, the keyhole worn smooth by one key.", "note": "What the scan of the door tells under Lock." } },
+    { "label": { "key": "Scan.Door.Scratches.Label", "text": "Scratches", "note": "The heading of one thing the scan of the door tells." }, "text": { "key": "Scan.Door.Scratches", "text": "Fresh marks round the keyhole: someone tried to pick it.", "note": "What the scan of the door tells under Scratches." },
       "visibleWhen": { "conditions": [ { "$type": "attribute", "attribute": "Attribute.Skill.Perception", "value": 3 } ] } },
-    { "label": "Hinges", "text": "Oiled. It opens without a sound." }
+    { "label": { "key": "Scan.Door.Hinges.Label", "text": "Hinges", "note": "The heading of one thing the scan of the door tells." }, "text": { "key": "Scan.Door.Hinges", "text": "Oiled. It opens without a sound.", "note": "What the scan of the door tells under Hinges." } }
   ],
   "onScanned": { "effects": [ { "$type": "fact", "fact": "Scan.CellarDoor" } ] }
 }

@@ -35,7 +35,7 @@ internal sealed class LockpickSystemTestsBuilder : IDisposable
         _folder = Path.Combine(tempPath, folderName);
         Directory.CreateDirectory(_folder);
         WithFile("Attributes/Perception.fvdata", """
-            { "type": "attribute", "id": "Attribute.Skill.Perception", "display": { "name": "Perception" }, "category": "Attribute.Skill", "max": 10, "integer": true }
+            { "type": "attribute", "id": "Attribute.Skill.Perception", "display": { "name": { "key": "Test.Perception", "text": "Perception" } }, "category": "Attribute.Skill", "max": 10, "integer": true }
             """);
         WithFile("Items/Lockpick.fvdata", """{ "type": "item", "id": "Item.Lockpick", "category": "Item.Tool", "tags": [ "Item.Lockpick" ] }""");
         WithFile("Abilities/Lockpick.fvdata", """

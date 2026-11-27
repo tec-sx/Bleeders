@@ -164,4 +164,27 @@ public sealed class HubViewModelTests : IDisposable
         journal.Knowledge[0].Name.Should().Be("The cellar");
         journal.Knowledge[0].Description.Should().Be("Locked since spring.");
     }
+
+    [Fact]
+    public void ShowsItsTextsInTheChosenLanguageAndFollowsWhenItChanges()
+    {
+        _builder.WithFile("Localization/Polish.fvstrings", """
+            { "culture": "pl", "texts": {
+                "Hub.Inventory": { "text": "Ekwipunek" },
+                "Hub.Inventory.Weight": { "text": "WAGA" },
+                "Test.MugOfAle": { "text": "Kufel piwa" } } }
+            """);
+        HubViewModel hub = _builder.Build();
+        hub.Toggle();
+
+        _builder.Game.Localization.Culture.TrySet("pl");
+
+        hub.Pages[0].Title.Should().Be("Ekwipunek");
+        hub.Pages[1].Title.Should().Be("Character");
+        hub.Inventory.Labels.Weight.Should().Be("WAGA");
+        hub.Inventory.Cells[0].Name.Should().Be("Kufel piwa");
+        _builder.Game.Localization.Culture.TrySet("");
+        hub.Inventory.Cells[0].Name.Should().Be("Mug of ale");
+        hub.Pages[0].Title.Should().Be("Inventory");
+    }
 }

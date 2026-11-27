@@ -9,7 +9,7 @@ namespace Bleeders.Gameplay.Tests.Protagonist.Resources.Knowledge.Scanning;
 
 public sealed class ScannerSystemTests : IDisposable
 {
-    private const string Plain = """{ "type": "scan", "display": { "name": "Crate" }, "scanDuration": 1 }""";
+    private const string Plain = """{ "type": "scan", "display": { "name": { "key": "Test.Crate", "text": "Crate" } }, "scanDuration": 1 }""";
 
     private const string Counted = """
         { "type": "scan", "scanDuration": 1,
@@ -22,9 +22,9 @@ public sealed class ScannerSystemTests : IDisposable
 
     private const string Entries = """
         { "type": "scan", "entries": [
-          { "label": "Wood", "text": "Old oak." },
-          { "label": "Marks", "text": "Scratched by a knife.", "visibleWhen": { "conditions": [ { "$type": "fact", "fact": "Knowledge.Knives" } ] } },
-          { "label": "Smell", "text": "Wine." } ] }
+          { "label": { "key": "Test.Wood", "text": "Wood" }, "text": { "key": "Test.OldOak", "text": "Old oak." } },
+          { "label": { "key": "Test.Marks", "text": "Marks" }, "text": { "key": "Test.ScratchedByAKnife", "text": "Scratched by a knife." }, "visibleWhen": { "conditions": [ { "$type": "fact", "fact": "Knowledge.Knives" } ] } },
+          { "label": { "key": "Test.Smell", "text": "Smell" }, "text": { "key": "Test.Wine", "text": "Wine." } } ] }
         """;
 
     private readonly ScannerSystemTestsBuilder _builder = new();
@@ -160,7 +160,7 @@ public sealed class ScannerSystemTests : IDisposable
         _builder.Game.Facts.SetFact(new Tag("Knowledge.Knives"), 1);
         IReadOnlyList<ScanEntry> after = _builder.Scanner.GetVisibleEntries(_builder.Hero, crate);
 
-        before.Select(entry => entry.Label).Should().Equal("Wood", "Smell");
-        after.Select(entry => entry.Label).Should().Equal("Wood", "Marks", "Smell");
+        before.Select(entry => entry.Label.Text).Should().Equal("Wood", "Smell");
+        after.Select(entry => entry.Label.Text).Should().Equal("Wood", "Marks", "Smell");
     }
 }

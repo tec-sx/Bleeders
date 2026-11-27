@@ -2,7 +2,7 @@
   "$schema": "../.schemas/data.schema.json",
   "type": "item",
   "id": "Item.CellarKey",
-  "display": { "name": "Cellar key", "shortDescription": "A heavy brass key." },
+  "display": { "name": { "key": "Item.CellarKey.Name", "text": "Cellar key", "note": "The name of the item CellarKey." }, "shortDescription": { "key": "Item.CellarKey.Short", "text": "A heavy brass key.", "note": "The short description of the item CellarKey." } },
   "category": "Item.Key",
   "tags": [ "Key.Cellar" ],
   "weight": 0.05

@@ -77,6 +77,12 @@
                   "solid": {
                     "type": "boolean"
                   },
+                  "material": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
                   "swaps": {
                     "type": [
                       "array",
@@ -1180,7 +1186,18 @@
                     "type": "string"
                   },
                   "label": {
-                    "type": "string"
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      },
+                      "note": {
+                        "type": "string"
+                      }
+                    }
                   },
                   "discoveredFact": {
                     "type": "string"

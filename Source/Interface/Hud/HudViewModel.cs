@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using FlickerVoid.Engine.Dialogue.Conversations;
 using FlickerVoid.Engine.Interaction.Interactors;
 using FlickerVoid.Engine.Maps.Navigation;
+using FlickerVoid.Engine.Runtime.Localization;
 using FlickerVoid.Engine.Runtime.Loop;
 using FlickerVoid.Engine.Story.Quests;
 using Bleeders.Gameplay.Protagonist.Resources.Knowledge.Scanning;
@@ -11,6 +12,7 @@ using Bleeders.Interface.Hud.Minimap;
 using Bleeders.Interface.Hud.Prompts;
 using Bleeders.Interface.Hud.Quests;
 using Bleeders.Interface.Hud.Scanning;
+using Bleeders.Interface.Localization;
 
 namespace Bleeders.Interface.Hud;
 
@@ -25,17 +27,22 @@ public sealed class HudViewModel
         QuestSystem quests = game.Services.GetService<QuestSystem>()!;
         DialogueSystem dialogue = game.Services.GetService<DialogueSystem>()!;
         InteractionSystem interaction = game.Services.GetService<InteractionSystem>()!;
-        Tracker = new QuestTrackerViewModel(quests, game.Events);
-        Dialogue = new DialogueBoxViewModel(dialogue, game.World, game.Events);
-        Prompt = new InteractionPromptViewModel(interaction, dialogue, game.World);
+        TextLocalizer localizer = game.Localization;
+        Labels = new InterfaceLabels(localizer);
+        Tracker = new QuestTrackerViewModel(quests, game.Events, localizer);
+        Dialogue = new DialogueBoxViewModel(dialogue, game.World, game.Events, localizer);
+        Prompt = new InteractionPromptViewModel(interaction, dialogue, game.World, localizer);
         MapSystem? maps = game.Services.GetService<MapSystem>();
         Minimap = new MinimapViewModel(game.World, maps);
         ScannerSystem? scanner = game.Services.GetService<ScannerSystem>();
         if (scanner is not null)
         {
-            Scan = new ScanCardViewModel(scanner, game.World);
+            Scan = new ScanCardViewModel(scanner, game.World, localizer);
         }
     }
+
+    /// <summary>The fixed labels, in the chosen language.</summary>
+    public InterfaceLabels Labels { get; }
 
     public QuestTrackerViewModel Tracker { get; }
 

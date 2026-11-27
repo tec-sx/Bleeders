@@ -12,7 +12,19 @@
             "type": "object",
             "properties": {
               "text": {
-                "type": "string"
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "note": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
               },
               "displayDuration": {
                 "type": "number"
@@ -97,7 +109,19 @@
                                   ]
                                 },
                                 "failureReason": {
-                                  "type": "string"
+                                  "type": "object",
+                                  "properties": {
+                                    "key": {
+                                      "type": "string"
+                                    },
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "note": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "additionalProperties": false
                                 }
                               },
                               "additionalProperties": false
@@ -351,7 +375,7 @@
                     ]
                   },
                   "failureReason": {
-                    "type": "string"
+                    "$ref": "#/properties/conditions/properties/conditions/items/anyOf/1/properties/set/properties/failureReason"
                   }
                 },
                 "additionalProperties": false

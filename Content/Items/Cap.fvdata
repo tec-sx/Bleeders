@@ -2,7 +2,7 @@
   "$schema": "../.schemas/data.schema.json",
   "type": "item",
   "id": "Item.Cap",
-  "display": { "name": "Flat cap", "shortDescription": "Tweed, a little too big." },
+  "display": { "name": { "key": "Item.Cap.Name", "text": "Flat cap", "note": "The name of the item Cap." }, "shortDescription": { "key": "Item.Cap.Short", "text": "Tweed, a little too big.", "note": "The short description of the item Cap." } },
   "category": "Item.Clothing",
   "weight": 0.2,
   "maxQuantity": 1,

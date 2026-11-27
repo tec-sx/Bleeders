@@ -18,7 +18,7 @@ public sealed class AttitudeCondition : Condition
         string factionName = "Observer's faction";
         if (Faction is not null)
         {
-            factionName = Faction.Display.Name;
+            factionName = Faction.Display.Name.Text;
         }
 
         return $"{factionName} at least {AtLeast}";

@@ -1,6 +1,6 @@
 {
   "$schema": "../.schemas/data.schema.json",
   "type": "abilitySet",
-  "display": { "name": "Protagonist" },
+  "display": { "name": { "key": "Ability.Protagonist.Name", "text": "Protagonist", "note": "The name of the ability Protagonist." } },
   "abilities": [ { "ability": "Abilities/Lockpick.fvdata" } ]
 }

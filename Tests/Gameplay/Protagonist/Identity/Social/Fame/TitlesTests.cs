@@ -1,5 +1,6 @@
 using FlickerVoid.Engine.Gameplay.Conditions;
 using FlickerVoid.Engine.Gameplay.Facts;
+using FlickerVoid.Engine.Gameplay.Localization;
 using FlickerVoid.Engine.Gameplay.Scales;
 using FlickerVoid.Engine.Gameplay.Tags;
 using Bleeders.Gameplay.Protagonist.Identity.Social.Fame;
@@ -162,7 +163,7 @@ public class TitlesTests
         return new TitleDefinition
         {
             Id = new Tag($"Fact.Title.{name}"),
-            Display = new() { Name = name },
+            Display = new() { Name = new LocalizedText("", name) },
             Conditions = new ConditionSet { Conditions = [condition] },
             OnEarned = new EffectList { Effects = [.. onEarned] },
         };

@@ -7,6 +7,7 @@ using CommunityToolkit.Mvvm.Input;
 
 using FlickerVoid.Engine.Dialogue.Conversations;
 using FlickerVoid.Engine.Runtime.Events;
+using FlickerVoid.Engine.Runtime.Localization;
 
 namespace Bleeders.Interface.Hud.Conversations;
 
@@ -15,11 +16,14 @@ public sealed partial class DialogueBoxViewModel : ObservableObject
 {
     private readonly DialogueSystem _dialogue;
     private readonly World _world;
+    private readonly TextLocalizer _localizer;
 
-    public DialogueBoxViewModel(DialogueSystem dialogue, World world, EventBus events)
+    public DialogueBoxViewModel(DialogueSystem dialogue, World world, EventBus events, TextLocalizer localizer)
     {
         _dialogue = dialogue;
         _world = world;
+        _localizer = localizer;
+        localizer.Changed += Refresh;
         events.Handle((in ConversationStartedEvent _) => Refresh());
         events.Handle((in LineStartedEvent _) => Refresh());
         events.Handle((in LineFinishedEvent _) => Refresh());
@@ -70,10 +74,10 @@ public sealed partial class DialogueBoxViewModel : ObservableObject
             line = DialogueLine.None;
         }
 
-        Line = line.Text;
+        Line = _localizer.Get(line.Text);
         Speaker = FindSpeaker(line);
         bool skippable = line.Skippable || line.WaitForInput;
-        CanAdvance = IsOpen && line.Text.Length > 0 && !_dialogue.IsWaitingForChoice && skippable;
+        CanAdvance = IsOpen && !line.Text.IsEmpty && !_dialogue.IsWaitingForChoice && skippable;
         Choices.Clear();
         if (!IsOpen)
         {
@@ -83,7 +87,9 @@ public sealed partial class DialogueBoxViewModel : ObservableObject
         foreach (DialogueChoice choice in _dialogue.Choices)
         {
             int index = choice.Index;
-            DialogueChoiceViewModel option = new(index + 1, choice.Text, choice.Available, choice.LockedReason, () => Choose(index));
+            string text = _localizer.Get(choice.Text);
+            string reason = _localizer.Get(choice.LockedReason);
+            DialogueChoiceViewModel option = new(index + 1, text, choice.Available, reason, () => Choose(index));
             Choices.Add(option);
         }
     }
