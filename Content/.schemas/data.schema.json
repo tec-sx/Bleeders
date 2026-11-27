@@ -459,6 +459,9 @@
               "name": {
                 "type": "string"
               },
+              "icon": {
+                "type": "string"
+              },
               "loop": {
                 "type": "string"
               },
@@ -476,6 +479,20 @@
               },
               "gain": {
                 "type": "number"
+              },
+              "bus": {
+                "enum": [
+                  "Master",
+                  "Music",
+                  "Ambience",
+                  "Effects",
+                  "Dialogue",
+                  "Interface",
+                  null
+                ]
+              },
+              "triggers": {
+                "type": "array"
               },
               "byRequest": {
                 "type": "boolean"
@@ -878,6 +895,18 @@
                 "type": "string"
               },
               "bar": {
+                "type": "number"
+              },
+              "track": {
+                "type": "string"
+              },
+              "repeat": {
+                "type": "boolean"
+              },
+              "sound": {
+                "type": "string"
+              },
+              "gain": {
                 "type": "number"
               }
             },
