@@ -24,6 +24,24 @@ public sealed class StreetTests : IDisposable
     }
 
     [Fact]
+    public void HearsTheStreetAndDullsItInsideTheInn()
+    {
+        _builder.Story.Run(0.1f);
+        bool startedIndoors = _builder.Audio.IsIndoors;
+        float inside = _builder.Hear();
+
+        bool arrived = _builder.WalkTo(new Vector3(8, 0, 6));
+        _builder.Hear();
+        float outside = _builder.Hear();
+
+        arrived.Should().BeTrue();
+        startedIndoors.Should().BeTrue();
+        _builder.Audio.IsIndoors.Should().BeFalse();
+        inside.Should().BeGreaterThan(0.01f);
+        outside.Should().BeGreaterThan(inside);
+    }
+
+    [Fact]
     public void FollowsTheFoxDownTheStreet()
     {
         bool arrived = _builder.WalkTo(new Vector3(8, 0, 6));

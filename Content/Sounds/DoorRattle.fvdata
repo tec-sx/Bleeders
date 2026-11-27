@@ -1,0 +1,10 @@
+{
+  "$schema": "../.schemas/data.schema.json",
+  "type": "sound",
+  "files": [ "Sounds/DoorRattle1.wav", "Sounds/DoorRattle2.wav", "Sounds/DoorRattle3.wav" ],
+  "gainVariation": 0.2,
+  "pitchVariation": 0.06,
+  "minDistance": 2,
+  "maxDistance": 18,
+  "throttle": 0.2
+}

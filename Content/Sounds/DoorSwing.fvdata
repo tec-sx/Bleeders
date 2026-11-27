@@ -1,0 +1,9 @@
+{
+  "$schema": "../.schemas/data.schema.json",
+  "type": "sound",
+  "files": [ "Sounds/DoorSwing.wav" ],
+  "gainVariation": 0.2,
+  "pitchVariation": 0.08,
+  "minDistance": 2,
+  "maxDistance": 14
+}

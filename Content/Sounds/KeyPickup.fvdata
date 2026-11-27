@@ -1,0 +1,8 @@
+{
+  "$schema": "../.schemas/data.schema.json",
+  "type": "sound",
+  "files": [ "Sounds/KeyPickup1.wav", "Sounds/KeyPickup2.wav" ],
+  "pitchVariation": 0.04,
+  "minDistance": 2,
+  "maxDistance": 14
+}
