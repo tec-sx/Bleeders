@@ -1,0 +1,11 @@
+{
+  "$schema": "../.schemas/data.schema.json",
+  "type": "music",
+  "tempo": 0,
+  "bus": "Ambience",
+  "tracks": [
+    { "name": "Bed", "loop": "Music/StreetBed.ogg", "gain": 0.7, "fadeIn": 1 },
+    { "name": "Dogs", "scatter": "Sounds/DogBark.fvdata", "everyMin": 20, "everyMax": 60, "nearDistance": 15, "farDistance": 40,
+      "when": { "conditions": [ { "$type": "fact", "fact": "Time.Hour", "compare": "GreaterOrEqual", "value": 18 } ] } }
+  ]
+}

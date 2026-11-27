@@ -1,0 +1,11 @@
+{
+  "$schema": "../.schemas/data.schema.json",
+  "type": "music",
+  "tempo": 96,
+  "gain": 0.8,
+  "fillIn": "Music/HubFillIn.ogg",
+  "fillOut": "Music/HubFillOut.ogg",
+  "tracks": [
+    { "name": "Song", "loop": "Music/HubSong.ogg" }
+  ]
+}

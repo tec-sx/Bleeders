@@ -1,3 +1,4 @@
+using FlickerVoid.Engine.Audio.Music;
 using Bleeders.Interface.Hub;
 using Bleeders.Interface.Hub.Character;
 using Bleeders.Interface.Hub.Inventory;
@@ -186,5 +187,19 @@ public sealed class HubViewModelTests : IDisposable
         _builder.Game.Localization.Culture.TrySet("");
         hub.Inventory.Cells[0].Name.Should().Be("Mug of ale");
         hub.Pages[0].Title.Should().Be("Inventory");
+    }
+
+    [Fact]
+    public void PlaysItsSongOverTheMusicWhileOpen()
+    {
+        HubViewModel hub = _builder.Build();
+        IMusicPlayer music = _builder.Game.Services.GetService<IMusicPlayer>()!;
+
+        hub.Toggle();
+        string? open = music.GetCurrent();
+        hub.Toggle();
+
+        open.Should().Be(HubViewModel.Music);
+        music.GetCurrent().Should().BeNull();
     }
 }

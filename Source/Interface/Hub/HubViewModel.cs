@@ -3,6 +3,7 @@ using Arch.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
+using FlickerVoid.Engine.Audio.Music;
 using FlickerVoid.Engine.Gameplay.Tags;
 using FlickerVoid.Engine.Platform.Input;
 using FlickerVoid.Engine.Runtime.Loop;
@@ -14,7 +15,8 @@ namespace Bleeders.Interface.Hub;
 
 /// <summary>
 /// The hub menu over the game: three pages (Inventory, Character, Journal) of the protagonist, one shown at a time, switched in a
-/// ring and reopened on the page last shown. While open it holds the game paused and its own input context, so only its actions are read.
+/// ring and reopened on the page last shown. While open it holds the game paused and its own input context, so only its actions are
+/// read, and its song plays over the level's music, which continues where it stopped when the hub closes.
 /// </summary>
 public sealed partial class HubViewModel : ObservableObject
 {
@@ -24,11 +26,15 @@ public sealed partial class HubViewModel : ObservableObject
     /// <summary>The input context the hub holds while open: Hub, Next and Previous Page, and Back.</summary>
     public static readonly Tag InputContext = new("Input.Context.Hub");
 
+    /// <summary>The cue pushed over the level's music while the hub is open.</summary>
+    public const string Music = "Music/Hub.fvdata";
+
     private static readonly QueryDescription Protagonists = new QueryDescription().WithAll<Gameplay.Protagonist.Protagonist>();
 
     private readonly Game _game;
     private readonly World _world;
     private readonly InputActions? _actions;
+    private readonly IMusicPlayer? _music;
     private readonly List<HubPageViewModel> _pages;
     private int _selectedIndex;
 
@@ -37,6 +43,7 @@ public sealed partial class HubViewModel : ObservableObject
         _game = game;
         _world = game.World;
         _actions = game.Services.GetService<InputActions>();
+        _music = game.Services.GetService<IMusicPlayer>();
         Inventory = new InventoryPageViewModel(game);
         Character = new CharacterPageViewModel(game);
         Journal = new JournalPageViewModel(game);
@@ -77,6 +84,11 @@ public sealed partial class HubViewModel : ObservableObject
 
     public void Open()
     {
+        if (!IsOpen)
+        {
+            _music?.Push(Music);
+        }
+
         IsOpen = true;
         _game.Pause(PauseReason);
         _actions?.Enter(InputContext);
@@ -86,6 +98,11 @@ public sealed partial class HubViewModel : ObservableObject
     [RelayCommand]
     public void Close()
     {
+        if (IsOpen)
+        {
+            _music?.Pop();
+        }
+
         IsOpen = false;
         _game.Resume(PauseReason);
         _actions?.Leave(InputContext);

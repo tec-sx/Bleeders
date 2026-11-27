@@ -26,7 +26,9 @@ public sealed class StreetTests : IDisposable
     [Fact]
     public void HearsTheStreetAndDullsItInsideTheInn()
     {
+        _builder.Audio.Settings.Music.Value = 0;
         _builder.Story.Run(0.1f);
+        _builder.Hear();
         bool startedIndoors = _builder.Audio.IsIndoors;
         float inside = _builder.Hear();
 
@@ -39,6 +41,26 @@ public sealed class StreetTests : IDisposable
         _builder.Audio.IsIndoors.Should().BeFalse();
         inside.Should().BeGreaterThan(0.01f);
         outside.Should().BeGreaterThan(inside);
+    }
+
+    [Fact]
+    public void PlaysTheDrumsInTheInnAndTakesThemOutOnTheStreet()
+    {
+        _builder.Audio.Settings.Ambience.Value = 0;
+        _builder.Story.Run(0.1f);
+        _builder.Hear(6);
+        bool drumsInside = _builder.Music.IsLayerOn("Drums");
+        float inside = _builder.Hear();
+
+        bool arrived = _builder.WalkTo(new Vector3(8, 0, 6));
+        _builder.Story.Run(0.1f);
+
+        arrived.Should().BeTrue();
+        _builder.Music.GetCurrent().Should().Be("Music/Street.fvdata");
+        drumsInside.Should().BeTrue();
+        inside.Should().BeGreaterThan(0.01f);
+        _builder.Music.IsLayerOn("Drums").Should().BeFalse();
+        _builder.Music.IsLayerOn("Bass").Should().BeTrue();
     }
 
     [Fact]

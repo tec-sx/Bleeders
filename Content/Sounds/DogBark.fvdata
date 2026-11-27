@@ -1,0 +1,11 @@
+{
+  "$schema": "../.schemas/data.schema.json",
+  "type": "sound",
+  "files": [ "Sounds/DogBark1.wav", "Sounds/DogBark2.wav" ],
+  "bus": "Ambience",
+  "gain": 0.5,
+  "gainVariation": 0.4,
+  "pitchVariation": 0.08,
+  "minDistance": 10,
+  "maxDistance": 80
+}

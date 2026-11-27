@@ -1,0 +1,14 @@
+{
+  "$schema": "../.schemas/data.schema.json",
+  "type": "music",
+  "tempo": 96,
+  "beatsPerBar": 4,
+  "phraseBars": 4,
+  "gain": 0.8,
+  "tracks": [
+    { "name": "Bass", "loop": "Music/BassLoop.ogg" },
+    { "name": "Drums", "loop": "Music/DrumsLoop.ogg", "fillIn": "Music/DrumsFillIn.ogg", "fillOut": "Music/DrumsFillOut.ogg", "byRequest": true },
+    { "name": "Dusk Pad", "loop": "Music/DuskPad.ogg", "start": "Phrase", "stop": "Phrase", "fadeIn": 2, "fadeOut": 2,
+      "when": { "conditions": [ { "$type": "fact", "fact": "Time.Hour", "compare": "GreaterOrEqual", "value": 18 } ] } }
+  ]
+}
