@@ -8,7 +8,7 @@
       "input": "Input.Use",
       "action": "Interaction.Action.PickUp",
       "display": { "name": { "key": "Interaction.Offer.Take", "text": "Take", "note": "The button of an interaction offer in the prompt, a verb." } },
-      "effects": { "effects": [ { "$type": "playSound", "sound": "Sounds/KeyPickup.fvdata" }, { "$type": "playStinger", "file": "Music/KeyFound.ogg" }, { "$type": "pickUp" }, { "$type": "fact", "fact": "Found.CellarKey" } ] }
+      "effects": { "effects": [ { "$type": "playSound", "sound": "Sounds/KeyPickup.fvsound" }, { "$type": "playStinger", "file": "Music/KeyFound.ogg" }, { "$type": "pickUp" }, { "$type": "fact", "fact": "Found.CellarKey" } ] }
     }
   ]
 }

@@ -56,7 +56,7 @@ public sealed class StreetTests : IDisposable
         _builder.Story.Run(0.1f);
 
         arrived.Should().BeTrue();
-        _builder.Music.GetCurrent().Should().Be("Music/Street.fvdata");
+        _builder.Music.GetCurrent().Should().Be("Music/Street.fvmusic");
         drumsInside.Should().BeTrue();
         inside.Should().BeGreaterThan(0.01f);
         _builder.Music.IsLayerOn("Drums").Should().BeFalse();

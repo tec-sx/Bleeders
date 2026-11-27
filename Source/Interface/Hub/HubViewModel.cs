@@ -27,7 +27,7 @@ public sealed partial class HubViewModel : ObservableObject
     public static readonly Tag InputContext = new("Input.Context.Hub");
 
     /// <summary>The cue pushed over the level's music while the hub is open.</summary>
-    public const string Music = "Music/Hub.fvdata";
+    public const string Music = "Music/Hub.fvmusic";
 
     private static readonly QueryDescription Protagonists = new QueryDescription().WithAll<Gameplay.Protagonist.Protagonist>();
 
