@@ -9,6 +9,7 @@ using FlickerVoid.Engine.Ai.Senses;
 using FlickerVoid.Engine.Attributes;
 using FlickerVoid.Engine.Attributes.Checks;
 using FlickerVoid.Engine.Buildings;
+using FlickerVoid.Engine.Props;
 using FlickerVoid.Engine.Foliage;
 using FlickerVoid.Engine.Cameras;
 using FlickerVoid.Engine.Cameras.Cutaways;
@@ -64,6 +65,7 @@ public sealed class GameplayModule : IGameModule
         DialogueSystem dialogue = game.AddDialogue();
         game.AddVehicles();
         game.AddBuildings();
+        game.AddProps();
         game.AddFoliage();
         game.Spawner.Register("protagonist", BleedersJsonContext.Default.Protagonist);
         AddPlayer(game);
