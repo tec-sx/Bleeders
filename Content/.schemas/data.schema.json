@@ -429,6 +429,9 @@
         "tempo": {
           "type": "number"
         },
+        "tempoFromBelow": {
+          "type": "boolean"
+        },
         "beatsPerBar": {
           "type": "integer"
         },
@@ -867,6 +870,36 @@
           }
         },
         "notifies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "bar": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "bars": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "continuePoints": {
           "type": "array",
           "items": {
             "type": "object",
