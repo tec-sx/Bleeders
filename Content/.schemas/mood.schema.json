@@ -178,6 +178,12 @@
       "minItems": 3,
       "maxItems": 3
     },
+    "rain": {
+      "type": "number"
+    },
+    "dust": {
+      "type": "number"
+    },
     "hazeDensity": {
       "type": "number"
     },
@@ -221,6 +227,17 @@
     },
     "contactShadowLength": {
       "type": "number"
+    },
+    "shadowDarkness": {
+      "type": "number"
+    },
+    "shadowColor": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
     },
     "bloom": {
       "type": "number"

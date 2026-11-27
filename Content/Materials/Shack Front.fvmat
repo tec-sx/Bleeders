@@ -1,0 +1,14 @@
+// Look test (VE step): the abandoned wall in grey, coloured through the third row of the fronts palette (brick), with a relief raised from its brightness.
+{
+  "$schema": "../.schemas/material.schema.json",
+  "parent": "Engine/Rendering/Masters/Surface.fvmaster",
+  "parameters": {
+    "texture": "Paintings/Wall_Grey.png",
+    "textureScale": 2.6667,
+    "reliefDepth": 0.004,
+    "palette": "Palettes/Fronts.png",
+    "paletteRow": 2,
+    "variation": 0.1,
+    "variationScale": 1.5
+  }
+}
