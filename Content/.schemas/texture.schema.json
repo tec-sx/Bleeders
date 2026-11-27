@@ -13,6 +13,9 @@
     "mask": {
       "type": "boolean"
     },
+    "relief": {
+      "type": "boolean"
+    },
     "maxSize": {
       "type": "integer"
     },

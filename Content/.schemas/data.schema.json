@@ -371,6 +371,464 @@
     {
       "type": "object",
       "properties": {
+        "tempo": {
+          "type": "number"
+        },
+        "beatsPerBar": {
+          "type": "integer"
+        },
+        "phraseBars": {
+          "type": "integer"
+        },
+        "bus": {
+          "enum": [
+            "Master",
+            "Music",
+            "Ambience",
+            "Effects",
+            "Dialogue",
+            "Interface"
+          ]
+        },
+        "gain": {
+          "type": "number"
+        },
+        "tracks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "loop": {
+                "type": "string"
+              },
+              "bars": {
+                "type": "integer"
+              },
+              "fillIn": {
+                "type": "string"
+              },
+              "fillOut": {
+                "type": "string"
+              },
+              "gain": {
+                "type": "number"
+              },
+              "byRequest": {
+                "type": "boolean"
+              },
+              "when": {
+                "type": "object",
+                "properties": {
+                  "mode": {
+                    "enum": [
+                      "All",
+                      "Any"
+                    ]
+                  },
+                  "conditions": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "$type"
+                      ],
+                      "anyOf": [
+                        {
+                          "properties": {
+                            "$type": {
+                              "const": "fact"
+                            },
+                            "fact": {
+                              "type": "string"
+                            },
+                            "compare": {
+                              "enum": [
+                                "Equal",
+                                "NotEqual",
+                                "Greater",
+                                "GreaterOrEqual",
+                                "Less",
+                                "LessOrEqual",
+                                "Defined",
+                                "Undefined"
+                              ]
+                            },
+                            "value": {
+                              "type": "integer"
+                            },
+                            "invert": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
+                              "const": "group"
+                            },
+                            "set": {
+                              "type": "object",
+                              "properties": {
+                                "mode": {
+                                  "enum": [
+                                    "All",
+                                    "Any"
+                                  ]
+                                },
+                                "conditions": {
+                                  "$ref": "#/properties/tracks/items/properties/when/properties/conditions"
+                                },
+                                "failurePresentation": {
+                                  "enum": [
+                                    "Hidden",
+                                    "ShowLocked",
+                                    "ShowLockedWithReason"
+                                  ]
+                                },
+                                "failureReason": {
+                                  "type": "object",
+                                  "properties": {
+                                    "key": {
+                                      "type": "string"
+                                    },
+                                    "text": {
+                                      "type": "string"
+                                    },
+                                    "note": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "invert": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
+                              "const": "interactorTags"
+                            },
+                            "required": {
+                              "type": "array"
+                            },
+                            "requireAll": {
+                              "type": "boolean"
+                            },
+                            "blocked": {
+                              "type": "array"
+                            },
+                            "invert": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
+                              "const": "locked"
+                            },
+                            "subject": {
+                              "enum": [
+                                "Instigator",
+                                "Target"
+                              ]
+                            },
+                            "invert": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
+                              "const": "attribute"
+                            },
+                            "attribute": {
+                              "type": "string"
+                            },
+                            "compare": {
+                              "enum": [
+                                "Equal",
+                                "NotEqual",
+                                "Greater",
+                                "GreaterOrEqual",
+                                "Less",
+                                "LessOrEqual"
+                              ]
+                            },
+                            "value": {
+                              "type": "number"
+                            },
+                            "subject": {
+                              "enum": [
+                                "Instigator",
+                                "Target"
+                              ]
+                            },
+                            "invert": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
+                              "const": "passiveCheck"
+                            },
+                            "definition": {
+                              "type": "string"
+                            },
+                            "difficulty": {
+                              "type": "integer"
+                            },
+                            "invert": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
+                              "const": "canActivateAbility"
+                            },
+                            "ability": {
+                              "type": "string"
+                            },
+                            "subject": {
+                              "enum": [
+                                "Instigator",
+                                "Target"
+                              ]
+                            },
+                            "invert": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
+                              "const": "isWearing"
+                            },
+                            "item": {
+                              "type": "string"
+                            },
+                            "grantedTag": {
+                              "type": "string"
+                            },
+                            "subject": {
+                              "enum": [
+                                "Instigator",
+                                "Target"
+                              ]
+                            },
+                            "invert": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
+                              "const": "hasItem"
+                            },
+                            "item": {
+                              "type": "string"
+                            },
+                            "quantity": {
+                              "type": "integer"
+                            },
+                            "subject": {
+                              "enum": [
+                                "Instigator",
+                                "Target"
+                              ]
+                            },
+                            "invert": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
+                              "const": "hasItemWithTag"
+                            },
+                            "tag": {
+                              "type": "string"
+                            },
+                            "quantity": {
+                              "type": "integer"
+                            },
+                            "subject": {
+                              "enum": [
+                                "Instigator",
+                                "Target"
+                              ]
+                            },
+                            "invert": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
+                              "const": "hasMoney"
+                            },
+                            "amount": {
+                              "type": "integer"
+                            },
+                            "subject": {
+                              "enum": [
+                                "Instigator",
+                                "Target"
+                              ]
+                            },
+                            "invert": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
+                              "const": "questState"
+                            },
+                            "quest": {
+                              "type": "string"
+                            },
+                            "state": {
+                              "enum": [
+                                "NotStarted",
+                                "Active",
+                                "Completed",
+                                "Failed"
+                              ]
+                            },
+                            "invert": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
+                              "const": "knows"
+                            },
+                            "knowledge": {
+                              "type": "string"
+                            },
+                            "invert": {
+                              "type": "boolean"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  },
+                  "failurePresentation": {
+                    "enum": [
+                      "Hidden",
+                      "ShowLocked",
+                      "ShowLockedWithReason"
+                    ]
+                  },
+                  "failureReason": {
+                    "$ref": "#/properties/tracks/items/properties/when/properties/conditions/items/anyOf/1/properties/set/properties/failureReason"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "start": {
+                "enum": [
+                  "None",
+                  "Beat",
+                  "Bar",
+                  "Phrase"
+                ]
+              },
+              "stop": {
+                "enum": [
+                  "None",
+                  "Beat",
+                  "Bar",
+                  "Phrase"
+                ]
+              },
+              "phase": {
+                "enum": [
+                  "Locked",
+                  "FromStart"
+                ]
+              },
+              "fadeIn": {
+                "type": "number"
+              },
+              "fadeOut": {
+                "type": "number"
+              },
+              "scatter": {
+                "type": "string"
+              },
+              "everyMin": {
+                "type": "number"
+              },
+              "everyMax": {
+                "type": "number"
+              },
+              "nearDistance": {
+                "type": "number"
+              },
+              "farDistance": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "fillIn": {
+          "type": "string"
+        },
+        "fillOut": {
+          "type": "string"
+        },
+        "$schema": {
+          "type": "string"
+        },
+        "type": {
+          "const": "music"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
         "offers": {
           "type": "array",
           "items": {
@@ -934,6 +1392,39 @@
                             },
                             "sound": {
                               "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
+                              "const": "playMusic"
+                            },
+                            "cue": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
+                              "const": "playStinger"
+                            },
+                            "file": {
+                              "type": "string"
+                            },
+                            "quantize": {
+                              "enum": [
+                                "None",
+                                "Beat",
+                                "Bar",
+                                "Phrase"
+                              ]
+                            },
+                            "gain": {
+                              "type": "number"
                             }
                           },
                           "additionalProperties": false
@@ -2418,6 +2909,39 @@
                   {
                     "properties": {
                       "$type": {
+                        "const": "playMusic"
+                      },
+                      "cue": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "$type": {
+                        "const": "playStinger"
+                      },
+                      "file": {
+                        "type": "string"
+                      },
+                      "quantize": {
+                        "enum": [
+                          "None",
+                          "Beat",
+                          "Bar",
+                          "Phrase"
+                        ]
+                      },
+                      "gain": {
+                        "type": "number"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "$type": {
                         "const": "modifyAttribute"
                       },
                       "attribute": {
@@ -3459,6 +3983,39 @@
                                 },
                                 "sound": {
                                   "type": "string"
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            {
+                              "properties": {
+                                "$type": {
+                                  "const": "playMusic"
+                                },
+                                "cue": {
+                                  "type": "string"
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            {
+                              "properties": {
+                                "$type": {
+                                  "const": "playStinger"
+                                },
+                                "file": {
+                                  "type": "string"
+                                },
+                                "quantize": {
+                                  "enum": [
+                                    "None",
+                                    "Beat",
+                                    "Bar",
+                                    "Phrase"
+                                  ]
+                                },
+                                "gain": {
+                                  "type": "number"
                                 }
                               },
                               "additionalProperties": false
@@ -4909,6 +5466,39 @@
                   {
                     "properties": {
                       "$type": {
+                        "const": "playMusic"
+                      },
+                      "cue": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "$type": {
+                        "const": "playStinger"
+                      },
+                      "file": {
+                        "type": "string"
+                      },
+                      "quantize": {
+                        "enum": [
+                          "None",
+                          "Beat",
+                          "Bar",
+                          "Phrase"
+                        ]
+                      },
+                      "gain": {
+                        "type": "number"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "$type": {
                         "const": "modifyAttribute"
                       },
                       "attribute": {
@@ -5396,6 +5986,39 @@
                       },
                       "sound": {
                         "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "$type": {
+                        "const": "playMusic"
+                      },
+                      "cue": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "$type": {
+                        "const": "playStinger"
+                      },
+                      "file": {
+                        "type": "string"
+                      },
+                      "quantize": {
+                        "enum": [
+                          "None",
+                          "Beat",
+                          "Bar",
+                          "Phrase"
+                        ]
+                      },
+                      "gain": {
+                        "type": "number"
                       }
                     },
                     "additionalProperties": false
@@ -6267,6 +6890,39 @@
                       },
                       "sound": {
                         "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "$type": {
+                        "const": "playMusic"
+                      },
+                      "cue": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "properties": {
+                      "$type": {
+                        "const": "playStinger"
+                      },
+                      "file": {
+                        "type": "string"
+                      },
+                      "quantize": {
+                        "enum": [
+                          "None",
+                          "Beat",
+                          "Bar",
+                          "Phrase"
+                        ]
+                      },
+                      "gain": {
+                        "type": "number"
                       }
                     },
                     "additionalProperties": false
@@ -7618,6 +8274,39 @@
                                 },
                                 "sound": {
                                   "type": "string"
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            {
+                              "properties": {
+                                "$type": {
+                                  "const": "playMusic"
+                                },
+                                "cue": {
+                                  "type": "string"
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            {
+                              "properties": {
+                                "$type": {
+                                  "const": "playStinger"
+                                },
+                                "file": {
+                                  "type": "string"
+                                },
+                                "quantize": {
+                                  "enum": [
+                                    "None",
+                                    "Beat",
+                                    "Bar",
+                                    "Phrase"
+                                  ]
+                                },
+                                "gain": {
+                                  "type": "number"
                                 }
                               },
                               "additionalProperties": false

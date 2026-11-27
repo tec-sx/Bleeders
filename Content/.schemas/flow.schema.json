@@ -555,6 +555,39 @@
                         {
                           "properties": {
                             "$type": {
+                              "const": "playMusic"
+                            },
+                            "cue": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
+                              "const": "playStinger"
+                            },
+                            "file": {
+                              "type": "string"
+                            },
+                            "quantize": {
+                              "enum": [
+                                "None",
+                                "Beat",
+                                "Bar",
+                                "Phrase"
+                              ]
+                            },
+                            "gain": {
+                              "type": "number"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "properties": {
+                            "$type": {
                               "const": "modifyAttribute"
                             },
                             "attribute": {
@@ -1059,6 +1092,57 @@
               },
               "sound": {
                 "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "properties": {
+              "$type": {
+                "const": "playMusic"
+              },
+              "cue": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "properties": {
+              "$type": {
+                "const": "playStinger"
+              },
+              "file": {
+                "type": "string"
+              },
+              "quantize": {
+                "enum": [
+                  "None",
+                  "Beat",
+                  "Bar",
+                  "Phrase"
+                ]
+              },
+              "gain": {
+                "type": "number"
               },
               "id": {
                 "type": "string"
