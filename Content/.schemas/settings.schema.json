@@ -59,6 +59,11 @@
       "type": "boolean",
       "default": true
     },
+    "r.VSync": {
+      "description": "Waits for the display\u0027s refresh before showing each frame of the game window, capping the frame rate at it.",
+      "type": "boolean",
+      "default": false
+    },
     "audio.Master": {
       "description": "The volume of everything, from 0 to 1.",
       "type": "number",

@@ -5,6 +5,7 @@ using Arch.Core;
 using FlickerVoid.Engine.Ai.Senses;
 using FlickerVoid.Engine.Dialogue.Conversations;
 using FlickerVoid.Engine.Gameplay.Tags;
+using FlickerVoid.Engine.Interaction.Interactables;
 using FlickerVoid.Engine.Interaction.Locks;
 using FlickerVoid.Engine.Interaction.Toggles;
 using FlickerVoid.Engine.Inventory.Inventories;
@@ -80,6 +81,17 @@ public sealed class ClickControlSystemTests : IDisposable
             { "from": "ask", "output": "Second", "to": "returned" }, { "from": "returned", "to": "end" } ] }
         """;
 
+    private const string Ride = """
+        { "type": "interactable", "offers": [ { "input": "Input.Use", "action": "Interaction.Action.Toggle", "display": { "name": { "key": "Test.Ride", "text": "Ride" } } } ] }
+        """;
+
+    private const string Platform = """
+        { "name": "Platform", "components": { "transform": { "position": [1, 0, 0] },
+          "rigidBody": { "collider": { "type": "box", "size": [1.4, 0.1, 1.4], "offset": [0, 0.05, 0] }, "kinematic": true, "obstacle": false },
+          "interactable": { "definition": "Ride.fvdata" },
+          "toggle": { "action": "Interaction.Action.Toggle" } } }
+        """;
+
     private readonly ClickControlSystemTestsBuilder _builder = new();
 
     public void Dispose() => _builder.Dispose();
@@ -96,6 +108,23 @@ public sealed class ClickControlSystemTests : IDisposable
 
         Vector3 position = _builder.Game.World.Get<Transform>(spawned[2]).Position;
         Vector3.Distance(position, spot).Should().BeLessThan(0.1f);
+    }
+
+    [Fact]
+    public void AClickOnAPlatformStoodOnWalksOntoItBeforeUsingIt()
+    {
+        _builder.WithFile("Ride.fvdata", Ride).Build();
+        IReadOnlyList<Entity> spawned = _builder.Spawn(string.Join(", ", ClickControlSystemTestsBuilder.Camera, ClickControlSystemTestsBuilder.Floor, Hero, Platform));
+        Entity platform = spawned[3];
+        _builder.Game.World.Add(platform, new UsePoint { Offset = new Vector3(0, 0.1f, 0), StandOn = true });
+
+        _builder.ClickAt(spawned[0], new Vector3(1, 0, 0));
+        _builder.Run(4);
+
+        Vector3 position = _builder.Game.World.Get<Transform>(spawned[2]).Position;
+        float fromMiddle = Vector2.Distance(new Vector2(position.X, position.Z), new Vector2(1, 0));
+        fromMiddle.Should().BeLessThan(0.15f, "it stands on the platform's middle, not within reach of it");
+        _builder.Game.World.Get<Toggle>(platform).Open.Should().BeTrue();
     }
 
     [Fact]

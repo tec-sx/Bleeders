@@ -26,38 +26,505 @@
           "level": {
             "type": "integer"
           },
-          "shell": {
+          "height": {
+            "type": "number"
+          },
+          "wall": {
+            "type": "number"
+          },
+          "floor": {
+            "type": "number"
+          },
+          "ambient": {
+            "type": "number"
+          },
+          "corners": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "x": {
+                  "type": "number"
+                },
+                "z": {
+                  "type": "number"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "walls": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "from": {
+                  "type": "integer"
+                },
+                "to": {
+                  "type": "integer"
+                },
+                "outside": {
+                  "type": "boolean"
+                },
+                "thickness": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "height": {
+                  "enum": [
+                    "ToCeiling",
+                    "Half",
+                    "Custom"
+                  ]
+                },
+                "customHeight": {
+                  "type": "number"
+                },
+                "bulge": {
+                  "type": "number"
+                },
+                "segments": {
+                  "type": "integer"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "rooms": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "x": {
+                  "type": "number"
+                },
+                "z": {
+                  "type": "number"
+                },
+                "ambient": {
+                  "type": "number"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "pillars": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "x": {
+                  "type": "number"
+                },
+                "z": {
+                  "type": "number"
+                },
+                "size": {
+                  "type": "number"
+                },
+                "round": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "openings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "kind": {
+                  "enum": [
+                    "Door",
+                    "Doorway",
+                    "Window",
+                    "Floor"
+                  ]
+                },
+                "wall": {
+                  "type": "integer"
+                },
+                "along": {
+                  "type": "number"
+                },
+                "lift": {
+                  "type": "number"
+                },
+                "x": {
+                  "type": "number"
+                },
+                "z": {
+                  "type": "number"
+                },
+                "width": {
+                  "type": "number"
+                },
+                "height": {
+                  "type": "number"
+                },
+                "top": {
+                  "enum": [
+                    "Flat",
+                    "Arch"
+                  ]
+                },
+                "archRise": {
+                  "type": "number"
+                },
+                "thickness": {
+                  "type": "number"
+                },
+                "hingeLeft": {
+                  "type": "boolean"
+                },
+                "outward": {
+                  "type": "boolean"
+                },
+                "angle": {
+                  "type": "number"
+                },
+                "frame": {
+                  "type": "number"
+                },
+                "double": {
+                  "type": "boolean"
+                },
+                "windowWidth": {
+                  "type": "number"
+                },
+                "windowHeight": {
+                  "type": "number"
+                },
+                "windowFrom": {
+                  "type": "number"
+                },
+                "glass": {
+                  "type": "boolean"
+                },
+                "handleHeight": {
+                  "type": "number"
+                },
+                "handleInset": {
+                  "type": "number"
+                },
+                "margin": {
+                  "type": "number"
+                },
+                "locked": {
+                  "type": "boolean"
+                },
+                "key": {
+                  "type": "string"
+                },
+                "consumeKey": {
+                  "type": "boolean"
+                },
+                "pickable": {
+                  "type": "boolean"
+                },
+                "difficulty": {
+                  "type": "number"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "cornerPillars": {
+            "type": "boolean"
+          },
+          "cornerPillarSize": {
+            "type": "number"
+          },
+          "parts": {
             "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "place": {
+                  "type": "object",
+                  "properties": {
+                    "position": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    },
+                    "rotation": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 4,
+                      "maxItems": 4
+                    },
+                    "scale": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "mesh": {
+                  "type": "object",
+                  "properties": {
+                    "points": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      }
+                    },
+                    "faces": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "minItems": 3
+                      }
+                    }
+                  },
+                  "required": [
+                    "points",
+                    "faces"
+                  ],
+                  "additionalProperties": false
+                },
+                "mirror": {
+                  "type": "boolean"
+                },
+                "joint": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "kind": {
+                      "enum": [
+                        "Hinge",
+                        "Slider"
+                      ]
+                    },
+                    "pivot": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    },
+                    "axis": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    },
+                    "min": {
+                      "type": "number"
+                    },
+                    "max": {
+                      "type": "number"
+                    },
+                    "speed": {
+                      "type": "number"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "toggle": true,
+                "source": {
+                  "type": "object",
+                  "properties": {
+                    "points": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      }
+                    },
+                    "faces": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "minItems": 3
+                      }
+                    }
+                  },
+                  "required": [
+                    "points",
+                    "faces"
+                  ],
+                  "additionalProperties": false
+                },
+                "fit": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "wall": {
+                      "type": "string"
+                    },
+                    "centre": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    },
+                    "normal": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    },
+                    "right": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    },
+                    "width": {
+                      "type": "number"
+                    },
+                    "height": {
+                      "type": "number"
+                    },
+                    "thickness": {
+                      "type": "number"
+                    },
+                    "sill": {
+                      "type": "number"
+                    },
+                    "margin": {
+                      "type": "number"
+                    },
+                    "depthIn": {
+                      "type": "number"
+                    },
+                    "depthOut": {
+                      "type": "number"
+                    },
+                    "hingeLeft": {
+                      "type": "boolean"
+                    },
+                    "outward": {
+                      "type": "boolean"
+                    },
+                    "angle": {
+                      "type": "number"
+                    },
+                    "frameWidth": {
+                      "type": "number"
+                    },
+                    "windowWidth": {
+                      "type": "number"
+                    },
+                    "windowHeight": {
+                      "type": "number"
+                    },
+                    "windowFrom": {
+                      "type": "number"
+                    },
+                    "glass": {
+                      "type": "boolean"
+                    },
+                    "grabHeight": {
+                      "type": "number"
+                    },
+                    "grabInset": {
+                      "type": "number"
+                    },
+                    "up": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    },
+                    "hasWindow": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "wall"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "mesh"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "free": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "shell": {
+            "type": [
+              "object",
+              "null"
+            ],
             "properties": {
               "place": {
-                "type": "object",
-                "properties": {
-                  "position": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "minItems": 3,
-                    "maxItems": 3
-                  },
-                  "rotation": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "minItems": 4,
-                    "maxItems": 4
-                  },
-                  "scale": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "minItems": 3,
-                    "maxItems": 3
-                  }
-                },
-                "additionalProperties": false
+                "$ref": "#/properties/storeys/items/properties/parts/additionalProperties/properties/place"
               },
               "mesh": {
                 "type": "object",
@@ -95,44 +562,7 @@
                 "type": "boolean"
               },
               "joint": {
-                "type": [
-                  "object",
-                  "null"
-                ],
-                "properties": {
-                  "kind": {
-                    "enum": [
-                      "Hinge",
-                      "Slider"
-                    ]
-                  },
-                  "pivot": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "minItems": 3,
-                    "maxItems": 3
-                  },
-                  "axis": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "minItems": 3,
-                    "maxItems": 3
-                  },
-                  "min": {
-                    "type": "number"
-                  },
-                  "max": {
-                    "type": "number"
-                  },
-                  "speed": {
-                    "type": "number"
-                  }
-                },
-                "additionalProperties": false
+                "$ref": "#/properties/storeys/items/properties/parts/additionalProperties/properties/joint"
               },
               "toggle": true,
               "source": {
@@ -168,308 +598,51 @@
                 "additionalProperties": false
               },
               "fit": {
-                "type": [
-                  "object",
-                  "null"
-                ],
-                "properties": {
-                  "wall": {
-                    "type": "string"
-                  },
-                  "centre": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "minItems": 3,
-                    "maxItems": 3
-                  },
-                  "normal": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "minItems": 3,
-                    "maxItems": 3
-                  },
-                  "right": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "minItems": 3,
-                    "maxItems": 3
-                  },
-                  "width": {
-                    "type": "number"
-                  },
-                  "height": {
-                    "type": "number"
-                  },
-                  "thickness": {
-                    "type": "number"
-                  },
-                  "sill": {
-                    "type": "number"
-                  },
-                  "margin": {
-                    "type": "number"
-                  },
-                  "depthIn": {
-                    "type": "number"
-                  },
-                  "depthOut": {
-                    "type": "number"
-                  },
-                  "hingeLeft": {
-                    "type": "boolean"
-                  },
-                  "outward": {
-                    "type": "boolean"
-                  },
-                  "angle": {
-                    "type": "number"
-                  },
-                  "frameWidth": {
-                    "type": "number"
-                  },
-                  "windowWidth": {
-                    "type": "number"
-                  },
-                  "windowHeight": {
-                    "type": "number"
-                  },
-                  "windowFrom": {
-                    "type": "number"
-                  },
-                  "glass": {
-                    "type": "boolean"
-                  },
-                  "grabHeight": {
-                    "type": "number"
-                  },
-                  "grabInset": {
-                    "type": "number"
-                  },
-                  "up": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "minItems": 3,
-                    "maxItems": 3
-                  },
-                  "hasWindow": {
-                    "type": "boolean"
-                  }
-                },
-                "required": [
-                  "wall"
-                ],
-                "additionalProperties": false
+                "$ref": "#/properties/storeys/items/properties/parts/additionalProperties/properties/fit"
               }
             },
             "required": [
               "mesh"
             ],
             "additionalProperties": false
-          },
-          "ambient": {
-            "type": "number"
           }
         },
-        "required": [
-          "shell"
-        ],
         "additionalProperties": false
       }
     },
     "roof": {
       "type": "object",
       "properties": {
-        "place": {
-          "$ref": "#/properties/storeys/items/properties/shell/properties/place"
+        "kind": {
+          "enum": [
+            "Flat",
+            "Shed",
+            "Gable"
+          ]
         },
-        "mesh": {
-          "type": "object",
-          "properties": {
-            "points": {
-              "type": "array",
-              "items": {
-                "type": "array",
-                "items": {
-                  "type": "number"
-                },
-                "minItems": 3,
-                "maxItems": 3
-              }
-            },
-            "faces": {
-              "type": "array",
-              "items": {
-                "type": "array",
-                "items": {
-                  "type": "integer",
-                  "minimum": 0
-                },
-                "minItems": 3
-              }
-            }
-          },
-          "required": [
-            "points",
-            "faces"
-          ],
-          "additionalProperties": false
+        "rise": {
+          "type": "number"
         },
-        "mirror": {
+        "overhang": {
+          "type": "number"
+        },
+        "thickness": {
+          "type": "number"
+        },
+        "alongDepth": {
           "type": "boolean"
         },
-        "joint": {
-          "$ref": "#/properties/storeys/items/properties/shell/properties/joint"
+        "none": {
+          "type": "boolean"
         },
-        "toggle": true,
-        "source": {
-          "type": "object",
-          "properties": {
-            "points": {
-              "type": "array",
-              "items": {
-                "type": "array",
-                "items": {
-                  "type": "number"
-                },
-                "minItems": 3,
-                "maxItems": 3
-              }
-            },
-            "faces": {
-              "type": "array",
-              "items": {
-                "type": "array",
-                "items": {
-                  "type": "integer",
-                  "minimum": 0
-                },
-                "minItems": 3
-              }
-            }
-          },
-          "required": [
-            "points",
-            "faces"
+        "part": {
+          "type": [
+            "object",
+            "null"
           ],
-          "additionalProperties": false
-        },
-        "fit": {
-          "$ref": "#/properties/storeys/items/properties/shell/properties/fit"
-        }
-      },
-      "required": [
-        "mesh"
-      ],
-      "additionalProperties": false
-    },
-    "stairs": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "place": {
-            "$ref": "#/properties/storeys/items/properties/shell/properties/place"
-          },
-          "mesh": {
-            "type": "object",
-            "properties": {
-              "points": {
-                "type": "array",
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "type": "number"
-                  },
-                  "minItems": 3,
-                  "maxItems": 3
-                }
-              },
-              "faces": {
-                "type": "array",
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "type": "integer",
-                    "minimum": 0
-                  },
-                  "minItems": 3
-                }
-              }
-            },
-            "required": [
-              "points",
-              "faces"
-            ],
-            "additionalProperties": false
-          },
-          "mirror": {
-            "type": "boolean"
-          },
-          "joint": {
-            "$ref": "#/properties/storeys/items/properties/shell/properties/joint"
-          },
-          "toggle": true,
-          "source": {
-            "type": "object",
-            "properties": {
-              "points": {
-                "type": "array",
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "type": "number"
-                  },
-                  "minItems": 3,
-                  "maxItems": 3
-                }
-              },
-              "faces": {
-                "type": "array",
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "type": "integer",
-                    "minimum": 0
-                  },
-                  "minItems": 3
-                }
-              }
-            },
-            "required": [
-              "points",
-              "faces"
-            ],
-            "additionalProperties": false
-          },
-          "fit": {
-            "$ref": "#/properties/storeys/items/properties/shell/properties/fit"
-          }
-        },
-        "required": [
-          "mesh"
-        ],
-        "additionalProperties": false
-      }
-    },
-    "elevator": {
-      "type": [
-        "object",
-        "null"
-      ],
-      "properties": {
-        "platform": {
-          "type": "object",
           "properties": {
             "place": {
-              "$ref": "#/properties/storeys/items/properties/shell/properties/place"
+              "$ref": "#/properties/storeys/items/properties/parts/additionalProperties/properties/place"
             },
             "mesh": {
               "type": "object",
@@ -507,7 +680,7 @@
               "type": "boolean"
             },
             "joint": {
-              "$ref": "#/properties/storeys/items/properties/shell/properties/joint"
+              "$ref": "#/properties/storeys/items/properties/parts/additionalProperties/properties/joint"
             },
             "toggle": true,
             "source": {
@@ -543,7 +716,7 @@
               "additionalProperties": false
             },
             "fit": {
-              "$ref": "#/properties/storeys/items/properties/shell/properties/fit"
+              "$ref": "#/properties/storeys/items/properties/parts/additionalProperties/properties/fit"
             }
           },
           "required": [
@@ -551,24 +724,628 @@
           ],
           "additionalProperties": false
         },
-        "speed": {
-          "type": "number"
+        "place": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "position": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "rotation": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "scale": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          },
+          "additionalProperties": false
+        },
+        "mesh": {
+          "type": "object",
+          "properties": {
+            "points": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              }
+            },
+            "faces": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "minItems": 3
+              }
+            }
+          },
+          "required": [
+            "points",
+            "faces"
+          ],
+          "additionalProperties": false
         }
       },
-      "required": [
-        "platform"
-      ],
       "additionalProperties": false
+    },
+    "stairs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "level": {
+            "type": "integer"
+          },
+          "x": {
+            "type": "number"
+          },
+          "z": {
+            "type": "number"
+          },
+          "heading": {
+            "type": "number"
+          },
+          "kind": {
+            "enum": [
+              "Straight",
+              "L",
+              "U"
+            ]
+          },
+          "turnLeft": {
+            "type": "boolean"
+          },
+          "width": {
+            "type": "number"
+          },
+          "firstRun": {
+            "type": "number"
+          },
+          "landing": {
+            "type": "number"
+          },
+          "rise": {
+            "type": "number"
+          },
+          "tread": {
+            "type": "number"
+          },
+          "meetsFloor": {
+            "type": "boolean"
+          },
+          "margin": {
+            "type": "number"
+          },
+          "headroom": {
+            "type": "number"
+          },
+          "railing": {
+            "type": "boolean"
+          },
+          "part": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "place": {
+                "$ref": "#/properties/storeys/items/properties/parts/additionalProperties/properties/place"
+              },
+              "mesh": {
+                "type": "object",
+                "properties": {
+                  "points": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "faces": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "minItems": 3
+                    }
+                  }
+                },
+                "required": [
+                  "points",
+                  "faces"
+                ],
+                "additionalProperties": false
+              },
+              "mirror": {
+                "type": "boolean"
+              },
+              "joint": {
+                "$ref": "#/properties/storeys/items/properties/parts/additionalProperties/properties/joint"
+              },
+              "toggle": true,
+              "source": {
+                "type": "object",
+                "properties": {
+                  "points": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "faces": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "minItems": 3
+                    }
+                  }
+                },
+                "required": [
+                  "points",
+                  "faces"
+                ],
+                "additionalProperties": false
+              },
+              "fit": {
+                "$ref": "#/properties/storeys/items/properties/parts/additionalProperties/properties/fit"
+              }
+            },
+            "required": [
+              "mesh"
+            ],
+            "additionalProperties": false
+          },
+          "railingPart": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "place": {
+                "$ref": "#/properties/storeys/items/properties/parts/additionalProperties/properties/place"
+              },
+              "mesh": {
+                "type": "object",
+                "properties": {
+                  "points": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "faces": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "minItems": 3
+                    }
+                  }
+                },
+                "required": [
+                  "points",
+                  "faces"
+                ],
+                "additionalProperties": false
+              },
+              "mirror": {
+                "type": "boolean"
+              },
+              "joint": {
+                "$ref": "#/properties/storeys/items/properties/parts/additionalProperties/properties/joint"
+              },
+              "toggle": true,
+              "source": {
+                "type": "object",
+                "properties": {
+                  "points": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "faces": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "minItems": 3
+                    }
+                  }
+                },
+                "required": [
+                  "points",
+                  "faces"
+                ],
+                "additionalProperties": false
+              },
+              "fit": {
+                "$ref": "#/properties/storeys/items/properties/parts/additionalProperties/properties/fit"
+              }
+            },
+            "required": [
+              "mesh"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "elevators": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "x": {
+            "type": "number"
+          },
+          "z": {
+            "type": "number"
+          },
+          "size": {
+            "type": "number"
+          },
+          "heading": {
+            "type": "number"
+          },
+          "from": {
+            "type": "integer"
+          },
+          "to": {
+            "type": "integer"
+          },
+          "speed": {
+            "type": "number"
+          },
+          "callButtons": {
+            "type": "boolean"
+          },
+          "railing": {
+            "type": "boolean"
+          },
+          "platform": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "place": {
+                "$ref": "#/properties/storeys/items/properties/parts/additionalProperties/properties/place"
+              },
+              "mesh": {
+                "type": "object",
+                "properties": {
+                  "points": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "faces": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "minItems": 3
+                    }
+                  }
+                },
+                "required": [
+                  "points",
+                  "faces"
+                ],
+                "additionalProperties": false
+              },
+              "mirror": {
+                "type": "boolean"
+              },
+              "joint": {
+                "$ref": "#/properties/storeys/items/properties/parts/additionalProperties/properties/joint"
+              },
+              "toggle": true,
+              "source": {
+                "type": "object",
+                "properties": {
+                  "points": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "faces": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "minItems": 3
+                    }
+                  }
+                },
+                "required": [
+                  "points",
+                  "faces"
+                ],
+                "additionalProperties": false
+              },
+              "fit": {
+                "$ref": "#/properties/storeys/items/properties/parts/additionalProperties/properties/fit"
+              }
+            },
+            "required": [
+              "mesh"
+            ],
+            "additionalProperties": false
+          },
+          "railingPart": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "place": {
+                "$ref": "#/properties/storeys/items/properties/parts/additionalProperties/properties/place"
+              },
+              "mesh": {
+                "type": "object",
+                "properties": {
+                  "points": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "faces": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "minItems": 3
+                    }
+                  }
+                },
+                "required": [
+                  "points",
+                  "faces"
+                ],
+                "additionalProperties": false
+              },
+              "mirror": {
+                "type": "boolean"
+              },
+              "joint": {
+                "$ref": "#/properties/storeys/items/properties/parts/additionalProperties/properties/joint"
+              },
+              "toggle": true,
+              "source": {
+                "type": "object",
+                "properties": {
+                  "points": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "faces": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "minItems": 3
+                    }
+                  }
+                },
+                "required": [
+                  "points",
+                  "faces"
+                ],
+                "additionalProperties": false
+              },
+              "fit": {
+                "$ref": "#/properties/storeys/items/properties/parts/additionalProperties/properties/fit"
+              }
+            },
+            "required": [
+              "mesh"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "shots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "level": {
+            "type": "integer"
+          },
+          "position": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "rotation": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "size": {
+            "type": "number"
+          },
+          "follow": {
+            "type": "number"
+          },
+          "look": {
+            "type": "number"
+          },
+          "triggers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "target": {
+                  "enum": [
+                    "Room",
+                    "Opening",
+                    "Stairs",
+                    "Elevator"
+                  ]
+                },
+                "level": {
+                  "type": "integer"
+                },
+                "room": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "when": {
+                  "enum": [
+                    "Enter",
+                    "Leave",
+                    "Both"
+                  ]
+                },
+                "change": {
+                  "enum": [
+                    "Cut",
+                    "Blend",
+                    "Fade"
+                  ]
+                },
+                "time": {
+                  "type": "number"
+                },
+                "return": {
+                  "enum": [
+                    "RoomEntered",
+                    "Previous"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
     },
     "doors": {
       "type": "array",
       "items": {
-        "$ref": "#/properties/stairs/items"
+        "$ref": "#/properties/storeys/items/properties/parts/additionalProperties"
       }
     }
   },
-  "required": [
-    "roof"
-  ],
   "additionalProperties": false
 }

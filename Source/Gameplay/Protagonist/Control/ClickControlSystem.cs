@@ -18,7 +18,7 @@ using World = Arch.Core.World;
 
 /// <summary>
 /// Point and click: a press of <see cref="Use"/> walks the protagonist to where the mouse points, or, on an interactable, focuses it,
-/// walks within reach and uses it. While the protagonist talks, clicks belong to the conversation and walk nowhere, and while it drives it stays in its seat.
+/// walks within reach (onto it when it is used standing on it, such as an elevator's platform) and uses it. While the protagonist talks, clicks belong to the conversation and walk nowhere, and while it drives it stays in its seat.
 /// </summary>
 public sealed class ClickControlSystem
 {
@@ -85,12 +85,18 @@ public sealed class ClickControlSystem
         _events.Send(new InteractionInput(character, Use, InputPhase.Pressed));
     }
 
-    /// <summary>Walks within reach of the target, or uses it at once when already there.</summary>
+    /// <summary>Walks within reach of the target, or onto it when it is used standing on it, or uses it at once when already there.</summary>
     private void Approach(Player player, Entity target)
     {
         Entity protagonist = player.Entity;
         Vector3 position = player.Transform.Position;
         Vector3 targetPosition = InteractionSystem.GetUsePoint(_world, target);
+        if (_world.TryGet(target, out UsePoint use) && use.StandOn)
+        {
+            _events.Send(new MoveCommand(protagonist, targetPosition, Onto: true));
+            return;
+        }
+
         float reach = player.Interactor.Reach;
         Vector3 away = position - targetPosition;
         away.Y = 0;

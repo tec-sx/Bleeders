@@ -410,6 +410,9 @@
               "fillIn": {
                 "type": "string"
               },
+              "tempo": {
+                "type": "number"
+              },
               "fillOut": {
                 "type": "string"
               },

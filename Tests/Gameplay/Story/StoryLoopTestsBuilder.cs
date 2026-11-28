@@ -123,6 +123,25 @@ internal sealed class StoryLoopTestsBuilder : IDisposable
         return RunUntil(done, seconds);
     }
 
+    /// <summary>
+    /// Clicks the point, seen from <paramref name="distance"/> back along <paramref name="forward"/> (a door seen from the street, a
+    /// button from the room it stands in), and plays until <paramref name="done"/> holds, at most <paramref name="seconds"/>.
+    /// </summary>
+    public bool ClickAt(Vector3 point, Vector3 forward, float distance, Func<bool> done, float seconds = 10)
+    {
+        Vector3 along = Vector3.Normalize(forward);
+        float yaw = MathF.Atan2(-along.X, -along.Z);
+        float pitch = MathF.Asin(along.Y);
+        Quaternion rotation = Quaternion.CreateFromYawPitchRoll(yaw, pitch, 0);
+        CameraDirector cameras = Game.Services.GetService<CameraDirector>()!;
+        ref ActiveCamera view = ref Game.World.Get<ActiveCamera>(cameras.Live);
+        Vector3 back = along * distance;
+        view.Pose = new Transform { Position = point - back, Rotation = rotation };
+        Game.Events.Send(new InputActionEvent(ClickControlSystem.Use, InputPhase.Pressed));
+        Game.Events.Dispatch();
+        return RunUntil(done, seconds);
+    }
+
     /// <summary>Picks the offered choice whose text starts with <paramref name="text"/>, once the conversation offers it.</summary>
     public bool Choose(string text)
     {
