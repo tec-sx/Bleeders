@@ -208,8 +208,26 @@
                 "frame": {
                   "type": "number"
                 },
+                "double": {
+                  "type": "boolean"
+                },
+                "windowWidth": {
+                  "type": "number"
+                },
+                "windowHeight": {
+                  "type": "number"
+                },
+                "windowFrom": {
+                  "type": "number"
+                },
                 "glass": {
                   "type": "boolean"
+                },
+                "handleHeight": {
+                  "type": "number"
+                },
+                "handleInset": {
+                  "type": "number"
                 },
                 "margin": {
                   "type": "number"
